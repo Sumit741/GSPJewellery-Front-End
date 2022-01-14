@@ -1,0 +1,52 @@
+.top {
+  background-color: black;
+  color: grey;
+  font-weight: 500;
+  height: 40px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.logo h1 {
+  color: goldenrod;
+}
+.logo h5 {
+  margin-top: -10px;
+}
+.mid {
+  list-style-type: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.loginCart {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: goldenrod;
+}
+.cartLink {
+  color: grey;
+  text-decoration: none;
+  font-weight: 500;
+}
+.loginLink {
+  color: grey;
+  text-decoration: none;
+  font-weight: 500;
+}
+.cartDiv {
+  margin-right: 5px;
+}
+.rate {
+  color: grey;
+  font-weight: 500;
+}
