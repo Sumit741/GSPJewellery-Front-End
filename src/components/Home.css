@@ -1,0 +1,97 @@
+.home {
+}
+.swiper {
+  width: 100%;
+  height: 80%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background-color: rgb(71, 69, 64);
+}
+.swiper-pagination-bullet-active {
+  background-color: goldenrod;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.offer-det {
+  position: absolute;
+  top: 23%;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  animation-name: offer-det;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-delay: 4s;
+}
+.offer-det h1 {
+  color: white;
+  font-size: 45px;
+  font-weight: 650;
+}
+.offer-det h3:nth-child(1) {
+  color: #a8741a;
+}
+.offer-det h3:nth-child(3) {
+  color: rgb(216, 210, 210);
+}
+.offer-det p {
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 20px;
+  color: rgb(216, 210, 210);
+}
+.offer-det span {
+  color: #a8741a;
+  font-weight: 600;
+}
+.offer-det button {
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  padding: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+@keyframes offer-det {
+  0% {
+    opacity: 0%;
+  }
+  25% {
+    opacity: 25%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
