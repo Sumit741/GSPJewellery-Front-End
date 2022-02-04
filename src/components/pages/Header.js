@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.svg";
+import logo from "../../images/logo.svg";
+import Modal from "./Modal";
+import { useSelector, useDispatch } from "react-redux";
+import { modalAction } from "../store/showModal";
 
 import "./Navbar.css";
 function Header() {
+  const dispatch = useDispatch();
+  const showModal = useSelector((state) => state.modal.modalVisible);
+  const toogleModal = () => {
+    dispatch(modalAction.showModal());
+  };
   return (
     <div>
       <div className="top">
@@ -39,7 +47,7 @@ function Header() {
           GSP<span className="mid-logo">jewelry</span>
         </h1>
         <div className="mid-right">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search" onClick={toogleModal}></i>
           <span>RATE: 98,500 </span>
           <Link to="login" className="mid-links">
             {" "}
@@ -47,6 +55,8 @@ function Header() {
           </Link>
         </div>
       </div>
+      {showModal && <Modal style="color: black;" />}
+
       <nav class="navbar navbar-expand-lg shadow navigation">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">

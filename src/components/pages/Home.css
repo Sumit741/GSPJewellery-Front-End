@@ -81,6 +81,99 @@
   font-size: 15px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 1170px) {
+  .offer-det {
+    top: 80px;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .offer-det {
+    top: 60px;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 910px) {
+  .offer-det {
+    top: 35px;
+  }
+  .swiper {
+    width: 100%;
+    height: 110%;
+  }
+}
+@media screen and (max-width: 795px) {
+  .offer-det {
+    top: 32px;
+  }
+  .offer-det h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: 650;
+  }
+  .offer-det h3:nth-child(1) {
+    font-size: 18px;
+  }
+  .offer-det h3:nth-child(3) {
+    font-size: 18px;
+  }
+  .offer-det p {
+    margin-top: -1px;
+    font-size: 18px;
+  }
+  .offer-det span {
+    font-size: 18px;
+  }
+  .offer-det button {
+    padding: 12px 5px;
+  }
+}
+@media screen and (max-width: 632px) {
+  .offer-det {
+    top: 30px;
+  }
+  .offer-det button {
+    padding: 8px 5px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .offer-det {
+    top: 20px;
+  }
+  .offer-det button {
+    padding: 8px 5px;
+  }
+}
+@media screen and (max-width: 585px) {
+  .offer-det h1 {
+    font-size: 25px;
+  }
+  .offer-det h3:nth-child(1) {
+    font-size: 15px;
+  }
+  .offer-det h3:nth-child(3) {
+    font-size: 15px;
+  }
+  .offer-det p {
+    margin-top: -1px;
+    font-size: 15px;
+  }
+  .offer-det span {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 585px) {
+  .offer-det button {
+    margin-bottom: 15px;
+  }
+}
 @keyframes offer-det {
   0% {
     opacity: 0%;
@@ -94,4 +187,16 @@
   100% {
     opacity: 100%;
   }
+}
+button {
+  border: none;
+  width: 120px;
+  margin: auto;
+  padding: 5px 0;
+  border-radius: 5px;
+  background: #a8741a;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #c2851c;
 }

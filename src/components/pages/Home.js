@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import necklace from "../images/necklace.png";
-import Necklace from "../images/Necklace2.jpg";
+import necklace from "../../images/necklace.png";
+import Necklace from "../../images/Necklace2.jpg";
 import { Autoplay, Pagination } from "swiper";
 
 import "./Home.css";

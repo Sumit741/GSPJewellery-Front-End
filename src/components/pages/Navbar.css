@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .top {
   background-color: rgb(31, 29, 29);
   color: grey;
@@ -30,6 +31,7 @@
   width: 25px;
   background: rgb(53, 48, 48);
   border-radius: 50%;
+  transition: background 0.3s;
 }
 .social-sites i:hover {
   background: #a8691f;
@@ -41,6 +43,7 @@
   text-decoration: none;
   color: white;
   font-weight: 400;
+  transition: color 0.3s;
 }
 .tlink:hover {
   color: #a8691f;
@@ -53,7 +56,9 @@
   border-bottom: 1px solid rgb(53, 48, 48);
   height: 70px;
 }
-
+.mid h1 {
+  color: goldenrod;
+}
 .mid-left {
   display: flex;
   justify-content: space-between;
@@ -83,6 +88,13 @@
 .mid-right .fa-search {
   color: #a8691f;
   border: 2px solid #a8691f;
+  transition: color, border;
+  transition-duration: 0.3s;
+}
+
+.mid-right .fa-search:hover {
+  color: #e68c27;
+  border: 2px solid #e68c27;
 }
 .mid-logo {
   color: white;
@@ -97,6 +109,7 @@
   color: white;
 }
 .mid-links:hover {
+  transition: color 0.3s;
   color: #a8691f;
 }
 .links {
@@ -128,9 +141,12 @@
   font-weight: 500;
 }
 .toggler {
+  font-size: 25px;
   margin-right: 50px;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   width: 50px;
-  background-color: blanchedalmond;
 }
 .navigation {
   background-color: rgba(26, 24, 24, 0.5);
@@ -145,6 +161,11 @@
 @media screen and (max-width: 1170) {
   .mid h1 {
     font-size: 28px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .links:hover::after {
+    width: 100px;
   }
 }
 @media only screen and (max-width: 790px) {

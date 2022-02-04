@@ -1,11 +1,10 @@
 import "./App.css";
-import Header from "./components/Header";
+import Header from "./components/pages/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Cart from "./components/Cart";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
+import Cart from "./components/pages/Cart";
 import AdminLogin from "./components/admin/AdminLogin";
-import Modal from "./components/Modal";
 import { useState } from "react";
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        {/* <Modal /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
