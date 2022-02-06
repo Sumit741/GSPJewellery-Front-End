@@ -6,12 +6,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .login-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
   width: 75%;
-  height: 80%;
-  /* height: 532px; */
+  height: 528px;
   display: flex;
   flex-direction: row;
   border-radius: 10px;
@@ -104,9 +105,9 @@
 }
 @media screen and (max-width: 845px) {
   .login-form {
-    width: 50%;
+    width: 60%;
     flex-direction: column;
-    height: 80%;
+    height: 528px;
   }
 
   .form {
@@ -121,16 +122,16 @@
 }
 @media screen and (max-width: 650px) {
   .login-form {
-    width: 60%;
+    width: 70%;
   }
 }
 @media screen and (max-width: 620px) {
   .login-form {
-    width: 60%;
+    width: 70%;
   }
 }
 @media screen and (max-width: 570px) {
   .login-form {
-    width: 70%;
+    width: 75%;
   }
 }

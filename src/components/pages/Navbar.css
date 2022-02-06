@@ -133,9 +133,9 @@
   color: goldenrod;
 }
 .logo {
-  width: 80px;
+  width: 100px;
   box-sizing: border-box;
-  border-radius: 70%;
+  border-radius: 120px;
 }
 .nav-link {
   font-weight: 500;
@@ -149,7 +149,8 @@
   width: 50px;
 }
 .navigation {
-  background-color: rgba(26, 24, 24, 0.5);
+  /* background-color: rgba(26, 24, 24, 0.5); */
+  background-color: rgb(8, 8, 8);
   box-shadow: 2px 2px 35px 10px rgba(255, 255, 255, 1);
 }
 

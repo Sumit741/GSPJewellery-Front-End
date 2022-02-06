@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import image from "../../images/loginpage.jpg";
 import "./Login.css";
+import "aos/dist/aos.css";
+import Aos from "aos";
 function Login() {
+  useEffect(() => {
+    Aos.init({
+      offset: 100,
+      duration: 1000,
+    });
+  }, []);
   return (
     <div className="login-section">
-      <div className="login-form">
+      <div className="login-form" data-aos="zoom-in">
         <div className="form">
           <h1>Login to Your Account</h1>
           <span>

@@ -1,0 +1,199 @@
+.registrationSection {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(34, 33, 33);
+}
+.formSection {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 950px;
+  height: 528px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  box-shadow: 1px 2px 25px 2px rgb(19, 17, 17);
+}
+.form {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: white;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(19, 17, 17);
+}
+.inputField {
+  background-color: rgb(37, 35, 35);
+  border: none;
+  color: white;
+  padding-left: 25px;
+  width: 300px;
+  outline: none;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.form h1 {
+  margin-top: 70px;
+  font-size: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+.form .firstSpan {
+  margin-top: 10px;
+  text-align: center;
+  width: 61.7%;
+  color: rgb(85, 83, 83);
+  font-weight: 400;
+}
+.form .button {
+  height: 40px;
+  width: 300px;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 122px;
+}
+
+.secondSpan {
+  position: absolute;
+  color: rgb(85, 83, 83);
+  top: 420px;
+}
+.secondSpan a {
+  text-decoration: none;
+}
+
+.errormsg1 {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  top: 172px;
+  right: 240px;
+  color: rgb(197, 6, 6);
+}
+.errormsg2 {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  top: 232px;
+  right: 243px;
+  color: rgb(197, 6, 6);
+}
+.errormsg3 {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  top: 291px;
+  right: 202px;
+  color: rgb(197, 6, 6);
+}
+.picture {
+  width: 50%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-image: url("../../images/ring.png");
+  background-size: cover;
+  background-position: center;
+}
+@media screen and (max-width: 1050px) {
+  .formSection {
+    width: 900px;
+  }
+  .errormsg1 {
+    top: 172px;
+    right: 228px;
+  }
+  .errormsg2 {
+    top: 232px;
+    right: 231px;
+  }
+  .errormsg3 {
+    top: 291px;
+    right: 190px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .formSection {
+    width: 850px;
+  }
+  .errormsg1 {
+    top: 172px;
+    right: 214px;
+  }
+  .errormsg2 {
+    top: 232px;
+    right: 217px;
+  }
+  .errormsg3 {
+    top: 291px;
+    right: 175px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .formSection {
+    width: 800px;
+  }
+  .errormsg1 {
+    top: 172px;
+    right: 202px;
+  }
+  .errormsg2 {
+    top: 232px;
+    right: 205px;
+  }
+  .errormsg3 {
+    top: 291px;
+    right: 164px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .formSection {
+    flex-direction: column;
+    width: 450px;
+  }
+  .picture {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .errormsg1 {
+    top: 172px;
+    font-weight: 500;
+    right: 236px;
+  }
+  .errormsg2 {
+    font-weight: 500;
+    top: 232px;
+    right: 239px;
+  }
+  .errormsg3 {
+    font-weight: 500;
+    top: 293px;
+    right: 198px;
+  }
+}
+@media screen and (max-width: 525px) {
+  .formSection {
+    flex-direction: column;
+    width: 420px;
+  }
+  .errormsg1 {
+    top: 172px;
+    right: 220px;
+  }
+  .errormsg2 {
+    top: 232px;
+    right: 224px;
+  }
+  .errormsg3 {
+    top: 293px;
+    right: 182px;
+  }
+}

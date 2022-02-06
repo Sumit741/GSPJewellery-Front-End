@@ -9,9 +9,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 5  px;
+  border-radius: 5 px;
   justify-content: center;
-  box-shadow: 1px 1px 5px 2px rgba(209, 209, 200, 0.1);
+  box-shadow: 3px 3px 35px 20px rgba(22, 22, 21, 0.3);
   z-index: 10;
 }
 .search-items i {
@@ -37,4 +37,60 @@ button {
   margin-top: 15px;
   color: white;
   font-weight: 500;
+}
+@media screen and (max-width: 1000px) {
+  .search-items {
+    left: 32%;
+  }
+}
+@media screen and (max-width: 890px) {
+  .search-items {
+    left: 30%;
+  }
+}
+@media screen and (max-width: 791px) {
+  .search-items {
+    left: 30%;
+    top: 200px;
+  }
+}
+@media screen and (max-width: 786px) {
+  .search-items {
+    left: 28%;
+  }
+}
+@media screen and (max-width: 715px) {
+  .search-items {
+    left: 26%;
+  }
+}
+@media screen and (max-width: 691px) {
+  .search-items {
+    left: 24%;
+  }
+}
+@media screen and (max-width: 624px) {
+  .search-items {
+    left: 22%;
+  }
+}
+@media screen and (max-width: 585px) {
+  .search-items {
+    left: 20%;
+  }
+}
+@media screen and (max-width: 560px) {
+  .search-items {
+    left: 18%;
+  }
+}
+@media screen and (max-width: 528px) {
+  .search-items {
+    left: 16%;
+  }
+}
+@media screen and (max-width: 510px) {
+  .search-items {
+    left: 14%;
+  }
 }

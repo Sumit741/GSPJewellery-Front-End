@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../images/logo.svg";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../../images/logo.jpg";
 import Modal from "./Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { modalAction } from "../store/showModal";
 
 import "./Navbar.css";
 function Header() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.modal.modalVisible);
   const toogleModal = () => {
@@ -30,7 +31,7 @@ function Header() {
             <i class="fas fa-user"></i> LOGIN
           </Link>{" "}
           |{" "}
-          <Link to="login" className="tlink">
+          <Link to="/" className="tlink">
             <i class="fas fa-user"></i> LOGOUT
           </Link>
         </div>
@@ -59,7 +60,7 @@ function Header() {
 
       <nav class="navbar navbar-expand-lg shadow navigation">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#" onClick={() => navigate("/")}>
             <img src={logo} className="logo" />
           </a>
           <button

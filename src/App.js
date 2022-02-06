@@ -6,6 +6,7 @@ import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
 import AdminLogin from "./components/admin/AdminLogin";
 import { useState } from "react";
+import Register from "./components/pages/Register";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </div>
