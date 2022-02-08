@@ -5,12 +5,22 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
 import AdminLogin from "./components/admin/AdminLogin";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Register from "./components/pages/Register";
+import { useDispatch } from "react-redux";
+import { authActions } from "./components/store/LoginAuthentication";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      dispatch(authActions.setAuthenticationTrue());
+    } else {
+      dispatch(authActions.setAuthenticationFalse());
+    }
+  });
   return (
-    <div className="App">
+    <div className="App" onClick={() => console.log("clicked")}>
       <BrowserRouter>
         <Header />
         <Routes>

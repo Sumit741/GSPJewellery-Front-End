@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { modalAction } from "../store/showModal";
 
 import "./Navbar.css";
+import { authActions } from "../store/LoginAuthentication";
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const showModal = useSelector((state) => state.modal.modalVisible);
   const toogleModal = () => {
     dispatch(modalAction.showModal());
@@ -23,17 +25,29 @@ function Header() {
           <i class="fab fa-youtube"></i>
         </div>
         <div className="top-links">
-          <Link to="register" className="tlink">
-            <i class="fas fa-cart-plus"></i> REGISTER
-          </Link>{" "}
-          |{" "}
-          <Link to="login" className="tlink">
-            <i class="fas fa-user"></i> LOGIN
-          </Link>{" "}
-          |{" "}
-          <Link to="/" className="tlink">
-            <i class="fas fa-user"></i> LOGOUT
-          </Link>
+          {!isAuth ? (
+            <>
+              <Link to="register" className="tlink">
+                <i class="fas fa-cart-plus"></i> REGISTER
+              </Link>{" "}
+              |{" "}
+              <Link to="login" className="tlink">
+                <i class="fas fa-user"></i> LOGIN
+              </Link>{" "}
+              |{" "}
+            </>
+          ) : (
+            <Link
+              to="/"
+              className="tlink"
+              onClick={() => {
+                localStorage.removeItem("accessToken");
+                dispatch(authActions.setAuthenticationFalse());
+              }}
+            >
+              <i class="fas fa-user"></i> LOGOUT
+            </Link>
+          )}
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Aos from "aos";
+import axios from "axios";
 import "aos/dist/aos.css";
 import * as Yup from "yup";
 import styles from "./Register.module.css";
@@ -22,6 +23,24 @@ function Register() {
     Password: Yup.string().required(),
     ConfirmPassword: Yup.string().required(),
   });
+  const submitHandler = (data, onSubmitProps) => {
+    if (data.Password === data.ConfirmPassword) {
+      axios
+        .post("http://localhost:3001/user/register", data)
+        .then((response) => {
+          alert(response.data);
+          if (response.data === "SUCCESSFUL REGISTRATION") {
+            onSubmitProps.setSubmitting(false);
+            onSubmitProps.resetForm();
+          }
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else {
+      alert("Password ddoesn't matched");
+    }
+  };
   return (
     <div className={styles.registrationSection}>
       <div className={styles.formSection} data-aos="zoom-in">
@@ -29,6 +48,7 @@ function Register() {
         <Formik
           initialValues={initialValues}
           validationSchema={inputValidation}
+          onSubmit={submitHandler}
         >
           <Form className={styles.form}>
             <h1>Create Your Account</h1>
