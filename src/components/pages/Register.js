@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Aos from "aos";
+import Header from "./Header";
 import axios from "axios";
 import "aos/dist/aos.css";
 import * as Yup from "yup";
