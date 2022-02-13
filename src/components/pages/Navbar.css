@@ -117,6 +117,7 @@
   color: rgb(240, 220, 220);
   font-weight: 500;
 }
+
 .links::after {
   content: "";
   width: 0;
@@ -131,6 +132,9 @@
 }
 .links:hover {
   color: goldenrod;
+}
+.links:active {
+  color: white;
 }
 .logo {
   width: 100px;

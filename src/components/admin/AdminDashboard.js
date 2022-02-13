@@ -11,9 +11,7 @@ import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 function AdminDashboard() {
   const navigate = useNavigate();
-  useEffect(() => {
-    navigate("/adminDashboard/home");
-  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
