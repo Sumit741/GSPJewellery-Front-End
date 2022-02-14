@@ -18,8 +18,10 @@ import { useDispatch } from "react-redux";
 import { authActions } from "./components/store/LoginAuthentication";
 import Products from "./components/admin/Products";
 import Orders from "./components/admin/Orders";
-import Gold from "./components/admin/Gold";
 import MainPage from "./components/admin/MainPage";
+import { Navigation } from "swiper";
+import AddProduct from "./components/admin/AddProduct";
+import ProductPage from "./components/pages/ProductPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ function App() {
     }
   });
   return (
-    <div className="App" onClick={() => console.log("clicked")}>
+    <div className="App">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -40,13 +42,23 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/admindashboard" element={<AdminDashboard />}>
-            <Route path="home" element={<MainPage />} />
+          <Route
+            path="/admindashboard"
+            element={
+              localStorage.getItem("adminAccessToken") ? (
+                <AdminDashboard />
+              ) : (
+                <AdminLogin />
+              )
+            }
+          >
+            <Route path="dashboard" element={<MainPage />} />
             <Route path="products" element={<Products />}>
-              <Route path="cat1" element={<Gold />} />
+              <Route path="add" element={<AddProduct />} />
             </Route>
             <Route path="orders" element={<Orders />} />
           </Route>
+          <Route path="/category/:category" element={<ProductPage />} />
         </Routes>
       </BrowserRouter>
     </div>

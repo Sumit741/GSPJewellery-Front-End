@@ -133,8 +133,11 @@
 .links:hover {
   color: goldenrod;
 }
-.links:active {
+.links:visited {
   color: white;
+}
+.links:active {
+  color: goldenrod;
 }
 .logo {
   width: 100px;

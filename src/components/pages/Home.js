@@ -6,12 +6,15 @@ import necklace from "../../images/necklace.png";
 import Necklace from "../../images/Necklace2.jpg";
 import "aos/dist/aos.css";
 import Aos from "aos";
-
+import axios from "axios";
 import { Autoplay, Pagination } from "swiper";
-
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { productActions } from "../store/Products";
 
 function Home() {
+  const navigate = useNavigate();
   let element1, element2, element3, element4, element5, element6;
   useEffect(() => {
     element1 = document.querySelector(".item-description");
@@ -70,6 +73,12 @@ function Home() {
   const hoverOutHandler6 = () => {
     element6.classList.remove("displayContent");
   };
+  const dispatch = useDispatch();
+
+  const categoryHandler = (category) => {
+    navigate(`/category/${category}`);
+  };
+
   return (
     <div className="home">
       <Swiper
@@ -145,7 +154,13 @@ function Home() {
             <div className="item-content">
               <div className="item-description">
                 <h2>Necklaces</h2>
-                <button>SHOP NOW</button>
+                <button
+                  onClick={() => {
+                    categoryHandler("necklaces");
+                  }}
+                >
+                  SHOP NOW
+                </button>
               </div>
             </div>
           </div>
@@ -158,7 +173,13 @@ function Home() {
             <div className="item-content">
               <div className="item-description1">
                 <h2>Chains</h2>
-                <button>SHOP NOW</button>
+                <button
+                  onClick={() => {
+                    categoryHandler("chains");
+                  }}
+                >
+                  SHOP NOW
+                </button>
               </div>
             </div>
           </div>
@@ -171,7 +192,13 @@ function Home() {
             <div className="item-content">
               <div className="item-description2">
                 <h2>Rings</h2>
-                <button>SHOP NOW</button>
+                <button
+                  onClick={() => {
+                    categoryHandler("rings");
+                  }}
+                >
+                  SHOP NOW
+                </button>
               </div>
             </div>
           </div>
@@ -184,7 +211,13 @@ function Home() {
             <div className="item-content">
               <div className="item-description3">
                 <h2>Bangles</h2>
-                <button>SHOP NOW</button>
+                <button
+                  onClick={() => {
+                    categoryHandler("bangles");
+                  }}
+                >
+                  SHOP NOW
+                </button>
               </div>
             </div>
           </div>
@@ -197,7 +230,13 @@ function Home() {
             <div className="item-content">
               <div className="item-description4">
                 <h2>Bracelet</h2>
-                <button>SHOP NOW</button>
+                <button
+                  onClick={() => {
+                    categoryHandler("bracelet");
+                  }}
+                >
+                  SHOP NOW
+                </button>
               </div>
             </div>
             {/* <img src={catBracelet} className="cat-image" /> */}
@@ -211,7 +250,13 @@ function Home() {
             <div className="item-content">
               <div className="item-description5">
                 <h2>Earrings</h2>
-                <button>SHOP NOW</button>
+                <button
+                  onClick={() => {
+                    categoryHandler("earrings");
+                  }}
+                >
+                  SHOP NOW
+                </button>
               </div>
             </div>
           </div>

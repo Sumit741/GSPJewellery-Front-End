@@ -13,48 +13,40 @@ function AdminDashboard() {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.dashboard}>
       <div className={styles.header}>
-        <h3>
-          <DashboardIcon className={styles.dashboardIcon} />
-          Dashboard
-        </h3>
-        <h3 className={styles.adminName}>
-          Admin@123
-          <AccountCircleIcon className={styles.user1} />
-        </h3>
+        <h1>JSP jewellery</h1>
       </div>
-
-      <div className={styles.content}>
-        <div className={styles.links}>
-          <div className={styles.user}>
-            <AccountCircleIcon className={styles.userIcon} />
-            <h3>Admin@123</h3>
+      <div className={styles.container}>
+        <div className={styles.containerLeft}>
+          <div className={styles.lists}>
+            <li>
+              <DashboardIcon className={styles.icon} />
+              <Link to="dashboard" className={styles.links}>
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <CategoryIcon className={styles.icon} />
+              <Link to="products">Products</Link>
+            </li>
+            <li>
+              <ShoppingCartIcon className={styles.icon} />
+              <Link to="dashboard">Orders</Link>
+            </li>
+            <li>
+              <FaceRetouchingNaturalIcon className={styles.icon} />
+              <Link to="dashboard">Customers</Link>
+            </li>
+            <li>
+              <BarChartIcon className={styles.icon} />
+              <Link to="dashboard">Statistics</Link>
+            </li>
+            <li>
+              <MapsUgcIcon className={styles.icon} />
+              <Link to="dashboard">Messages</Link>
+            </li>
           </div>
-          <Link to="home">
-            <HomeIcon />
-            <span>Home</span>
-          </Link>
-          <Link to="products">
-            <CategoryIcon />
-            <span>Products</span>
-          </Link>
-          <Link to="orders">
-            <ShoppingCartIcon />
-            <span>Orders</span>
-          </Link>
-          <Link to="customers">
-            <FaceRetouchingNaturalIcon />
-            <span>Customers</span>
-          </Link>
-          <Link to="statistics">
-            <BarChartIcon />
-            <span>Statisics</span>
-          </Link>
-          <Link to="message">
-            <MapsUgcIcon />
-            <span>Messages</span>
-          </Link>
         </div>
         <div className={styles.Outlet}>
           <Outlet />

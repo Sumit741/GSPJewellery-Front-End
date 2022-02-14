@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import styles from "./products.module.css";
 function Products() {
+  const [show, setShow] = useState(true);
+  const clickHandler = () => {
+    setShow(false);
+  };
   return (
-    <div className={styles.div1}>
-      This is product page
-      <Link to="cat1">Gold</Link>
-      <Outlet />
+    <div className={styles.container}>
+      <div className={styles.helper}>
+        <div className={styles.card}>
+          <Link to="view">View Products</Link>
+        </div>
+        <div className={styles.card}>
+          <Link to="add" onClick={clickHandler}>
+            Add Products
+          </Link>
+        </div>
+        <div className={styles.card}>
+          <Link to="view">Manage Products</Link>
+        </div>
+      </div>
+
+      <div className={styles.outlet}>
+        <Outlet />
+      </div>
     </div>
   );
 }
