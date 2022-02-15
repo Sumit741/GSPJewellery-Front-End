@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { productActions } from "../store/Products";
 import styles from "./ProductPage.module.css";
 import image from "../../images/catChain.jpg";
 import "aos/dist/aos.css";
 import Aos from "aos";
+import ReactPaginate from "react-paginate";
 
 function ProductPage() {
+  const navigate = useNavigate();
   const { category } = useParams();
   const dispatch = useDispatch();
   const listOfProducts = useSelector((state) => state.product.listOfProducts);
 
+  const [pageNumber, setPageNumber] = useState(0);
+  const productPerPage = 12;
+  const productShown = pageNumber * productPerPage;
+  const pageCount = Math.ceil(listOfProducts.length / productPerPage);
+  const pageChangeHandler = ({ selected }) => {
+    setPageNumber(selected);
+  };
   useEffect(() => {
     axios
       .get(`http://localhost:3001/product/byCategory/${category}`)
@@ -41,65 +50,45 @@ function ProductPage() {
         <input type="number" />
       </div>
       <div className={styles.containerRight}>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
+        <div className={styles.products}>
+          {listOfProducts
+            .slice(productShown, productShown + productPerPage)
+            .map((product) => (
+              <div
+                key={product.id}
+                className={styles.individualProduct}
+                data-aos="fade-down"
+                onClick={() => {
+                  navigate(`/product/${product.id}`);
+                }}
+              >
+                <img src={image} />
+                <h4>{product.ProductName}</h4>
+                <span>Rs 22,500</span>
+              </div>
+            ))}
         </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,520</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
-        <div className={styles.individualProduct} data-aos="fade-up">
-          <img src={image} />
-          <h4>Gold Necklace</h4>
-          <span>Rs 22,500</span>
-        </div>
+
+        <ReactPaginate
+          previousLabel={"<<"}
+          containerClassName={styles.pagination}
+          nextLabel={">>"}
+          breakLabel={"..."}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={2}
+          pageClassName={styles.container}
+          pageLinkClassName={styles.links}
+          previousClassName={styles.container}
+          previousLinkClassName={styles.links}
+          nextClassName={styles.container}
+          nextLinkClassName={styles.links}
+          breakClassName={""}
+          breakLinkClassName={styles.links}
+          activeClassName={styles.activeClass}
+          onPageChange={pageChangeHandler}
+        />
       </div>
-      {/* {listOfProducts.map((item) => (
-        <div key={item.id} className={styles.containerRight}>
-          <h1>{item.ElementType}</h1>
-          <h1>{item.Category}</h1>
-          <h1>{item.For}</h1>
-          <h1>{item.NetWeight}</h1>
-        </div>
-      ))} */}
     </div>
   );
 }

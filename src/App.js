@@ -22,6 +22,7 @@ import MainPage from "./components/admin/MainPage";
 import { Navigation } from "swiper";
 import AddProduct from "./components/admin/AddProduct";
 import ProductPage from "./components/pages/ProductPage";
+import ProductDescription from "./components/pages/ProductDescription";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ function App() {
             <Route path="orders" element={<Orders />} />
           </Route>
           <Route path="/category/:category" element={<ProductPage />} />
+          <Route path="/product/:id" element={<ProductDescription />} />
         </Routes>
       </BrowserRouter>
     </div>
