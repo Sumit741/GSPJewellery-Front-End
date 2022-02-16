@@ -10,6 +10,12 @@ import Aos from "aos";
 function ProductDescription() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [rate, setRate] = useState({});
+
+  const rateCalculation = (weightWithLoss, charge) => {
+    const rate = (95000 / 100) * weightWithLoss + charge;
+    return rate;
+  };
   useEffect(() => {
     axios
       .get(`http://localhost:3001/product/byProductId/${id}`)
@@ -41,7 +47,10 @@ function ProductDescription() {
             <span>Purity: {product.Carat ? product.Carat : "100%pure"}</span>
             <span>Weight(in Tola): {product.NetWeight}</span>
             <span>
-              Price: <span className={styles.price}>Rs 22,500</span>
+              Price:{" "}
+              <span className={styles.price}>
+                Rs {rateCalculation(product.WeightWithLoss, 2000)}
+              </span>
             </span>
             <div>
               <span className={styles.Quantity}>

@@ -1,13 +1,14 @@
 .container {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .card {
   height: 150px;
   border-radius: 5px;
   display: flex;
   width: 300px;
+  margin-top: 10px;
   justify-content: center;
   align-items: center;
   background-color: #22263f;
@@ -22,6 +23,9 @@
   display: none;
 }
 .outlet {
+  /* background-color: red; */
+  margin-top: 12px;
+
   height: 100%;
   width: 100%;
 }

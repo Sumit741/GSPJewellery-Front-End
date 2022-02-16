@@ -1,0 +1,26 @@
+.container {
+  color: white;
+  position: absolute;
+  top: 40%;
+  margin-left: 150px;
+  background-color: #15182b;
+  border-radius: 5px;
+  width: 400px;
+  font-size: 23px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 8px 15px 2px rgba(21, 23, 43, 0.8);
+}
+.icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgb(192, 13, 13);
+  font-size: 30px;
+}
+.icon:hover {
+  cursor: pointer;
+  color: red;
+}
