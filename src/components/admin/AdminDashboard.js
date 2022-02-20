@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import styles from "./AdminDashboard.module.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -10,41 +10,60 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 function AdminDashboard() {
+  const [showdropdown, setShowDropDown] = useState(false);
   const navigate = useNavigate();
 
   return (
     <div className={styles.dashboard}>
       <div className={styles.header}>
         <h1>JSP jewellery</h1>
+        <div className={styles.headerRight}>
+          <span>Admin</span>
+          <AccountCircleIcon />
+        </div>
       </div>
       <div className={styles.container}>
         <div className={styles.containerLeft}>
           <div className={styles.lists}>
             <li>
-              <DashboardIcon className={styles.icon} />
               <Link to="dashboard" className={styles.links}>
-                Dashboard
+                <DashboardIcon className={styles.icon} /> Dashboard
               </Link>
             </li>
             <li>
-              <CategoryIcon className={styles.icon} />
-              <Link to="products">Products</Link>
+              <a onClick={() => setShowDropDown(!showdropdown)}>
+                <CategoryIcon className={styles.icon} /> Products
+              </a>
+            </li>
+            {showdropdown && (
+              <div className={styles.dropdown}>
+                <Link to="products" className={styles.dropdownlink}>
+                  <CategoryIcon className={styles.icon} /> View Products
+                </Link>
+                <Link to="addproduct" className={styles.dropdownlink}>
+                  <CategoryIcon className={styles.icon} /> Add Products
+                </Link>
+              </div>
+            )}
+            <li>
+              <Link to="dashboard">
+                <ShoppingCartIcon className={styles.icon} /> Orders
+              </Link>
             </li>
             <li>
-              <ShoppingCartIcon className={styles.icon} />
-              <Link to="dashboard">Orders</Link>
+              <Link to="dashboard">
+                <FaceRetouchingNaturalIcon className={styles.icon} /> Customers
+              </Link>
             </li>
             <li>
-              <FaceRetouchingNaturalIcon className={styles.icon} />
-              <Link to="dashboard">Customers</Link>
+              <Link to="dashboard">
+                <BarChartIcon className={styles.icon} /> Statistics
+              </Link>
             </li>
             <li>
-              <BarChartIcon className={styles.icon} />
-              <Link to="dashboard">Statistics</Link>
-            </li>
-            <li>
-              <MapsUgcIcon className={styles.icon} />
-              <Link to="dashboard">Messages</Link>
+              <Link to="dashboard">
+                <MapsUgcIcon className={styles.icon} /> Messages
+              </Link>
             </li>
           </div>
         </div>

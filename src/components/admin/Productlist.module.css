@@ -1,0 +1,90 @@
+.container {
+  margin-top: 50px;
+}
+table {
+  margin-left: 10px;
+  box-shadow: 2px 8px 15px 2px rgba(21, 23, 43, 0.8);
+}
+thead {
+  background-color: #0b0e27;
+  height: 40px;
+  color: white;
+}
+th {
+  font-weight: 400;
+  /* border: 1px solid white; */
+  width: 200px;
+  font-size: 10px;
+  border-bottom: 1px solid #2d3355;
+  padding: 5px;
+}
+.body tr {
+  background-color: #141830;
+  color: white;
+  font-size: 10px;
+  height: 30px;
+  border-bottom: 1px solid #2d3355;
+}
+.body tr:hover {
+  background-color: #0e122b;
+}
+.pagination {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin-top: -40px;
+}
+.pagination .links {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+.pagination .container {
+  margin-left: 10px;
+  background: #232742;
+  box-shadow: 2px 2px 15px 2px rgba(19, 18, 18, 0.8);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: all 0.2s;
+}
+.pagination .container:hover {
+  cursor: pointer;
+  background: #1b1e35;
+  transform: scale(1.03, 1.03);
+}
+.pagination .activeClass {
+  background: #404781;
+}
+.pagination .container:active {
+  background: #404781;
+}
+.filter {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: #030625;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px 2px rgba(9, 11, 41, 0.4);
+}
+.filter:hover {
+  cursor: pointer;
+  background-color: #0c1033;
+}
+.icons {
+  font-size: 20px;
+}
+.icons:hover {
+  cursor: pointer;
+}
+.icons:nth-child(1) {
+  color: rgb(22, 80, 22);
+}
+.icons:nth-child(2) {
+  color: rgb(143, 10, 10);
+}
