@@ -9,10 +9,11 @@ import FaceRetouchingNaturalIcon from "@mui/icons-material/FaceRetouchingNatural
 import BarChartIcon from "@mui/icons-material/BarChart";
 import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import { useSelector } from "react-redux";
 function AdminDashboard() {
   const [showdropdown, setShowDropDown] = useState(false);
   const navigate = useNavigate();
-
+  const show = useSelector((state) => state.modal.showEditPage);
   return (
     <div className={styles.dashboard}>
       <div className={styles.header}>
@@ -71,6 +72,7 @@ function AdminDashboard() {
           <Outlet />
         </div>
       </div>
+      {show && <div className={styles.Cover}></div>}
     </div>
   );
 }

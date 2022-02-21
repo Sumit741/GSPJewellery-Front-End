@@ -4,6 +4,7 @@ const initialState = {
   modalVisible: false,
   amdinModalVisible: false,
   modalText: "",
+  showEditPage: false,
 };
 const modalSlice = createSlice({
   name: "showModal",
@@ -23,6 +24,9 @@ const modalSlice = createSlice({
     },
     hideAdminModal(state) {
       state.amdinModalVisible = false;
+    },
+    setShowEditPage(state, action) {
+      state.showEditPage = action.payload.status;
     },
   },
 });

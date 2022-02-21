@@ -23,6 +23,7 @@ import AddProduct from "./components/admin/AddProduct";
 import ProductPage from "./components/pages/ProductPage";
 import ProductDescription from "./components/pages/ProductDescription";
 import Productlist from "./components/admin/Productlist";
+import EditPage from "./components/admin/EditPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +55,9 @@ function App() {
             }
           >
             <Route path="dashboard" element={<MainPage />} />
-            <Route path="products" element={<Productlist />} />
+            <Route path="products" element={<Productlist />}>
+              <Route path="edit/:id" element={<EditPage />} />
+            </Route>
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
           </Route>

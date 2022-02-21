@@ -110,3 +110,10 @@
 .dropdownlink:hover {
   background-color: #101227;
 }
+.Cover {
+  position: absolute;
+  height: 100%;
+  background-color: rgba(14, 14, 53, 0.6);
+  width: 100%;
+  top: 0;
+}

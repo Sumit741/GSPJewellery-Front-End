@@ -88,3 +88,8 @@ th {
 .icons:nth-child(2) {
   color: rgb(143, 10, 10);
 }
+.editPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

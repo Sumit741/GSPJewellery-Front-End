@@ -1,16 +1,13 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import React, { useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import styles from "./AddProduct.module.css";
-import Modal from "./Modal";
 import axios from "axios";
+import React, { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { modalAction } from "../store/showModal";
+import styles from "./EditPage.module.css";
+import CloseIcon from "@mui/icons-material/Close";
 
-function AddProduct() {
+function EditPage() {
+  const id = useSelector((state) => state.product.id);
   const dispatch = useDispatch();
-  const showModal = useSelector((state) => state.modal.amdinModalVisible);
-  const [show, setShow] = useState(false);
   const Type = useRef();
   const Category = useRef();
   const Carat = useRef();
@@ -21,17 +18,31 @@ function AddProduct() {
   const GrossWeight = useRef();
   const Charge = useRef();
   const Stone = useRef();
-  const typeChangeHandler = () => {
-    if (Type.current.value === "gold") {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
-  };
+  const navigate = useDispatch();
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/product/byProductId", { id: id })
+      .then((response) => {
+        if (response.data.ElementType === "gold") {
+          setShow(true);
+          console.log(response.data.Carat);
+          Carat.current.value = response.data.Carat;
+        }
+        Type.current.value = response.data.ElementType;
+        Category.current.value = response.data.ProductCategory;
+        For.current.value = response.data.For;
+        Image.current.value = response.data.Image;
+        Title.current.value = response.data.ProductName;
+        NetWeight.current.value = response.data.NetWeight;
+        GrossWeight.current.value = response.data.WeightWithLoss;
+        Charge.current.value = response.data.Charge;
+        Stone.current.value = response.data.Stone;
+      });
+  }, []);
 
   const submitHandler = (e) => {
-    e.preventDefault();
-
     if (
       Type.current.value !== "type" &&
       Category.current.value !== "category" &&
@@ -44,7 +55,8 @@ function AddProduct() {
       Stone.current.value
     ) {
       axios
-        .post("http://localhost:3001/product/add", {
+        .put("http://localhost:3001/product/byProductId", {
+          id: id,
           ElementType: Type.current.value,
           ProductCategory: Category.current.value,
           Carat: Type.current.value === "gold" ? Carat.current.value : "none",
@@ -57,29 +69,33 @@ function AddProduct() {
           Stone: Stone.current.value === "stone" ? "none" : Stone.current.value,
         })
         .then((response) => {
-          alert(response.data);
-          dispatch(
-            modalAction.setModalText({ text: "Product Added Successfully" })
-          );
-          dispatch(modalAction.showAdminModal(true));
-          setShow(false);
-          Type.current.value = "type";
-          Category.current.value = "category";
-          For.current.value = "for";
-          Image.current.value = "";
-          Title.current.value = "";
-          NetWeight.current.value = "";
-          GrossWeight.current.value = "";
-          Charge.current.value = "";
-          Stone.current.value = "";
+          if (response.data.error) {
+            alert(response.data.error);
+          } else {
+            alert(response.data.message);
+            dispatch(modalAction.setShowEditPage({ status: false }));
+          }
         });
     } else {
-      dispatch(modalAction.setModalText({ text: "Please Enter all Fields" }));
-      dispatch(modalAction.showAdminModal(true));
+      alert("Make sure you enter all the fields");
+      e.preventDefault();
+      dispatch(modalAction.setShowEditPage({ status: true }));
     }
   };
+  const typeChangeHandler = () => {
+    if (Type.current.value === "gold") {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
+
+  const closeHandler = () => {
+    dispatch(modalAction.setShowEditPage({ status: false }));
+  };
   return (
-    <div className={styles.container}>
+    <div className={styles.editSection}>
+      <CloseIcon className={styles.close} onClick={closeHandler} />
       <form className={styles.form} onSubmit={submitHandler}>
         <div className={styles.selectValue}>
           <select name="Type" ref={Type} id="cars" onChange={typeChangeHandler}>
@@ -121,19 +137,16 @@ function AddProduct() {
           ref={GrossWeight}
           placeholder="Weight With Loss"
         />
-        <input name="Charge" ref={Charge} placeholder="Charge" />
-        <select id="select" ref={Stone} name="Carat" className={styles.carat}>
-          <option value="stone">Stone</option>
+        <input name="Stone" ref={Charge} placeholder="Charge" />
+        <select id="select" ref={Stone} name="Stone" className={styles.stone}>
+          <option value="Stone">Stone</option>
           <option value="Ruby">Ruby</option>
           <option value="Diamond">Diamond</option>
         </select>
-        <button type="submit">
-          Add Product <AddCircleIcon />
-        </button>
+        <button type="submit">Save Changes</button>
       </form>
-      {showModal && <Modal />}
     </div>
   );
 }
 
-export default AddProduct;
+export default EditPage;

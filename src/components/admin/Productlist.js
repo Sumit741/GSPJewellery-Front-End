@@ -6,6 +6,8 @@ import { productActions } from "../store/Products";
 import ReactPaginate from "react-paginate";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditPage from "./EditPage";
+import { modalAction } from "../store/showModal";
 
 function Productlist() {
   const dispatch = useDispatch();
@@ -41,6 +43,18 @@ function Productlist() {
     } else {
       setlistOfProducts([...products]);
     }
+  };
+  const showEditPage = useSelector((state) => state.modal.showEditPage);
+  const editHandler = (id) => {
+    dispatch(modalAction.setShowEditPage({ status: !showEditPage }));
+    dispatch(productActions.setProductId({ id: id }));
+  };
+
+  const deleteHandler = (id) => {
+    axios.delete(`http://localhost:3001/product/${id}`).then((response) => {
+      alert(response.data);
+      window.location.reload(true);
+    });
   };
   return (
     <div className={styles.container}>
@@ -89,8 +103,18 @@ function Productlist() {
                 <td>{product.Charge}</td>
                 <td>{product.Stone}</td>
                 <td>
-                  <EditIcon className={styles.icons} />{" "}
-                  <DeleteForeverIcon className={styles.icons} />
+                  <EditIcon
+                    className={styles.icons}
+                    onClick={() => {
+                      editHandler(product.id);
+                    }}
+                  />{" "}
+                  <DeleteForeverIcon
+                    className={styles.icons}
+                    onClick={() => {
+                      deleteHandler(product.id);
+                    }}
+                  />
                 </td>
               </tr>
             ))}
@@ -115,6 +139,7 @@ function Productlist() {
         activeClassName={styles.activeClass}
         onPageChange={pageChangeHandler}
       />
+      <div className={styles.editPage}>{showEditPage && <EditPage />}</div>
     </div>
   );
 }
