@@ -42,6 +42,11 @@ function EditPage() {
       });
   }, []);
 
+  const [imageError, setError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [weightError, setWeightError] = useState(false);
+  const [weightLossError, setWeightLossError] = useState(false);
+  const [chargeError, setChargeError] = useState(false);
   const submitHandler = (e) => {
     if (
       Type.current.value !== "type" &&
@@ -73,6 +78,15 @@ function EditPage() {
             alert(response.data.error);
           } else {
             alert(response.data.message);
+            Image.current.value ? setError(false) : setError(true);
+            Title.current.value ? setNameError(false) : setNameError(true);
+            NetWeight.current.value
+              ? setWeightError(false)
+              : setWeightError(true);
+            GrossWeight.current.value
+              ? setWeightLossError(false)
+              : setWeightLossError(true);
+            Charge.current.value ? setChargeError(false) : setChargeError(true);
             dispatch(modalAction.setShowEditPage({ status: false }));
           }
         });
@@ -93,6 +107,7 @@ function EditPage() {
   const closeHandler = () => {
     dispatch(modalAction.setShowEditPage({ status: false }));
   };
+
   return (
     <div className={styles.editSection}>
       <CloseIcon className={styles.close} onClick={closeHandler} />
@@ -122,6 +137,11 @@ function EditPage() {
             <option value="child">Child</option>
           </select>
         </div>
+        <select id="select" ref={Stone} name="Stone" className={styles.carat}>
+          <option value="Stone">Stone</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Diamond">Diamond</option>
+        </select>
         {show && (
           <select id="select" ref={Carat} name="Carat" className={styles.carat}>
             <option value="carat">Carat</option>
@@ -129,21 +149,88 @@ function EditPage() {
             <option value="22KT">22KT</option>
           </select>
         )}
-        <input name="Image" ref={Image} placeholder="Image url" />
-        <input name="Title" ref={Title} placeholder="Product Name" />
-        <input name="NetWeight" ref={NetWeight} placeholder="Net Weight" />
+        <input
+          name="Image"
+          ref={Image}
+          placeholder="Image url"
+          onChange={() => {
+            Image.current.value ? setError(false) : setError(true);
+          }}
+        />
+        {imageError && (
+          <span className={styles.errorMessage}>Please enter image</span>
+        )}
+        <input
+          name="Title"
+          ref={Title}
+          placeholder="Product Name"
+          onChange={() => {
+            Title.current.value ? setNameError(false) : setNameError(true);
+          }}
+        />
+        {nameError && (
+          <span className={styles.errorMessage}>Please enter product name</span>
+        )}
+        <input
+          name="NetWeight"
+          ref={NetWeight}
+          type="number"
+          min="0"
+          placeholder="Net Weight"
+          onChange={() => {
+            NetWeight.current.value
+              ? setWeightError(false)
+              : setWeightError(true);
+            NetWeight.current.value < 0
+              ? (NetWeight.current.value = "")
+              : (NetWeight.current.value = NetWeight.current.value);
+          }}
+        />
+        {weightError && (
+          <span className={styles.errorMessage}>Please enter the weight</span>
+        )}
+
         <input
           name="GrossWeight"
           ref={GrossWeight}
+          type="number"
+          min="0"
           placeholder="Weight With Loss"
+          onChange={() => {
+            GrossWeight.current.value
+              ? setWeightLossError(false)
+              : setWeightLossError(true);
+
+            GrossWeight.current.value < 0
+              ? (GrossWeight.current.value = "")
+              : (GrossWeight.current.value = GrossWeight.current.value);
+          }}
         />
-        <input name="Stone" ref={Charge} placeholder="Charge" />
-        <select id="select" ref={Stone} name="Stone" className={styles.stone}>
-          <option value="Stone">Stone</option>
-          <option value="Ruby">Ruby</option>
-          <option value="Diamond">Diamond</option>
-        </select>
-        <button type="submit">Save Changes</button>
+        {weightLossError && (
+          <span className={styles.errorMessage}>
+            Please enter the total weight with loss
+          </span>
+        )}
+        <input
+          name="Charge"
+          ref={Charge}
+          placeholder="Charge"
+          type="number"
+          min="0"
+          onChange={() => {
+            Charge.current.value ? setChargeError(false) : setChargeError(true);
+            Charge.current.value < 0
+              ? (Charge.current.value = "")
+              : (Charge.current.value = Charge.current.value);
+          }}
+        />
+        {chargeError && (
+          <span className={styles.errorMessage}>Please enter image</span>
+        )}
+
+        <button type="submit" className={styles.button}>
+          Save Changes
+        </button>
       </form>
     </div>
   );

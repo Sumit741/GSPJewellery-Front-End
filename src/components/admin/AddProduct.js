@@ -75,9 +75,22 @@ function AddProduct() {
         });
     } else {
       dispatch(modalAction.setModalText({ text: "Please Enter all Fields" }));
-      dispatch(modalAction.showAdminModal(true));
+      Image.current.value ? setError(false) : setError(true);
+      Title.current.value ? setNameError(false) : setNameError(true);
+      NetWeight.current.value ? setWeightError(false) : setWeightError(true);
+      GrossWeight.current.value
+        ? setWeightLossError(false)
+        : setWeightLossError(true);
+      Charge.current.value ? setChargeError(false) : setChargeError(true);
+      // dispatch(modalAction.showAdminModal(true));
     }
   };
+  const [imageError, setError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [weightError, setWeightError] = useState(false);
+  const [weightLossError, setWeightLossError] = useState(false);
+  const [chargeError, setChargeError] = useState(false);
+
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={submitHandler}>
@@ -106,6 +119,11 @@ function AddProduct() {
             <option value="child">Child</option>
           </select>
         </div>
+        <select id="select" ref={Stone} name="Carat" className={styles.carat}>
+          <option value="stone">Stone</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Diamond">Diamond</option>
+        </select>
         {show && (
           <select id="select" ref={Carat} name="Carat" className={styles.carat}>
             <option value="carat">Carat</option>
@@ -113,21 +131,92 @@ function AddProduct() {
             <option value="22KT">22KT</option>
           </select>
         )}
-        <input name="Image" ref={Image} placeholder="Image url" />
-        <input name="Title" ref={Title} placeholder="Product Name" />
-        <input name="NetWeight" ref={NetWeight} placeholder="Net Weight" />
+
+        <input
+          name="Image"
+          ref={Image}
+          placeholder="Image url"
+          onChange={() => {
+            Image.current.value ? setError(false) : setError(true);
+          }}
+        />
+        {imageError && (
+          <span className={styles.errorMessage}>Please enter image</span>
+        )}
+
+        <input
+          name="Title"
+          ref={Title}
+          placeholder="Product Name"
+          onChange={() => {
+            Title.current.value ? setNameError(false) : setNameError(true);
+          }}
+        />
+        {nameError && (
+          <span className={styles.errorMessage}>Please enter product name</span>
+        )}
+
+        <input
+          type="number"
+          min="0"
+          name="NetWeight"
+          ref={NetWeight}
+          placeholder="Net Weight"
+          onChange={() => {
+            NetWeight.current.value
+              ? setWeightError(false)
+              : setWeightError(true);
+
+            NetWeight.current.value < 0
+              ? (NetWeight.current.value = "")
+              : (NetWeight.current.value = NetWeight.current.value);
+          }}
+        />
+        {weightError && (
+          <span className={styles.errorMessage}>Please enter the weight</span>
+        )}
+
         <input
           name="GrossWeight"
+          type="number"
+          min="0"
           ref={GrossWeight}
           placeholder="Weight With Loss"
+          onChange={() => {
+            GrossWeight.current.value
+              ? setWeightLossError(false)
+              : setWeightLossError(true);
+            GrossWeight.current.value < 0
+              ? (GrossWeight.current.value = "")
+              : (GrossWeight.current.value = GrossWeight.current.value);
+          }}
         />
-        <input name="Charge" ref={Charge} placeholder="Charge" />
-        <select id="select" ref={Stone} name="Carat" className={styles.carat}>
-          <option value="stone">Stone</option>
-          <option value="Ruby">Ruby</option>
-          <option value="Diamond">Diamond</option>
-        </select>
-        <button type="submit">
+        {weightLossError && (
+          <span className={styles.errorMessage}>
+            Please enter the total weight with loss
+          </span>
+        )}
+
+        <input
+          name="Charge"
+          ref={Charge}
+          placeholder="Charge"
+          type="number"
+          min="0"
+          onChange={() => {
+            Charge.current.value ? setChargeError(false) : setChargeError(true);
+            Charge.current.value < 0
+              ? (Charge.current.value = "")
+              : (Charge.current.value = Charge.current.value);
+          }}
+        />
+        {chargeError && (
+          <span className={styles.errorMessage}>
+            Please enter charge amount
+          </span>
+        )}
+
+        <button type="submit" className={styles.button}>
           Add Product <AddCircleIcon />
         </button>
       </form>

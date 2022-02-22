@@ -111,7 +111,7 @@
   background-color: #101227;
 }
 .Cover {
-  position: absolute;
+  position: fixed;
   height: 100%;
   background-color: rgba(14, 14, 53, 0.6);
   width: 100%;
