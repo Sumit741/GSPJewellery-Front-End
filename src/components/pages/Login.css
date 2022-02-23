@@ -74,7 +74,7 @@
 .login {
   margin-top: 20px;
   height: 40px;
-  width: 300px;
+  width: 300px !important;
 }
 .text {
   text-align: center;

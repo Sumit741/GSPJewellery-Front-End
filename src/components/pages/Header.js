@@ -77,7 +77,7 @@ function Header() {
           <a className="navbar-brand" href="#" onClick={() => navigate("/")}>
             <img src={logo} className="logo" />
           </a>
-          <button
+          <a
             className="navbar-toggler toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -87,7 +87,7 @@ function Header() {
             aria-label="Toggle navigation"
           >
             <i className="fas fa-bars"></i>
-          </button>
+          </a>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto ">
               <li className="nav-item">
@@ -96,7 +96,7 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link mx-2 links">
+                <Link to="gold" className="nav-link mx-2 links">
                   Gold Items
                 </Link>
               </li>

@@ -65,13 +65,13 @@ function AddProduct() {
           setShow(false);
           Type.current.value = "type";
           Category.current.value = "category";
+          Stone.current.value = "stone";
           For.current.value = "for";
           Image.current.value = "";
           Title.current.value = "";
           NetWeight.current.value = "";
           GrossWeight.current.value = "";
           Charge.current.value = "";
-          Stone.current.value = "";
         });
     } else {
       dispatch(modalAction.setModalText({ text: "Please Enter all Fields" }));
@@ -162,6 +162,7 @@ function AddProduct() {
           name="NetWeight"
           ref={NetWeight}
           placeholder="Net Weight"
+          step="any"
           onChange={() => {
             NetWeight.current.value
               ? setWeightError(false)
@@ -180,6 +181,7 @@ function AddProduct() {
           name="GrossWeight"
           type="number"
           min="0"
+          step="any"
           ref={GrossWeight}
           placeholder="Weight With Loss"
           onChange={() => {

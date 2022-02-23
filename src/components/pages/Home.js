@@ -15,15 +15,7 @@ import { productActions } from "../store/Products";
 
 function Home() {
   const navigate = useNavigate();
-  let element1, element2, element3, element4, element5, element6;
   useEffect(() => {
-    element1 = document.querySelector(".item-description");
-    element2 = document.querySelector(".item-description1");
-    element3 = document.querySelector(".item-description2");
-    element4 = document.querySelector(".item-description3");
-    element5 = document.querySelector(".item-description4");
-    element6 = document.querySelector(".item-description5");
-
     Aos.init({
       offset: 200,
       duration: 1000,
@@ -32,47 +24,6 @@ function Home() {
     Aos.refresh();
   }, []);
 
-  const hoverInHandler1 = () => {
-    element1.classList.add("displayContent");
-  };
-  const hoverOutHandler1 = () => {
-    element1.classList.remove("displayContent");
-  };
-
-  const hoverInHandler2 = () => {
-    element2.classList.add("displayContent");
-  };
-  const hoverOutHandler2 = () => {
-    element2.classList.remove("displayContent");
-  };
-
-  const hoverInHandler3 = () => {
-    element3.classList.add("displayContent");
-  };
-  const hoverOutHandler3 = () => {
-    element3.classList.remove("displayContent");
-  };
-
-  const hoverInHandler4 = () => {
-    element4.classList.add("displayContent");
-  };
-  const hoverOutHandler4 = () => {
-    element4.classList.remove("displayContent");
-  };
-
-  const hoverInHandler5 = () => {
-    element5.classList.add("displayContent");
-  };
-  const hoverOutHandler5 = () => {
-    element5.classList.remove("displayContent");
-  };
-
-  const hoverInHandler6 = () => {
-    element6.classList.add("displayContent");
-  };
-  const hoverOutHandler6 = () => {
-    element6.classList.remove("displayContent");
-  };
   const dispatch = useDispatch();
 
   const categoryHandler = (category) => {
@@ -145,12 +96,7 @@ function Home() {
       <div className="category">
         <h1>SHOP BY CATEGORY</h1>
         <div className="cat-items">
-          <div
-            data-aos="fade-right"
-            className="item1 items"
-            onMouseOver={hoverInHandler1}
-            onMouseLeave={hoverOutHandler1}
-          >
+          <div data-aos="fade-right" className="item1 items">
             <div className="item-content">
               <div className="item-description">
                 <h2>Necklaces</h2>
@@ -164,12 +110,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-down"
-            className="item2 items"
-            onMouseOver={hoverInHandler2}
-            onMouseLeave={hoverOutHandler2}
-          >
+          <div data-aos="fade-down" className="item2 items">
             <div className="item-content">
               <div className="item-description1">
                 <h2>Chains</h2>
@@ -183,12 +124,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-left"
-            className="item3 items"
-            onMouseOver={hoverInHandler3}
-            onMouseLeave={hoverOutHandler3}
-          >
+          <div data-aos="fade-left" className="item3 items">
             <div className="item-content">
               <div className="item-description2">
                 <h2>Rings</h2>
@@ -202,12 +138,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-right"
-            className="item4 items"
-            onMouseOver={hoverInHandler4}
-            onMouseLeave={hoverOutHandler4}
-          >
+          <div data-aos="fade-right" className="item4 items">
             <div className="item-content">
               <div className="item-description3">
                 <h2>Bangles</h2>
@@ -221,12 +152,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            className="item5 items"
-            onMouseOver={hoverInHandler5}
-            onMouseLeave={hoverOutHandler5}
-          >
+          <div data-aos="fade-up" className="item5 items">
             <div className="item-content">
               <div className="item-description4">
                 <h2>Bracelet</h2>
@@ -241,12 +167,7 @@ function Home() {
             </div>
             {/* <img src={catBracelet} className="cat-image" /> */}
           </div>
-          <div
-            data-aos="fade-left"
-            className="item6 items"
-            onMouseOver={hoverInHandler6}
-            onMouseLeave={hoverOutHandler6}
-          >
+          <div data-aos="fade-left" className="item6 items">
             <div className="item-content">
               <div className="item-description5">
                 <h2>Earrings</h2>

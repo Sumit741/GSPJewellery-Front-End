@@ -92,7 +92,7 @@
 }
 .productDetails .cartButton {
   margin: 0;
-  width: 170px;
+  width: 170px !important;
   margin-top: 20px;
   padding: 10px;
 }

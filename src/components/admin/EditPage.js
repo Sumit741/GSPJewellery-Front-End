@@ -176,6 +176,7 @@ function EditPage() {
           ref={NetWeight}
           type="number"
           min="0"
+          step="any"
           placeholder="Net Weight"
           onChange={() => {
             NetWeight.current.value
@@ -195,6 +196,7 @@ function EditPage() {
           ref={GrossWeight}
           type="number"
           min="0"
+          step="any"
           placeholder="Weight With Loss"
           onChange={() => {
             GrossWeight.current.value
