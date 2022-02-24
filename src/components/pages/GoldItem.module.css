@@ -4,8 +4,8 @@
 }
 .containerLeft {
   height: 100vh;
-  background-color: rgb(5, 5, 5);
-  width: 300px;
+  background-color: rgb(24, 22, 22);
+  width: 250px;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   font-size: 20px;
   margin-right: 120px;
 }
-select {
+.containerLeft select {
   width: 100px;
   background-color: rgb(61, 61, 58);
   color: white;
@@ -37,14 +37,14 @@ select {
 }
 .categoryLinks a {
   text-decoration: none;
-  color: rgb(161, 158, 158);
+  color: rgb(138, 134, 134) !important;
   margin-top: 5px;
   width: 150px;
-}
-.link {
   padding-bottom: 5px;
   border-bottom: 1px solid rgb(59, 55, 55);
+  cursor: pointer;
 }
+
 .outlet {
   height: 100vh;
   width: 80%;

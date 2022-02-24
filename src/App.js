@@ -25,6 +25,7 @@ import ProductDescription from "./components/pages/ProductDescription";
 import Productlist from "./components/admin/Productlist";
 import EditPage from "./components/admin/EditPage";
 import GoldItem from "./components/pages/GoldItem";
+import GoldProductList from "./components/pages/GoldProductList";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,7 +63,12 @@ function App() {
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
           </Route>
-          <Route path="gold" element={<GoldItem />} />
+          <Route path="gold" element={<GoldItem />}>
+            <Route
+              path="goldcategory/:category"
+              element={<GoldProductList />}
+            />
+          </Route>
           <Route path="/category/:category" element={<ProductPage />} />
           <Route path="/product/:id" element={<ProductDescription />} />
         </Routes>

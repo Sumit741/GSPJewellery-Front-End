@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialValue = { id: 0, listOfProducts: [], listOfProductsAdmin: [] };
+const initialValue = {
+  id: 0,
+  listOfProducts: [],
+  listOfProductsAdmin: [],
+  listofGoldProducts: [],
+};
 
 const productSlice = createSlice({
   name: "products",
@@ -17,6 +22,9 @@ const productSlice = createSlice({
     },
     setProductId(state, action) {
       state.id = action.payload.id;
+    },
+    setListOfGoldProducts(state, action) {
+      state.listofGoldProducts = action.payload.products;
     },
   },
 });
