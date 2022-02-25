@@ -85,10 +85,12 @@
   margin-top: 20px !important;
 }
 
-.Quantity select {
+.Quantity .itemsnumber {
   margin-top: 20px !important;
   outline: none;
   padding: 0 5px;
+  background-color: white;
+  color: black;
 }
 .productDetails .cartButton {
   margin: 0;

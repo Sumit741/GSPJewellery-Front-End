@@ -5,6 +5,7 @@ const initialValue = {
   listOfProducts: [],
   listOfProductsAdmin: [],
   listofGoldProducts: [],
+  listofSilverProducts: [],
 };
 
 const productSlice = createSlice({
@@ -25,6 +26,9 @@ const productSlice = createSlice({
     },
     setListOfGoldProducts(state, action) {
       state.listofGoldProducts = action.payload.products;
+    },
+    setListOfSilverProducts(state, action) {
+      state.listofSilverProducts = action.payload.products;
     },
   },
 });

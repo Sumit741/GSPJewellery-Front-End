@@ -59,7 +59,7 @@ function ProductDescription() {
                   id="select"
                   //   ref={For}
                   name="Quantity"
-                  className={styles.carat}
+                  className={styles.itemsnumber}
                 >
                   <option value="0">0</option>
                   <option value="1">1</option>

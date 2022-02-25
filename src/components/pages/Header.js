@@ -96,14 +96,24 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="gold" className="nav-link mx-2 links">
+                <span
+                  className="nav-link mx-2 links"
+                  onClick={() => {
+                    navigate("gold/goldcategory/all");
+                  }}
+                >
                   Gold Items
-                </Link>
+                </span>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link mx-2 links">
+                <span
+                  className="nav-link mx-2 links"
+                  onClick={() => {
+                    navigate("silver/silvercategory/all");
+                  }}
+                >
                   Silver Items
-                </Link>
+                </span>
               </li>
               <li className="nav-item">
                 <Link to="/" className="nav-link mx-2 links">

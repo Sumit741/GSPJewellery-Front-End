@@ -24,7 +24,12 @@
   -webkit-align-items: center;
   align-items: center;
 }
-
+.nav-item span {
+  cursor: pointer;
+}
+.nav-item span:hover {
+  color: white;
+}
 .swiper-pagination-bullet {
   background-color: rgb(71, 69, 64);
 }
