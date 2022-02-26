@@ -117,16 +117,16 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link to="/" className="nav-link mx-2 links">
-                  Product Catalogue
+                  Create Design
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link mx-2 links">
+                <Link to="aboutus" className="nav-link mx-2 links">
                   About Us
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link mx-2 links">
+                <Link to="contact" className="nav-link mx-2 links">
                   Contact
                 </Link>
               </li>

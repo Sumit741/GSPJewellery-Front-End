@@ -13,15 +13,31 @@ import { useSelector } from "react-redux";
 function AdminDashboard() {
   const [showdropdown, setShowDropDown] = useState(false);
   const navigate = useNavigate();
+  const [status, setStatus] = useState(false);
   const show = useSelector((state) => state.modal.showEditPage);
+  const logoutHandler = () => {
+    alert("clicked");
+    localStorage.removeItem("adminAccessToken");
+    navigate("/admin");
+  };
   return (
     <div className={styles.dashboard}>
       <div className={styles.header}>
         <h1>JSP jewellery</h1>
         <div className={styles.headerRight}>
           <span>Admin</span>
-          <AccountCircleIcon />
+          <AccountCircleIcon
+            onClick={() => {
+              setStatus(!status);
+            }}
+          />
         </div>
+
+        {status && (
+          <div className={styles.menu}>
+            <span onClick={logoutHandler}>Logout</span>
+          </div>
+        )}
       </div>
       <div className={styles.container}>
         <div className={styles.containerLeft}>

@@ -26,6 +26,7 @@
 }
 .nav-item span {
   cursor: pointer;
+  color: white !important;
 }
 .nav-item span:hover {
   color: white;

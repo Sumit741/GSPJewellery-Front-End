@@ -49,9 +49,22 @@
   align-items: center;
   flex-direction: column;
 }
-
+.menu {
+  position: absolute;
+  right: 20px;
+  background-color: #1e2664;
+  box-shadow: 2px 8px 15px 2px rgba(21, 23, 43, 0.4);
+  top: 50px;
+  width: 100px;
+  padding: 5px;
+  cursor: pointer;
+}
+.menu span:hover {
+  color: rgb(180, 180, 174);
+}
 .headerRight {
   margin-right: 20px;
+  cursor: pointer;
 }
 .headerRight span {
   margin-right: 10px;

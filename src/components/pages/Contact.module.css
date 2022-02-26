@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-evenly;
+  height: 100%;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(24, 23, 23);
+  height: 340px;
+  padding: 40px;
+  width: 450px;
+  box-shadow: 2px 2px 15px 2px rgba(24, 23, 23, 0.8);
+  color: white;
+}
+.contactInfo p {
+  color: goldenrod;
+  font-weight: 350;
+}
+.contactInfo span {
+  line-height: 40px;
+  color: rgb(144, 147, 150);
+  /* margin-left: 40px; */
+  font-weight: 300;
+}
+.divider {
+  width: 2px;
+  height: 250px;
+  background-color: goldenrod;
+}
+.formSection {
+  background-color: rgb(24, 23, 23);
+  box-shadow: 2px 2px 15px 2px rgba(24, 23, 23, 0.8);
+  color: white;
+  height: 100%;
+  width: 520px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.formSection input {
+  background-color: rgb(37, 37, 37);
+}
+
+.formSection h1 {
+  font-weight: 500;
+  font-size: 35px;
+  color: white;
+}
+
+.formSection textarea {
+  width: 350px;
+  border: none;
+  padding: 10px;
+  background-color: rgb(37, 37, 37);
+  border-radius: 5px;
+  outline: none;
+  margin: 10px;
+  height: 150px;
+  color: white;
+  resize: none;
+}
+.formSection textarea:focus {
+  outline: 1px solid goldenrod;
+}
+.formSection button {
+  margin: 10px !important;
+  height: 40px;
+  width: 350px !important;
+}
+
+@media screen and (max-width: 1065px) {
+  .container {
+    flex-direction: column;
+  }
+  .divider {
+    height: 2px;
+    width: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .contactInfo {
+    width: 420px;
+  }
+  .formSection {
+    width: 420px;
+  }
+}
