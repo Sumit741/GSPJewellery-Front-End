@@ -30,6 +30,8 @@ import GoldProductList from "./components/pages/GoldProductList";
 import SilverProductList from "./components/pages/SilverProductList";
 import Contact from "./components/pages/Contact";
 import About from "./components/pages/About";
+import GoldProduct1 from "./components/pages/GoldProduct1";
+import SilverProduct1 from "./components/pages/SilverProduct1";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,18 +69,21 @@ function App() {
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
           </Route>
-          <Route path="gold" element={<GoldItem />}>
+          {/* <Route path="gold" element={<GoldItem />}>
             <Route
               path="goldcategory/:category"
               element={<GoldProductList />}
             />
-          </Route>
-          <Route path="silver" element={<SilverItem />}>
+          </Route> */}
+          <Route path="/gold" element={<GoldProduct1 />} />
+          <Route path="/silver" element={<SilverProduct1 />} />
+
+          {/* <Route path="silver" element={<SilverItem />}>
             <Route
               path="silvercategory/:category"
               element={<SilverProductList />}
             />
-          </Route>
+          </Route> */}
 
           <Route path="/category/:category" element={<ProductPage />} />
           <Route path="/product/:id" element={<ProductDescription />} />

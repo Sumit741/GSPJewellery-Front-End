@@ -22,6 +22,7 @@
 .containerLeft input {
   border: none;
   color: white;
+  width: 160px;
   background-color: rgb(39, 38, 38);
 }
 .individualProduct {

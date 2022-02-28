@@ -59,7 +59,7 @@ function Header() {
           </span>
         </div>
         <h1>
-          GSP<span className="mid-logo">jewelry</span>
+          GSP<span className="mid-logo">jewellery</span>
         </h1>
         <div className="mid-right">
           <i className="fas fa-search" onClick={toogleModal}></i>
@@ -99,7 +99,7 @@ function Header() {
                 <span
                   className="nav-link mx-2 links"
                   onClick={() => {
-                    navigate("gold/goldcategory/all");
+                    navigate("/gold");
                   }}
                 >
                   Gold Items
@@ -109,7 +109,7 @@ function Header() {
                 <span
                   className="nav-link mx-2 links"
                   onClick={() => {
-                    navigate("silver/silvercategory/all");
+                    navigate("/silver");
                   }}
                 >
                   Silver Items

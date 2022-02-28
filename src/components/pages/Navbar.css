@@ -203,6 +203,12 @@
   .mid-left {
     margin-right: 30px;
   }
+  .mid-right span {
+    font-size: 13px;
+  }
+  .mid-right a {
+    font-size: 13px;
+  }
 }
 @media only screen and (max-width: 552px) {
   .mid-right .fa-search {
@@ -210,10 +216,18 @@
     width: 25px;
   }
   .mid-right {
-    width: 190px;
+    height: 90px;
+    justify-content: space-evenly;
+    /* width: 210px !important; */
+  }
+  .mid-right span {
+    font-size: 12px;
+  }
+  .mid-right a {
+    font-size: 12px;
   }
   .mid-left span {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 @media only screen and (max-width: 530px) {

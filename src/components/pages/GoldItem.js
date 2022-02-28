@@ -51,6 +51,15 @@ function GoldItem() {
   const selectChangeHandler = () => {
     if (category === "all") {
       if (FOR.current.value === "select") {
+        // axios.get("http://localhost:3001/product").then((response) => {
+        //   const listOfProducts = response.data.filter(
+        //     (item) => item.ElementType === "gold"
+        //   );
+        //   setProductList(listOfProducts);
+        //   dispatch(
+        //     productActions.setListOfGoldProducts({ products: [...listOfProducts] })
+        //   );
+        // });
         dispatch(
           productActions.setListOfGoldProducts({ products: [...productList] })
         );
