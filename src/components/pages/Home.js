@@ -152,7 +152,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div data-aos="fade-up" className="item5 items">
+          <div data-aos="fade-left" className="item5 items">
             <div className="item-content">
               <div className="item-description4">
                 <h2>Bracelet</h2>

@@ -12,6 +12,7 @@ function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
   const showModal = useSelector((state) => state.modal.modalVisible);
+  const quantity = useSelector((state) => state.cart.totalQuantity);
   const toogleModal = () => {
     dispatch(modalAction.showModal());
   };
@@ -64,9 +65,9 @@ function Header() {
         <div className="mid-right">
           <i className="fas fa-search" onClick={toogleModal}></i>
           <span>RATE: 98,500 </span>
-          <Link to="login" className="mid-links">
+          <Link to="/cart" className="mid-links">
             {" "}
-            <i className="fas fa-cart-plus"></i> CART-(0)
+            <i className="fas fa-cart-plus"></i> CART- {`${quantity}`}
           </Link>
         </div>
       </div>

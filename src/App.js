@@ -14,7 +14,7 @@ import AdminLogin from "./components/admin/AdminLogin";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import { useEffect, useState } from "react";
 import Register from "./components/pages/Register";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./components/store/LoginAuthentication";
 import Orders from "./components/admin/Orders";
 import MainPage from "./components/admin/MainPage";
@@ -42,6 +42,7 @@ function App() {
       dispatch(authActions.setAuthenticationFalse());
     }
   });
+
   return (
     <div className="App">
       <BrowserRouter>
