@@ -12,9 +12,9 @@ import { cartActions } from "../store/Cart";
 function ProductDescription() {
   //getting if for the url parameter
   const { id } = useParams();
+  const Quantity = useRef();
   const [product, setProduct] = useState({});
   const [rate, setRate] = useState({});
-  const Quantity = useRef();
   const dispatch = useDispatch();
   const cartProduct = useSelector((state) => state.cart.cartProducts);
 
@@ -40,6 +40,8 @@ function ProductDescription() {
       offset: 100,
       duration: 1000,
     });
+
+    Quantity.current.value = 1;
   }, []);
 
   //function to add products to cart
@@ -49,7 +51,7 @@ function ProductDescription() {
         productId: product.id,
         ProductName: product.ProductName,
         price: 20000,
-        quantity: 1,
+        quantity: parseInt(Quantity.current.value),
       })
     );
   };

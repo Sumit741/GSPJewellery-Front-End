@@ -36,6 +36,8 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .pagination {
   display: flex;
@@ -69,4 +71,9 @@
 }
 .pagination .container:active {
   background: goldenrod;
+}
+@media screen and (max-width: 1320px) {
+  .containerRight {
+    margin-left: -10px;
+  }
 }

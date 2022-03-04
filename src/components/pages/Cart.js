@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
 import CancelIcon from "@mui/icons-material/Cancel";
 import image from "../../images/catChain.jpg";
 import { cartActions } from "../store/Cart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-  useState(() => {
-    localStorage.setItem("cartItem", { cartItems });
-  }, [cartItems]);
 
   //function for adding  the cart items
   const cartIncreaseHandler = (id) => {
@@ -28,14 +26,16 @@ function Cart() {
   const cartRemoveHandler = (id) => {
     dispatch(cartActions.removeItemFromCart({ productId: id }));
   };
+
+  const items = JSON.parse(localStorage.getItem("cart"));
   return (
     <>
-      {cartItems.length > 0 ? (
+      {items ? (
         <div className={styles.container}>
-          {cartItems.map((item, index) => (
+          {items.map((item, index) => (
             <div className={styles.cartContainer} key={index}>
               <img src={image} alt="chain.jpg" />
-              <span>{item.productName}</span>
+              <span>{item.ProductName}</span>
               <span>{item.price}</span>
               <span className={styles.quantity}>
                 Quantity:{" "}
@@ -67,8 +67,14 @@ function Cart() {
           ))}
         </div>
       ) : (
-        <div>
-          <h1>nothing</h1>
+        <div className={styles.emptyMessage}>
+          <h1>
+            Your Cart is empty{" "}
+            <RemoveShoppingCartIcon className={styles.icon} />
+          </h1>
+          <span>
+            Back To Shop & <button>Continue Shopping</button>
+          </span>
         </div>
       )}
     </>

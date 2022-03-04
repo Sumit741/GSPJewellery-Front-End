@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./GoldItem.module.css";
 import axios from "axios";
 import { ref } from "yup";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SilverProductList1 from "./SilverProductList1";
 
 function GoldProduct1() {
@@ -72,9 +74,22 @@ function GoldProduct1() {
         });
     }
   };
+  const forwardIconClickHandler = () => {
+    var element = document.querySelector(".containerLeftCopy");
+    element.classList.add("toggler");
+  };
+  const backIconClickHandler = () => {
+    var element = document.querySelector(".containerLeftCopy");
+    element.classList.remove("toggler");
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.containerLeft}>
+      <div className={`${styles.containerLeft} containerLeftCopy`}>
+        <ArrowBackIcon
+          className={styles.backIcon}
+          onClick={backIconClickHandler}
+        />
         <h3>For</h3>
         <select name="For" ref={FOR} onChange={selectChangeHandler}>
           <option value="select">Select</option>
@@ -137,6 +152,10 @@ function GoldProduct1() {
           </div>
         </div>
       </div>
+      <ArrowForwardIcon
+        className={styles.forwardIcon}
+        onClick={forwardIconClickHandler}
+      />
       <div className={styles.outlet}>
         <SilverProductList1 products={products} />
       </div>

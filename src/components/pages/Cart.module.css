@@ -54,3 +54,33 @@
   cursor: pointer;
   color: rgb(14, 13, 13);
 }
+.emptyMessage {
+  color: white;
+  background-color: black;
+  margin-top: 40px;
+  height: 480px;
+  width: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.8);
+}
+.emptyMessage .icon {
+  color: goldenrod;
+  font-size: 40px;
+}
+.emptyMessage span {
+  color: rgb(121, 115, 115);
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.emptyMessage button {
+  width: 200px !important;
+  padding: 10px 0 !important;
+  margin-left: 10px;
+}

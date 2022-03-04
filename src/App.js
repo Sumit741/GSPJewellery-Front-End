@@ -24,14 +24,11 @@ import ProductPage from "./components/pages/ProductPage";
 import ProductDescription from "./components/pages/ProductDescription";
 import Productlist from "./components/admin/Productlist";
 import EditPage from "./components/admin/EditPage";
-import GoldItem from "./components/pages/GoldItem";
-import SilverItem from "./components/pages/SilverItem";
-import GoldProductList from "./components/pages/GoldProductList";
-import SilverProductList from "./components/pages/SilverProductList";
 import Contact from "./components/pages/Contact";
 import About from "./components/pages/About";
 import GoldProduct1 from "./components/pages/GoldProduct1";
 import SilverProduct1 from "./components/pages/SilverProduct1";
+import { cartActions } from "./components/store/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +38,8 @@ function App() {
     } else {
       dispatch(authActions.setAuthenticationFalse());
     }
+
+    dispatch(cartActions.setTotalQuantityInitially());
   });
 
   return (
