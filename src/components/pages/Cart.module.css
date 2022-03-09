@@ -1,5 +1,7 @@
 .container {
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cartContainer {
@@ -83,4 +85,10 @@
   width: 200px !important;
   padding: 10px 0 !important;
   margin-left: 10px;
+}
+
+.container button{
+  width: 180px !important;
+  padding: 10px;
+  margin-top: 20px;
 }

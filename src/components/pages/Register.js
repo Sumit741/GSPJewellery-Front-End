@@ -21,7 +21,7 @@ function Register() {
   }, []);
   const inputValidation = Yup.object().shape({
     Username: Yup.string().required(),
-    Password: Yup.number().required("Enter the password"),
+    Password: Yup.string().required("Enter the password"),
     ConfirmPassword: Yup.string().required(),
   });
   const submitHandler = (data, onSubmitProps) => {

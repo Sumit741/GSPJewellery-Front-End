@@ -5,10 +5,12 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import image from "../../images/catChain.jpg";
 import { cartActions } from "../store/Cart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //function for adding  the cart items
   const cartIncreaseHandler = (id) => {
@@ -27,6 +29,9 @@ function Cart() {
     dispatch(cartActions.removeItemFromCart({ productId: id }));
   };
 
+  const checkOutHandler = () => {
+    navigate("/checkout");
+  };
   const items = JSON.parse(localStorage.getItem("cart"));
   return (
     <>
@@ -65,6 +70,7 @@ function Cart() {
               />
             </div>
           ))}
+          <button onClick={checkOutHandler}>Proceed To Checkout</button>
         </div>
       ) : (
         <div className={styles.emptyMessage}>

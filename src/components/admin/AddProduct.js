@@ -177,6 +177,7 @@ function AddProduct() {
           <span className={styles.errorMessage}>Please enter the weight</span>
         )}
 
+      <div><h1>abcd</h1></div>
         <input
           name="GrossWeight"
           type="number"

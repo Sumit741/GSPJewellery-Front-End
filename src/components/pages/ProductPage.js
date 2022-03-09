@@ -64,7 +64,10 @@ function ProductPage() {
               >
                 <img src={image} />
                 <h4>{product.ProductName}</h4>
-                <span>Rs 22,500</span>
+                <div className={styles.generalInfo}>
+                  <span>Rs 22,500</span>
+                  <span>{product.Carat}</span>
+                </div>
               </div>
             ))}
         </div>

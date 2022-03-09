@@ -29,6 +29,7 @@ import About from "./components/pages/About";
 import GoldProduct1 from "./components/pages/GoldProduct1";
 import SilverProduct1 from "./components/pages/SilverProduct1";
 import { cartActions } from "./components/store/Cart";
+import Checkout from "./components/pages/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -77,6 +78,7 @@ function App() {
           </Route> */}
           <Route path="/gold" element={<GoldProduct1 />} />
           <Route path="/silver" element={<SilverProduct1 />} />
+          <Route path="/checkout" element={<Checkout />} />
 
           {/* <Route path="silver" element={<SilverItem />}>
             <Route
