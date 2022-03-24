@@ -87,6 +87,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDescription />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/aboutus" element={<About />} />
+          <Route path="*" element={<About />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,6 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   useEffect(() => {
@@ -18,9 +19,26 @@ function Contact() {
   const name = useRef();
   const email = useRef();
   const message = useRef();
+  const form = useRef();
 
-  const sendMessageHandler = () => {
-    console.log(name.current.value, email.current.value, message.current.value);
+  const sendMessageHandler = (e) => {
+    e.preventDefault();
+    console.log(form);
+    emailjs
+      .sendForm(
+        "service_3rlhzhb",
+        "template_q05gspf",
+        form.current,
+        "HeTxv6APfWiKQ8iiE"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
   return (
     <div>
@@ -44,16 +62,27 @@ function Contact() {
         <div className={styles.divider}></div>
         <div className={styles.formSection} data-aos="fade-left">
           <h1>Send Us Messsage</h1>
-          <form>
+          <form ref={form} onSubmit={sendMessageHandler}>
             <input
               type="text"
               placeholder="Your Full Name"
-              pattern="[A-Za-z]"
+              // pattern="[A-Za-z]"
               ref={name}
+              name="from_name"
             />
-            <input type="email" placeholder="Your Email" ref={email} />
-            <textarea type="textbox" placeholder="Your Message" ref={message} />
-            <button onClick={sendMessageHandler}>
+            <input
+              type="email"
+              placeholder="Your Email"
+              ref={email}
+              name="email_id"
+            />
+            <textarea
+              type="textbox"
+              placeholder="Your Message"
+              ref={message}
+              name="message"
+            />
+            <button type="submit">
               Send Message <SendIcon />
             </button>
           </form>
