@@ -204,13 +204,13 @@
     margin-right: 30px;
   }
   .mid-right span {
-    font-size: 13px;
+    font-size: 11px;
   }
   .mid-right a {
     font-size: 13px;
   }
 }
-@media only screen and (max-width: 552px) {
+@media only screen and (max-width: 600px) {
   .mid-right .fa-search {
     font-size: 12px;
     width: 25px;
@@ -218,13 +218,17 @@
   .mid-right {
     height: 90px;
     justify-content: space-evenly;
-    /* width: 210px !important; */
+    align-items: center;
+    /* background-color: red; */
   }
   .mid-right span {
     font-size: 12px;
+    background-color: #a8691f;
+    width: 100px;
+    text-align: center;
   }
   .mid-right a {
-    font-size: 12px;
+    font-size: 11px;
   }
   .mid-left span {
     font-size: 12px;

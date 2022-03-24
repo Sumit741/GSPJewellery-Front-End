@@ -31,6 +31,8 @@ import SilverProduct1 from "./components/pages/SilverProduct1";
 import { cartActions } from "./components/store/Cart";
 import Checkout from "./components/pages/Checkout";
 import Messages from "./components/admin/Messages";
+import GoldProductList1 from "./components/pages/GoldProductList1";
+import SearchList from "./components/pages/SearchList";
 
 function App() {
   const dispatch = useDispatch();
@@ -71,6 +73,7 @@ function App() {
           </Route> */}
           <Route path="/gold" element={<GoldProduct1 />} />
           <Route path="/silver" element={<SilverProduct1 />} />
+          <Route path="/search" element={<SearchList />} />
           <Route path="/checkout" element={<Checkout />} />
 
           {/* <Route path="silver" element={<SilverItem />}>
