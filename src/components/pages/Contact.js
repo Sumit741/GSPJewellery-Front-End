@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Contact.module.css";
 import "aos/dist/aos.css";
 import Aos from "aos";
@@ -15,6 +15,13 @@ function Contact() {
       duration: 1000,
     });
   }, []);
+  const name = useRef();
+  const email = useRef();
+  const message = useRef();
+
+  const sendMessageHandler = () => {
+    console.log(name.current.value, email.current.value, message.current.value);
+  };
   return (
     <div>
       <div className={styles.container}>
@@ -42,10 +49,11 @@ function Contact() {
               type="text"
               placeholder="Your Full Name"
               pattern="[A-Za-z]"
+              ref={name}
             />
-            <input type="email" placeholder="Your Email" />
-            <textarea type="textbox" placeholder="Your Message" />
-            <button>
+            <input type="email" placeholder="Your Email" ref={email} />
+            <textarea type="textbox" placeholder="Your Message" ref={message} />
+            <button onClick={sendMessageHandler}>
               Send Message <SendIcon />
             </button>
           </form>

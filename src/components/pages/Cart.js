@@ -30,7 +30,12 @@ function Cart() {
   };
 
   const checkOutHandler = () => {
-    navigate("/checkout");
+    if (localStorage.getItem("accessToken")) {
+      navigate("/checkout");
+    } else {
+      alert("Please login first to proceed");
+      navigate("/login");
+    }
   };
   const items = JSON.parse(localStorage.getItem("cart"));
   return (

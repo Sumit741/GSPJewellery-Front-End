@@ -33,7 +33,7 @@ function Home() {
   return (
     <div className="home">
       <Swiper
-        pagination={true}
+        // pagination={true}
         modules={[Pagination, Autoplay]}
         pagination={{
           clickable: true,

@@ -22,9 +22,9 @@ function Login() {
   }, []);
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
-  const loginHandler = () => {
+  const loginHandler = async () => {
     if (Username && Password) {
-      axios
+      await axios
         .post("http://localhost:3001/user/login", {
           Username: Username,
           Password: Password,

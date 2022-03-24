@@ -85,21 +85,43 @@ h4 {
   margin-top: 40px;
   height: 100%;
 }
+
 .product {
-  width: 90%;
+  width: 100%;
   color: black;
   background-color: #fbb034;
   background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
-  padding: 2px;
+  padding: 5px 3px;
   border-radius: 2px;
-  margin-top: 5px;
-}
-.product span:nth-child(2) {
-  margin-left: 60px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .divider {
   width: 1px;
   height: 250px;
   background-color: goldenrod;
+}
+.checkbox {
+  background-color: #ffdd00;
+}
+.checkoutbtn {
+  width: 100% !important;
+  padding: 10px 0;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.checkoutbtn span {
+  margin-right: 10px;
+}
+.totalAmount {
+  margin-top: 20px !important;
+  font-weight: 500;
+}
+.totalAmount span {
+  color: goldenrod;
 }

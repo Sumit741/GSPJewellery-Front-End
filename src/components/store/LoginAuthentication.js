@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isAuth: false,
+  adminAuth: false,
 };
 const authSlice = createSlice({
   name: "auth",
@@ -12,6 +13,9 @@ const authSlice = createSlice({
     },
     setAuthenticationFalse(state) {
       state.isAuth = false;
+    },
+    setAdminAuthenticationFalse(state, action) {
+      state.adminAuth = action.payload.isAuth;
     },
   },
 });

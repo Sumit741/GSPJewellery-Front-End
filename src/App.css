@@ -3,7 +3,8 @@ body {
   /* background-color: rgb(20, 20, 20); */
   background-color: rgb(34, 33, 33);
   /* font-family: "Poppins", sans-serif; */
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
 }
 
 html {
@@ -11,4 +12,11 @@ html {
 }
 .toggler {
   left: 0;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: goldenrod;
+  border-radius: 10px;
 }

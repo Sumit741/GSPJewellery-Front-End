@@ -30,6 +30,7 @@ import GoldProduct1 from "./components/pages/GoldProduct1";
 import SilverProduct1 from "./components/pages/SilverProduct1";
 import { cartActions } from "./components/store/Cart";
 import Checkout from "./components/pages/Checkout";
+import Messages from "./components/admin/Messages";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,22 +54,14 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminLogin />} />
-          <Route
-            path="/admindashboard"
-            element={
-              localStorage.getItem("adminAccessToken") ? (
-                <AdminDashboard />
-              ) : (
-                <AdminLogin />
-              )
-            }
-          >
+          <Route path="/admindashboard" element={<AdminDashboard />}>
             <Route path="dashboard" element={<MainPage />} />
             <Route path="products" element={<Productlist />}>
               <Route path="edit/:id" element={<EditPage />} />
             </Route>
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
+            <Route path="messages" element={<Messages />} />
           </Route>
           {/* <Route path="gold" element={<GoldItem />}>
             <Route
