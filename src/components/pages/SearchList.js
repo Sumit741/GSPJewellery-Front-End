@@ -29,8 +29,7 @@ function SearchList() {
       .then((response) => {
         setProducts(response.data);
       });
-  }, []);
-
+  }, [keyword]);
   const navigate = useNavigate();
   const [pageNumber, setPageNumber] = useState(0);
   const productPerPage = 12;
@@ -57,7 +56,10 @@ function SearchList() {
                 >
                   <img src={image} />
                   <h4>{product.ProductName}</h4>
-                  <span>Rs 22,500</span>
+                  <div className={styles.description}>
+                    <span>Rs 22,500</span> <span>| </span>
+                    <span>Weight: {product.NetWeight} lal</span>
+                  </div>
                 </div>
               ))}
           </div>
@@ -83,9 +85,11 @@ function SearchList() {
         </>
       ) : (
         <div className={styles.errorSection}>
-          <h1>
-            Product Not Found <ReportIcon className={styles.errorIcon} />
-          </h1>
+          <div className={styles.errorContainer}>
+            <h1>
+              Product Not Found <ReportIcon className={styles.errorIcon} />
+            </h1>
+          </div>
         </div>
       )}
     </div>

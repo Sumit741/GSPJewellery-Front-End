@@ -33,9 +33,14 @@ function Contact() {
       )
       .then(
         (result) => {
+          alert("message sent successfully");
+          name.current.value = "";
+          email.current.value = "";
+          message.current.value = "";
           console.log(result.text);
         },
         (error) => {
+          alert("Opps!! Something went wrong");
           console.log(error.text);
         }
       );

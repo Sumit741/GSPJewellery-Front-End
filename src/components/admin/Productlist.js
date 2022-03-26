@@ -52,8 +52,10 @@ function Productlist() {
 
   const deleteHandler = (id) => {
     axios.delete(`http://localhost:3001/product/${id}`).then((response) => {
-      alert(response.data);
-      window.location.reload(true);
+      dispatch(
+        productActions.setListOfProductsAdmin({ products: response.data })
+      );
+      setlistOfProducts(response.data);
     });
   };
   return (

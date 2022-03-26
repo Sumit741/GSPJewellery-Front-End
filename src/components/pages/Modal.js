@@ -11,9 +11,13 @@ function Modal() {
   const navigate = useNavigate();
   const text = useRef();
   const searchHandler = () => {
-    navigate("/search");
-    dispatch(searchActions.setKeyword({ keyword: text.current.value }));
-    dispatch(modalAction.hideModal());
+    if (text.current.value === "") {
+      alert("Please enter some text");
+    } else {
+      navigate("/search");
+      dispatch(searchActions.setKeyword({ keyword: text.current.value }));
+      dispatch(modalAction.hideModal());
+    }
   };
 
   const hideModal = () => {

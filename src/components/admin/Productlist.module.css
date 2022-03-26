@@ -82,14 +82,31 @@ th {
 .icons:hover {
   cursor: pointer;
 }
-.icons:nth-child(1) {
+/* .icons:nth-child(1) {
   color: rgb(22, 80, 22);
 }
 .icons:nth-child(2) {
   color: rgb(143, 10, 10);
-}
+} */
 .editPage {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.searchOption {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+}
+.searchOption button {
+  margin: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 38px;
+  width: 50px !important;
+  background-color: #0a0c24;
+}
+.searchOption input {
+  background-color: rgba(57, 61, 97, 0.4) !important;
 }

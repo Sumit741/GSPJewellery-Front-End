@@ -42,7 +42,10 @@ function SilverProductList1({ products }) {
             >
               <img src={image} />
               <h4>{product.ProductName}</h4>
-              <span>Rs 22,500</span>
+              <div className={styles.description}>
+                <span>Rs 22,500</span> <span>| </span>
+                <span>Weight: {product.NetWeight} lal</span>
+              </div>
             </div>
           ))}
       </div>

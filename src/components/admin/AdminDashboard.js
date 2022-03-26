@@ -82,7 +82,7 @@ function AdminDashboard() {
                 </Link>
               </li>
               <li>
-                <Link to="dashboard">
+                <Link to="customers">
                   <FaceRetouchingNaturalIcon className={styles.icon} />{" "}
                   Customers
                 </Link>
@@ -90,11 +90,6 @@ function AdminDashboard() {
               <li>
                 <Link to="dashboard">
                   <BarChartIcon className={styles.icon} /> Statistics
-                </Link>
-              </li>
-              <li>
-                <Link to="messages">
-                  <MapsUgcIcon className={styles.icon} /> Messages
                 </Link>
               </li>
             </div>

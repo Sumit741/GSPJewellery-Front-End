@@ -30,9 +30,9 @@ import GoldProduct1 from "./components/pages/GoldProduct1";
 import SilverProduct1 from "./components/pages/SilverProduct1";
 import { cartActions } from "./components/store/Cart";
 import Checkout from "./components/pages/Checkout";
-import Messages from "./components/admin/Messages";
 import GoldProductList1 from "./components/pages/GoldProductList1";
 import SearchList from "./components/pages/SearchList";
+import Customers from "./components/admin/Customers";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +63,7 @@ function App() {
             </Route>
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
-            <Route path="messages" element={<Messages />} />
+            <Route path="customers" element={<Customers />} />
           </Route>
           {/* <Route path="gold" element={<GoldItem />}>
             <Route

@@ -29,7 +29,7 @@ const cartSlice = createSlice({
           (item) => item.productId === itemReceived.productId
         );
         if (existingItem) {
-          existingItem.quantity++;
+          existingItem.quantity += itemReceived.quantity;
           existingItem.price = existingItem.price + itemReceived.price;
           localStorage.setItem("cart", JSON.stringify(state.items));
         } else {

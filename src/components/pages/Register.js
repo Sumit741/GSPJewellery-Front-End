@@ -7,9 +7,15 @@ import axios from "axios";
 import "aos/dist/aos.css";
 import * as Yup from "yup";
 import styles from "./Register.module.css";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+
 function Register() {
   const initialValues = {
     Username: "",
+    Firstname: "",
+    Lastname: "",
+    Email: "",
+    Address: "",
     Password: "",
     ConfirmPassword: "",
   };
@@ -20,9 +26,13 @@ function Register() {
     });
   }, []);
   const inputValidation = Yup.object().shape({
-    Username: Yup.string().required(),
-    Password: Yup.string().required("Enter the password"),
-    ConfirmPassword: Yup.string().required(),
+    Username: Yup.string().required("Please Enter your username"),
+    Firstname: Yup.string().required("Please Enter your Firstname"),
+    Lastname: Yup.string().required("Please Enter your Lastname"),
+    Email: Yup.string().required("Please Enter your email"),
+    Address: Yup.string().required("Please Enter your address"),
+    Password: Yup.string().required("Please Enter the password"),
+    ConfirmPassword: Yup.string().required("Please Enter the confirm password"),
   });
   const submitHandler = (data, onSubmitProps) => {
     if (data.Password === data.ConfirmPassword) {
@@ -39,13 +49,12 @@ function Register() {
           alert(error.message);
         });
     } else {
-      alert("Password ddoesn't matched");
+      alert("Password doesn't matched");
     }
   };
   return (
     <div className={styles.registrationSection}>
       <div className={styles.formSection} data-aos="zoom-in">
-        <div className={styles.picture}></div>
         <Formik
           initialValues={initialValues}
           validationSchema={inputValidation}
@@ -56,42 +65,64 @@ function Register() {
             <span className={styles.firstSpan}>
               Create your account and grab new offers!!
             </span>
-            <ErrorMessage
-              name="Username"
-              className={styles.errormsg1}
-              component="span"
-            />
             <Field
               name="Username"
               className={styles.inputField}
-              placeholder="Enter a Username"
+              placeholder="Enter Username **"
             />
-
-            <ErrorMessage
-              name="Password"
-              className={styles.errormsg2}
-              component="span"
-            />
+            <ErrorMessage name="Username" component="p" />
+            <div className={styles.name}>
+              <div className={styles.fname}>
+                <Field
+                  name="Firstname"
+                  className={styles.inputField}
+                  placeholder="Enter Firstname **"
+                />
+                <ErrorMessage name="Firstname" component="p" />
+              </div>
+              <div className={styles.fname}>
+                <Field
+                  name="Lastname"
+                  className={styles.inputField}
+                  placeholder="Enter Lastname **"
+                />
+                <ErrorMessage name="Lastname" component="p" />
+              </div>
+            </div>
             <Field
-              name="Password"
+              name="Email"
               className={styles.inputField}
-              placeholder="Enter a Password"
-              type="password"
+              placeholder="Enter Email **"
             />
+            <ErrorMessage name="Email" component="p" />
 
-            <ErrorMessage
-              name="ConfirmPassword"
-              className={styles.errormsg3}
-              component="span"
-            />
             <Field
-              name="ConfirmPassword"
+              name="Address"
               className={styles.inputField}
-              placeholder="Confirm Password"
-              type="password"
+              placeholder="Enter Your Full Address **"
             />
+            <ErrorMessage name="Address" component="p" />
+
+            <div className={styles.name}>
+              <div className={styles.fname}>
+                <Field
+                  name="Password"
+                  className={styles.inputField}
+                  placeholder="Enter Password **"
+                />
+                <ErrorMessage name="Password" component="p" />
+              </div>
+              <div className={styles.fname}>
+                <Field
+                  name="ConfirmPassword"
+                  className={styles.inputField}
+                  placeholder="Cofirm Password **"
+                />
+                <ErrorMessage name="ConfirmPassword" component="p" />
+              </div>
+            </div>
             <button type="submit" className={styles.button}>
-              Register
+              REGISTER <AppRegistrationIcon />
             </button>
             <span className={styles.secondSpan}>
               Already created an account? <Link to="/login">Login</Link>

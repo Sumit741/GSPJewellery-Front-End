@@ -65,8 +65,10 @@ function ProductPage() {
                 <img src={image} />
                 <h4>{product.ProductName}</h4>
                 <div className={styles.generalInfo}>
-                  <span>Rs 22,500</span>
-                  <span>{product.Carat}</span>
+                  <div className={styles.description}>
+                    <span>Rs 22,500</span> <span>| </span>
+                    <span>Weight: {product.NetWeight} lal</span>
+                  </div>
                 </div>
               </div>
             ))}
