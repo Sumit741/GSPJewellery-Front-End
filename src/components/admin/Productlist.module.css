@@ -107,6 +107,9 @@ th {
   width: 50px !important;
   background-color: #0a0c24;
 }
+.searchOption button:hover {
+  background-color: #0e1246 !important;
+}
 .searchOption input {
   background-color: rgba(57, 61, 97, 0.4) !important;
 }

@@ -44,6 +44,7 @@ function Customers() {
   const changeHandler = () => {
     if (searchValue.current.value === "") {
       setListOfCustomers(customers);
+      setSearchParams({ select: "all" });
     }
   };
   const deleteHandler = (id) => {

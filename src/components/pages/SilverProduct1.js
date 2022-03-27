@@ -19,11 +19,25 @@ function GoldProduct1() {
   const [products, setProducts] = useState([]);
   const FOR = useRef();
   const [searchParams, setSearchParams] = useSearchParams();
+  let width = window.innerWidth;
+
+  useEffect(() => {
+    var element = document.querySelector(".containerLeftCopy");
+
+    window.onresize = () => {
+      if (window.innerWidth > 1320) {
+        element.classList.remove("toggler");
+      }
+    };
+  }, [width]);
+
   useEffect(() => {
     console.log("helloWorld");
     setSearchParams({ category: "all" });
     axios
-      .get("http://localhost:3001/product/filteritems?element=silver")
+      .get(
+        "http://localhost:3001/product/filteritems?category=all&element=silver"
+      )
       .then((response) => {
         setProducts(response.data);
       });

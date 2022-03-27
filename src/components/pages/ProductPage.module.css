@@ -1,17 +1,18 @@
 .container {
   display: flex;
   justify-content: space-between;
-  background: rgb(27, 27, 27);
+  position: relative;
 }
 .containerLeft {
   height: 100vh;
-  width: 220px;
+  width: 250px;
   color: white;
-  background-color: rgb(20, 20, 20);
-  box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.4);
+  background-color: rgb(24, 22, 22);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 2 !important;
 }
 .containerLeft h2 {
   font-size: 20px;
@@ -69,6 +70,7 @@
 .products {
   display: flex;
   width: 100%;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .pagination {
@@ -108,4 +110,52 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+.backIcon {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  color: white;
+  background-color: goldenrod;
+  border-radius: 2px;
+  margin-left: 180px;
+  top: 15px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+  z-index: 2;
+}
+.forwardIcon {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  color: white;
+  background-color: goldenrod;
+  border-radius: 2px;
+  margin-left: 20px;
+  top: 15px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+  z-index: 1;
+}
+@media screen and (max-width: 1320px) {
+  .containerLeft {
+    position: absolute;
+    z-index: 1;
+    right: 100%;
+  }
+  .containerRight {
+    margin: auto;
+  }
+  .backIcon {
+    display: flex;
+    opacity: 1;
+  }
+  .forwardIcon {
+    display: flex;
+    opacity: 1;
+  }
 }

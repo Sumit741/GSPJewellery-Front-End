@@ -8,6 +8,8 @@ import image from "../../images/catChain.jpg";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import ReactPaginate from "react-paginate";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function ProductPage() {
   const navigate = useNavigate();
@@ -22,6 +24,25 @@ function ProductPage() {
   const pageChangeHandler = ({ selected }) => {
     setPageNumber(selected);
   };
+  const backIconClickHandler = () => {
+    var element = document.querySelector(".containerLeftCopy");
+    element.classList.remove("toggler");
+  };
+  const forwardIconClickHandler = () => {
+    var element = document.querySelector(".containerLeftCopy");
+    element.classList.add("toggler");
+  };
+  let width = window.innerWidth;
+
+  useEffect(() => {
+    var element = document.querySelector(".containerLeftCopy");
+
+    window.onresize = () => {
+      if (window.innerWidth > 1320) {
+        element.classList.remove("toggler");
+      }
+    };
+  }, [width]);
   useEffect(() => {
     axios
       .get(`http://localhost:3001/product/byCategory/${category}`)
@@ -45,10 +66,18 @@ function ProductPage() {
   }, []);
   return (
     <div className={styles.container}>
-      <div className={styles.containerLeft}>
+      <div className={`${styles.containerLeft} containerLeftCopy`}>
         <h2>Search Options</h2>
         <input type="number" />
+        <ArrowBackIcon
+          className={styles.backIcon}
+          onClick={backIconClickHandler}
+        />
       </div>
+      <ArrowForwardIcon
+        className={styles.forwardIcon}
+        onClick={forwardIconClickHandler}
+      />
       <div className={styles.containerRight}>
         <div className={styles.products}>
           {listOfProducts

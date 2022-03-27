@@ -17,6 +17,17 @@ function GoldItem() {
   const { category } = useParams();
   const [productList, setProductList] = useState([]);
   const FOR = useRef();
+  let width = window.innerWidth;
+
+  useEffect(() => {
+    var element = document.querySelector(".containerLeftCopy");
+
+    window.onresize = () => {
+      if (window.innerWidth > 1320) {
+        element.classList.remove("toggler");
+      }
+    };
+  }, [width]);
 
   useEffect(() => {
     axios.get("http://localhost:3001/product").then((response) => {
