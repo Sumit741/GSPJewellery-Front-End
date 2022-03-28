@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 import * as Yup from "yup";
 import styles from "./Register.module.css";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+// import TextField from "@mui/material/TextField";
 
 function Register() {
   const initialValues = {
@@ -65,6 +66,11 @@ function Register() {
             <span className={styles.firstSpan}>
               Create your account and grab new offers!!
             </span>
+            {/* <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+            /> */}
             <Field
               name="Username"
               className={styles.inputField}

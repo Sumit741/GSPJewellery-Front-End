@@ -77,7 +77,7 @@ function AdminDashboard() {
                 </div>
               )}
               <li>
-                <Link to="dashboard">
+                <Link to="orders">
                   <ShoppingCartIcon className={styles.icon} /> Orders
                 </Link>
               </li>

@@ -42,7 +42,7 @@ h4 {
   margin-bottom: 10px;
 }
 .names div {
-  width: 49%;
+  width: 100%;
 }
 .names input {
   width: 100%;
@@ -104,6 +104,7 @@ h4 {
   width: 1px;
   height: 250px;
   background-color: goldenrod;
+  margin-top: 50px;
 }
 .checkbox {
   background-color: #ffdd00;
@@ -124,4 +125,24 @@ h4 {
 }
 .totalAmount span {
   color: goldenrod;
+}
+@media screen and (max-width: 1050px) {
+  .container {
+    flex-direction: column;
+    padding-bottom: 50px;
+    justify-content: center;
+  }
+  .divider {
+    height: 1px;
+    width: 250px;
+    margin-top: 0;
+  }
+  .formSection {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 630px) {
+  .formSection {
+    width: 90%;
+  }
 }
