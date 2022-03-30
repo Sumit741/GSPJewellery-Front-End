@@ -6,6 +6,10 @@ import image from "../../images/catChain.jpg";
 import { cartActions } from "../store/Cart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { useNavigate } from "react-router-dom";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
@@ -42,40 +46,60 @@ function Cart() {
     <>
       {items ? (
         <div className={styles.container}>
-          {items.map((item, index) => (
-            <div className={styles.cartContainer} key={index}>
-              <img src={image} alt="chain.jpg" />
-              <span>{item.ProductName}</span>
-              <span>{item.price}</span>
-              <span className={styles.quantity}>
-                Quantity:{" "}
-                <span
-                  className={styles.btn}
-                  onClick={() => {
-                    cartDecreaseHandler(item.productId);
-                  }}
-                >
-                  -
-                </span>
-                {item.quantity}
-                <span
-                  className={styles.btn}
-                  onClick={() => {
-                    cartIncreaseHandler(item.productId);
-                  }}
-                >
-                  +
-                </span>
-              </span>
-              <CancelIcon
-                className={styles.remove}
-                onClick={() => {
-                  cartRemoveHandler(item.productId);
-                }}
-              />
-            </div>
-          ))}
-          <button onClick={checkOutHandler}>Proceed To Checkout</button>
+          <table className={styles.cartTable}>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((item, index) => (
+                <tr key={index}>
+                  <td>
+                    <img src={image} alt="chain.jpg" />
+                    <div>
+                      <span>{item.ProductName}</span>
+                      <span>Net Weight - {item.NetWeight}</span>
+                      <span>{item.Element}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div className={styles.quantitycart}>
+                      <RemoveIcon
+                        className={styles.btnleft}
+                        onClick={() => {
+                          cartDecreaseHandler(item.productId);
+                        }}
+                      />
+                      <span>{item.quantity}</span>
+                      <AddIcon
+                        className={styles.btnright}
+                        onClick={() => {
+                          cartIncreaseHandler(item.productId);
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td>{item.price}</td>
+                  <td>
+                    <DeleteForeverIcon
+                      onClick={() => {
+                        cartRemoveHandler(item.productId);
+                      }}
+                      className={styles.deleteIcon}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button onClick={checkOutHandler}>
+            Proceed To Checkout{" "}
+            <ShoppingBasketIcon className={styles.shoppingBasketIcon} />
+          </button>
         </div>
       ) : (
         <div className={styles.emptyMessage}>

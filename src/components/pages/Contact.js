@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Contact.module.css";
 import "aos/dist/aos.css";
 import Aos from "aos";
@@ -8,6 +8,9 @@ import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import emailjs from "@emailjs/browser";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { TextareaAutosize } from "@mui/base";
 
 function Contact() {
   useEffect(() => {
@@ -20,10 +23,21 @@ function Contact() {
   const email = useRef();
   const message = useRef();
   const form = useRef();
+  const [status, setStatus] = useState(false);
 
-  const sendMessageHandler = (e) => {
-    e.preventDefault();
-    console.log(form);
+  const initialValues = {
+    from_name: "",
+    email_id: "",
+    message: "",
+  };
+  const inputValidation = Yup.object().shape({
+    from_name: Yup.string().required("Please Enter Your name"),
+    email_id: Yup.string().required("Please Enter Your email"),
+    message: Yup.string().required("Please Enter Your message to admin"),
+  });
+
+  const sendMessageHandler = (value, onSubmitProps) => {
+    setStatus(true);
     emailjs
       .sendForm(
         "service_3rlhzhb",
@@ -33,11 +47,10 @@ function Contact() {
       )
       .then(
         (result) => {
+          setStatus(false);
           alert("message sent successfully");
-          name.current.value = "";
-          email.current.value = "";
-          message.current.value = "";
-          console.log(result.text);
+          onSubmitProps.setSubmitting(false);
+          onSubmitProps.resetForm();
         },
         (error) => {
           alert("Opps!! Something went wrong");
@@ -67,30 +80,36 @@ function Contact() {
         <div className={styles.divider}></div>
         <div className={styles.formSection} data-aos="fade-left">
           <h1>Send Us Messsage</h1>
-          <form ref={form} onSubmit={sendMessageHandler}>
-            <input
-              type="text"
-              placeholder="Your Full Name"
-              // pattern="[A-Za-z]"
-              ref={name}
-              name="from_name"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              ref={email}
-              name="email_id"
-            />
-            <textarea
-              type="textbox"
-              placeholder="Your Message"
-              ref={message}
-              name="message"
-            />
-            <button type="submit">
-              Send Message <SendIcon />
-            </button>
-          </form>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={inputValidation}
+            onSubmit={sendMessageHandler}
+          >
+            <Form ref={form} className={styles.form}>
+              <Field
+                type="text"
+                placeholder="Your Full Name"
+                name="from_name"
+              />
+              <ErrorMessage name="from_name" component="span" />
+
+              <Field type="email" placeholder="Your Email" name="email_id" />
+              <ErrorMessage name="email_id" component="span" />
+
+              <Field as="textarea" placeholder="Your Message" name="message" />
+              <ErrorMessage name="message" component="span" />
+
+              <button type="submit">
+                Send Message <SendIcon />
+              </button>
+            </Form>
+          </Formik>
+          {status && (
+            <div className={styles.overlay}>
+              <span>SENDING ...</span>
+              <div className={styles.bar}></div>
+            </div>
+          )}
         </div>
       </div>
     </div>

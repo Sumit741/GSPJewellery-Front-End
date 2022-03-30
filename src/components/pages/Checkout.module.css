@@ -73,6 +73,7 @@ h4 {
 }
 .payment {
   margin-top: 40px;
+  align-self: flex-start;
 }
 .cartProducts {
   background-color: rgb(14, 13, 13);
@@ -84,6 +85,9 @@ h4 {
   padding: 25px;
   margin-top: 40px;
   height: 100%;
+}
+.cartProducts form {
+  display: none;
 }
 
 .product {
@@ -99,7 +103,9 @@ h4 {
   align-items: center;
   flex-wrap: wrap;
 }
-
+.cancelIcon {
+  font-size: 12px !important;
+}
 .divider {
   width: 1px;
   height: 250px;
@@ -125,6 +131,41 @@ h4 {
 }
 .totalAmount span {
   color: goldenrod;
+}
+.model {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.model div {
+  width: 450px;
+  height: 300px;
+  background-color: rgb(24, 23, 23);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.model div h2 {
+  color: rgb(150, 146, 146);
+  text-align: center;
+}
+.model div span {
+  color: rgb(173, 131, 22);
+}
+.iconClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 35px;
+  color: rgb(112, 111, 111);
+  cursor: pointer;
 }
 @media screen and (max-width: 1050px) {
   .container {

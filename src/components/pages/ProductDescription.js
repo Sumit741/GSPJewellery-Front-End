@@ -32,6 +32,7 @@ function ProductDescription() {
           console.log(response.error.data);
         } else {
           setProduct(response.data);
+          console.log(response.data);
         }
       });
 
@@ -50,6 +51,9 @@ function ProductDescription() {
       cartActions.addToCart({
         productId: product.id,
         ProductName: product.ProductName,
+        NetWeight: product.NetWeight,
+        Element: product.ElementType,
+        Category: product.ProductCategory,
         price: 20000,
         quantity: parseInt(Quantity.current.value),
       })
@@ -68,7 +72,7 @@ function ProductDescription() {
           <div className={styles.productDetails}>
             <h3>Product Description</h3>
             <span>Purity: {product.Carat ? product.Carat : "100%pure"}</span>
-            <span>Weight(in Tola): {product.NetWeight}</span>
+            <span>Weight(in Lal): {product.NetWeight}</span>
             <span>
               Price:{" "}
               <span className={styles.price}>

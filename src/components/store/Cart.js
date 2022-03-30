@@ -46,6 +46,9 @@ const cartSlice = createSlice({
           {
             productId: itemReceived.productId,
             ProductName: itemReceived.ProductName,
+            NetWeight: itemReceived.NetWeight,
+            Element: itemReceived.Element,
+            Category: itemReceived.Category,
             price: itemReceived.price,
             quantity: itemReceived.quantity,
           },
