@@ -43,6 +43,7 @@ function Checkout() {
       })
       .then((response) => {
         setUserDet(response.data);
+        console.log(response.data);
         mailorderaddress.current.value = response.data.Address;
         fname.current.value = response.data.Fullname;
         fname1.current.value = response.data.Fullname;

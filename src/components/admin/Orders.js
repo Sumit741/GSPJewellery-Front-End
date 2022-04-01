@@ -4,15 +4,29 @@ import styles from "./Productlist.module.css";
 import ReactPaginate from "react-paginate";
 import SearchIcon from "@mui/icons-material/Search";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { useSearchParams } from "react-router-dom";
 
 function Orders() {
   const [ordersList, setOrdersList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     axios.get("http://localhost:3001/product/orders").then((response) => {
       const data = response.data.filter((item) => item.Order !== null);
-      setOrdersList(data);
+      const sorted = data.sort((a, b) => {
+        if (a.Order.createdAt < b.Order.createdAt) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      console.log(sorted);
+      setOrdersList(sorted);
+      setFilteredList(sorted);
       console.log(data);
     });
+    setSearchParams({ keyword: "all" });
   }, []);
   const [pageNumber, setPageNumber] = useState(0);
   const customersPerpage = 10;
@@ -24,32 +38,27 @@ function Orders() {
   const searchValue = useRef();
   const submitHandler = (e) => {
     e.preventDefault();
-    // if (searchValue.current.value !== "") {
-    //   axios
-    //     .post("http://localhost:3001/user/filter", {
-    //       name: searchValue.current.value,
-    //     })
-    //     .then((response) => {
-    //       setListOfCustomers(response.data);
-    //     });
-    //   // setSearchParams({ select: searchValue.current.value });
-    //   setPageNumber(0);
-    // } else {
-    //   alert("Enter any text");
-    // }
+    if (searchValue.current.value !== "") {
+      axios
+        .post("http://localhost:3001/product/filterOrders", {
+          text: searchValue.current.value,
+        })
+        .then((response) => {
+          setOrdersList(response.data);
+        });
+      setSearchParams({ select: searchValue.current.value });
+      setPageNumber(0);
+    } else {
+      alert("Enter any text");
+    }
   };
   const changeHandler = () => {
-    // if (searchValue.current.value === "") {
-    //   setListOfCustomers(customers);
-    //   setSearchParams({ select: "all" });
-    // }
+    if (searchValue.current.value === "") {
+      setOrdersList(filteredList);
+      setSearchParams({ select: "all" });
+    }
   };
-  const deleteHandler = (id) => {
-    // axios.delete(`http://localhost:3001/user/delete/${id}`).then((response) => {
-    //   setListOfCustomers(response.data);
-    //   setCustomers(response.data);
-    // });
-  };
+
   return (
     <div>
       <form className={styles.searchOption} onSubmit={submitHandler}>
@@ -66,7 +75,7 @@ function Orders() {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Order ID</th>
             <th>Customer Name</th>
             <th>Order Address</th>
             <th>Order Date</th>
