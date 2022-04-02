@@ -2,17 +2,50 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  /* background-color: red; */
 }
-.content {
-  margin-top: 20px;
-  color: rgb(189, 180, 180);
-  display: flex;
+
+.card {
+  position: relative;
+  height: 130px;
+  background-color: white;
+  width: 250px;
+  border-radius: 8px;
+  color: #4e73df;
+  letter-spacing: 0;
   font-weight: 600;
-  justify-content: center;
+  display: flex;
   align-items: center;
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, rgba(255, 166, 0, 0.8) 50%, cyan);
-  box-shadow: 2px 3px 35px 5px rgb(7, 9, 26);
+  justify-content: space-between;
+  border-left: 5px solid #4e73df;
+  box-shadow: 2px 2px 15px 2px #d3d3d6;
+  margin-top: 20px;
+}
+.card:nth-child(2) {
+  color: #39b7cb;
+  border-left: 5px solid #39b7cb;
+}
+
+.card:nth-child(3) {
+  color: rgb(247, 182, 18);
+  border-left: 5px solid rgb(247, 182, 18);
+}
+span {
+  margin-left: 20px;
+}
+.icon {
+  color: rgb(184, 180, 180);
+  font-size: 35px;
+  margin-right: 20px;
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.card div p {
+  font-size: 25px;
+  font-weight: 600;
 }

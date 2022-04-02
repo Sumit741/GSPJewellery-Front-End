@@ -67,7 +67,7 @@ function Customers() {
         </button>
       </form>
       <table className={styles.table}>
-        <thead>
+        <thead style={{ background: "white" }}>
           <tr>
             <th>ID</th>
             <th>Username</th>
@@ -101,25 +101,27 @@ function Customers() {
             ))}
         </tbody>
       </table>
-      <ReactPaginate
-        previousLabel={"<<"}
-        containerClassName={styles.pagination}
-        nextLabel={">>"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={2}
-        pageClassName={styles.container}
-        pageLinkClassName={styles.links}
-        previousClassName={styles.container}
-        previousLinkClassName={styles.links}
-        nextClassName={styles.container}
-        nextLinkClassName={styles.links}
-        breakClassName={""}
-        breakLinkClassName={styles.links}
-        activeClassName={styles.activeClass}
-        onPageChange={pageChangeHandler}
-      />
+      <div style={{ marginTop: "20px" }}>
+        <ReactPaginate
+          previousLabel={"<<"}
+          containerClassName={styles.pagination}
+          nextLabel={">>"}
+          breakLabel={"..."}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={2}
+          pageClassName={styles.container}
+          pageLinkClassName={styles.links}
+          previousClassName={styles.container}
+          previousLinkClassName={styles.links}
+          nextClassName={styles.container}
+          nextLinkClassName={styles.links}
+          breakClassName={""}
+          breakLinkClassName={styles.links}
+          activeClassName={styles.activeClass}
+          onPageChange={pageChangeHandler}
+        />
+      </div>
     </div>
   );
 }

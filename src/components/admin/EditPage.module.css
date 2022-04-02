@@ -1,9 +1,9 @@
 .editSection {
-  background-color: #222850;
+  width: 70% !important;
+  background-color: white;
+  border-radius: 5px;
   position: fixed;
   top: 50px;
-  width: 450px;
-  height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +14,9 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 40px 0;
 }
 select {
   background-color: #0f122b;
@@ -21,20 +24,34 @@ select {
   padding: 2px;
   border: none;
   border-radius: 5px;
+  color: rgb(143, 140, 140);
+  background-color: #f4f8fb;
+  border: 1px solid #e3e6e9;
 }
-select:nth-child(2),
-select:nth-child(3) {
+.selectValue {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.selectValue select {
+  width: 26.2%;
+  padding: 6px;
+}
+.editSection select:nth-child(2),
+.editSection select:nth-child(3) {
   margin-left: 5px;
 }
 
-input {
+.editSection input {
   margin-top: 10px;
   padding: 6px 10px;
-  width: 350px;
+  width: 80%;
   border-radius: 5px;
   border: none;
   background-color: #0f122b;
-  color: white;
+  color: rgb(143, 140, 140);
+  background-color: #f4f8fb;
+  border: 1px solid #e3e6e9;
 }
 
 .button {
@@ -43,17 +60,17 @@ input {
   height: 40px;
 }
 .carat {
-  width: 350px;
+  width: 80%;
   padding: 5px;
   margin-top: 10px;
   margin-right: 5px;
 }
 .close {
-  color: rgb(185, 28, 28);
+  color: rgb(143, 140, 140);
   position: absolute;
   top: 5px;
   right: 20px;
-  font-size: 25px;
+  font-size: 35px !important;
 }
 .close:hover {
   cursor: pointer;

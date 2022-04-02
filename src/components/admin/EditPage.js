@@ -12,7 +12,6 @@ function EditPage() {
   const Category = useRef();
   const Carat = useRef();
   const For = useRef();
-  const Image = useRef();
   const Title = useRef();
   const NetWeight = useRef();
   const GrossWeight = useRef();
@@ -20,6 +19,21 @@ function EditPage() {
   const Stone = useRef();
   const navigate = useDispatch();
   const [show, setShow] = useState(false);
+
+  const [image, setImage] = useState("");
+
+  const uploadImage = (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "jewelimages");
+
+    axios
+      .post("https://api.cloudinary.com/v1_1/sumitimgcloud/image/upload", data)
+      .then((response) => {
+        setImage(response.data.url);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -33,7 +47,7 @@ function EditPage() {
         Type.current.value = response.data.ElementType;
         Category.current.value = response.data.ProductCategory;
         For.current.value = response.data.For;
-        Image.current.value = response.data.Image;
+        // Image.current.value = response.data.Image;
         Title.current.value = response.data.ProductName;
         NetWeight.current.value = response.data.NetWeight;
         GrossWeight.current.value = response.data.WeightWithLoss;
@@ -52,7 +66,7 @@ function EditPage() {
       Type.current.value !== "type" &&
       Category.current.value !== "category" &&
       For.current.value !== "for" &&
-      Image.current.value &&
+      // Image.current.value &&
       Title.current.value &&
       NetWeight.current.value &&
       GrossWeight.current.value &&
@@ -66,7 +80,7 @@ function EditPage() {
           ProductCategory: Category.current.value,
           Carat: Type.current.value === "gold" ? Carat.current.value : "none",
           For: For.current.value,
-          Image: Image.current.value,
+          Image: image,
           ProductName: Title.current.value,
           NetWeight: parseFloat(NetWeight.current.value),
           WeightWithLoss: parseFloat(GrossWeight.current.value),
@@ -78,7 +92,7 @@ function EditPage() {
             alert(response.data.error);
           } else {
             alert(response.data.message);
-            Image.current.value ? setError(false) : setError(true);
+            // Image.current.value ? setError(false) : setError(true);
             Title.current.value ? setNameError(false) : setNameError(true);
             NetWeight.current.value
               ? setWeightError(false)
@@ -149,7 +163,10 @@ function EditPage() {
             <option value="22KT">22KT</option>
           </select>
         )}
-        <input
+
+        <input type="file" name="file" onChange={uploadImage} />
+
+        {/* <input
           name="Image"
           ref={Image}
           placeholder="Image url"
@@ -159,7 +176,7 @@ function EditPage() {
         />
         {imageError && (
           <span className={styles.errorMessage}>Please enter image</span>
-        )}
+        )} */}
         <input
           name="Title"
           ref={Title}

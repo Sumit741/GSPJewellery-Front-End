@@ -8,6 +8,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditPage from "./EditPage";
 import { modalAction } from "../store/showModal";
+import image from "../../images/catBangles.jpg";
+import { Divider } from "@mui/material";
 
 function Productlist() {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ function Productlist() {
   }, []);
 
   const [pageNumber, setPageNumber] = useState(0);
-  const productsPerpage = 10;
+  const productsPerpage = 5;
   const productsShown = pageNumber * productsPerpage;
   const pageCount = Math.ceil(listOfProducts.length / productsPerpage);
   const pageChangeHandler = ({ selected }) => {
@@ -60,6 +62,8 @@ function Productlist() {
   };
   return (
     <div className={styles.container}>
+      <span>SEE PRODUCTS DETAIL</span>
+      <div className={styles.divider}></div>
       <div>
         <select
           className={styles.filter}
@@ -94,7 +98,9 @@ function Productlist() {
             .map((product, index) => (
               <tr key={index}>
                 <td>{product.id}</td>
-                <td>{product.Image}</td>
+                <td>
+                  <img src={image} />
+                </td>
                 <td>{product.ProductName}</td>
                 <td>{product.ElementType}</td>
                 <td>{product.ProductCategory}</td>

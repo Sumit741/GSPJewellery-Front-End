@@ -11,6 +11,9 @@ import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/LoginAuthentication";
+import ViewWeekIcon from "@mui/icons-material/ViewWeek";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
 function AdminDashboard() {
   const [isAuth, setIsAuth] = useState(false);
   const navigate = useNavigate();
@@ -37,16 +40,22 @@ function AdminDashboard() {
     <>
       <div className={styles.dashboard}>
         <div className={styles.header}>
-          <h1>JSP jewellery</h1>
           <div className={styles.headerRight}>
-            <span>Admin</span>
             <AccountCircleIcon
+              className={styles.icon}
               onClick={() => {
                 setStatus(!status);
               }}
             />
+            <span
+              onClick={() => {
+                setStatus(!status);
+              }}
+            >
+              Admin
+              <ArrowDropDownIcon />
+            </span>
           </div>
-
           {status && (
             <div className={styles.menu}>
               <span onClick={logoutHandler}>Logout</span>
@@ -55,15 +64,20 @@ function AdminDashboard() {
         </div>
         <div className={styles.container}>
           <div className={styles.containerLeft}>
+            <h1>
+              <ViewWeekIcon className={styles.dicon} />
+              GSP Dashboard
+            </h1>
             <div className={styles.lists}>
               <li>
                 <Link to="dashboard" className={styles.links}>
-                  <DashboardIcon className={styles.icon} /> Dashboard
+                  <DashboardIcon className={styles.icon} /> DASHBOARD
                 </Link>
               </li>
               <li>
                 <a onClick={() => setShowDropDown(!showdropdown)}>
-                  <CategoryIcon className={styles.icon} /> Products
+                  <CategoryIcon className={styles.icon} /> PRODUCTS{" "}
+                  <ArrowDropDownIcon />
                 </a>
               </li>
               {showdropdown && (
@@ -78,18 +92,18 @@ function AdminDashboard() {
               )}
               <li>
                 <Link to="orders">
-                  <ShoppingCartIcon className={styles.icon} /> Orders
+                  <ShoppingCartIcon className={styles.icon} /> ORDERS
                 </Link>
               </li>
               <li>
                 <Link to="customers">
                   <FaceRetouchingNaturalIcon className={styles.icon} />{" "}
-                  Customers
+                  CUSTOMERS
                 </Link>
               </li>
               <li>
                 <Link to="dashboard">
-                  <BarChartIcon className={styles.icon} /> Statistics
+                  <BarChartIcon className={styles.icon} /> STATISTICS
                 </Link>
               </li>
             </div>

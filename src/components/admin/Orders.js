@@ -73,7 +73,7 @@ function Orders() {
         </button>
       </form>
       <table className={styles.table}>
-        <thead>
+        <thead style={{ background: "white" }}>
           <tr>
             <th>Order ID</th>
             <th>Customer Name</th>
@@ -94,8 +94,10 @@ function Orders() {
             .map((order, index) => (
               <tr key={index}>
                 <td>{order.Order.id}</td>
-                <td>{order.Order.Customername}</td>
-                <td>{order.Order.OrderAddress}</td>
+                <td style={{ color: "black" }}>{order.Order.Customername}</td>
+                <td style={{ color: "rgb(105, 103, 103)" }}>
+                  {order.Order.OrderAddress}
+                </td>
                 <td>{order.Order.createdAt.slice(0, 10)}</td>
                 <td>
                   {order.ProductName}({order.ElementType})
@@ -110,25 +112,27 @@ function Orders() {
             ))}
         </tbody>
       </table>
-      <ReactPaginate
-        previousLabel={"<<"}
-        containerClassName={styles.pagination}
-        nextLabel={">>"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={2}
-        pageClassName={styles.container}
-        pageLinkClassName={styles.links}
-        previousClassName={styles.container}
-        previousLinkClassName={styles.links}
-        nextClassName={styles.container}
-        nextLinkClassName={styles.links}
-        breakClassName={""}
-        breakLinkClassName={styles.links}
-        activeClassName={styles.activeClass}
-        onPageChange={pageChangeHandler}
-      />
+      <div style={{ marginTop: "20px" }}>
+        <ReactPaginate
+          previousLabel={"<<"}
+          containerClassName={styles.pagination}
+          nextLabel={">>"}
+          breakLabel={"..."}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={2}
+          pageClassName={styles.container}
+          pageLinkClassName={styles.links}
+          previousClassName={styles.container}
+          previousLinkClassName={styles.links}
+          nextClassName={styles.container}
+          nextLinkClassName={styles.links}
+          breakClassName={""}
+          breakLinkClassName={styles.links}
+          activeClassName={styles.activeClass}
+          onPageChange={pageChangeHandler}
+        />
+      </div>
     </div>
   );
 }

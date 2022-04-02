@@ -142,7 +142,12 @@ function AddProduct() {
           </select>
         )}
 
-        <input type="file" name="file" onChange={uploadImage} />
+        <input
+          type="file"
+          name="file"
+          onChange={uploadImage}
+          className={styles.imginput}
+        />
         {/* <input
           name="Image"
           ref={Image}
