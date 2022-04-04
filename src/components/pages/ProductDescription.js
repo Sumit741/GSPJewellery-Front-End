@@ -14,6 +14,7 @@ import { FcBusinessman } from "react-icons/fc";
 import { BsFillChatLeftQuoteFill } from "react-icons/bs";
 import { FcFeedback } from "react-icons/fc";
 import CloseIcon from "@mui/icons-material/Close";
+import Rating from "@mui/material/Rating";
 
 function ProductDescription() {
   //getting if for the url parameter
@@ -66,6 +67,7 @@ function ProductDescription() {
     );
   };
   const [status, setStatus] = useState(false);
+  const [value, setValue] = useState(0);
   return (
     <div className={styles.productSection}>
       <div className={styles.container}>
@@ -122,6 +124,14 @@ function ProductDescription() {
             <BsFillChatLeftQuoteFill className={styles.quote} />
             <FcBusinessman className={styles.icon} />
             <h3>Hari Pandey</h3>
+            <Rating
+              name="simple-controlled"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              className={styles.rating}
+            />
             <span>
               lorem dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
               dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
@@ -166,7 +176,7 @@ function ProductDescription() {
       </button>
       {status && (
         <div className={styles.feedbackform}>
-          <form>
+          <form data-aos="fade-down">
             <CloseIcon
               className={styles.closeIcon}
               onClick={() => {

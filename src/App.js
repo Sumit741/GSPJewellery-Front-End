@@ -34,6 +34,7 @@ import GoldProductList1 from "./components/pages/GoldProductList1";
 import SearchList from "./components/pages/SearchList";
 import Customers from "./components/admin/Customers";
 import Design from "./components/pages/Design";
+import Userdesign from "./components/admin/Userdesign";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +66,8 @@ function App() {
             <Route path="addproduct" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
             <Route path="customers" element={<Customers />} />
+            <Route path="statistics" element={<Customers />} />
+            <Route path="userdesign" element={<Userdesign />} />
           </Route>
           {/* <Route path="gold" element={<GoldItem />}>
             <Route

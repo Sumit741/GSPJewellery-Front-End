@@ -85,19 +85,18 @@ const App = () => {
       format: "png",
       quality: 1,
     });
-    var url = canvas.lowerCanvasEl.toDataURL({
-      format: "png",
-      quality: 0.5,
-    });
-    console.log(url);
+    // var url = canvas.lowerCanvasEl.toDataURL({
+    //   format: "png",
+    //   quality: 0.5,
+    // });
     img.download = "canvas.png";
-    // axios
-    //   .post("http://localhost:3001/userdesign", {
-    //     Link: img.href,
-    //   })
-    //   .then((response) => {
-    //     alert(response.data);
-    //   });
+    axios
+      .post("http://localhost:3001/userdesign", {
+        Link: img.href,
+      })
+      .then((response) => {
+        alert(response.data);
+      });
   };
   const [link, setLink] = useState("");
   const [status, setStatus] = useState(false);

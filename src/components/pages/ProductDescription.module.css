@@ -140,7 +140,7 @@
   }
 }
 .feedbackSection {
-  width: 980px;
+  width: 86%;
   height: 300px;
   border-radius: 10px;
   display: flex;
@@ -166,6 +166,7 @@
   color: white;
   padding: 10px;
   border-left: 5px solid rgb(5, 138, 138);
+  border-left: 5px solid goldenrod;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -290,4 +291,9 @@
   right: 20px;
   font-size: 28px !important;
   cursor: pointer;
+}
+.feedback .rating span {
+  font-size: 20px;
+  color: goldenrod !important;
+  margin-bottom: 10px;
 }

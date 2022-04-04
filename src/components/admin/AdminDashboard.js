@@ -13,6 +13,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/LoginAuthentication";
 import ViewWeekIcon from "@mui/icons-material/ViewWeek";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import {
+  FcPicture,
+  FcPortraitMode,
+  FcBusinessman,
+  FcManager,
+  FcComboChart,
+  FcInTransit,
+  FcPaid,
+  FcAddImage,
+  FcWorkflow,
+} from "react-icons/fc";
 
 function AdminDashboard() {
   const [isAuth, setIsAuth] = useState(false);
@@ -41,7 +52,7 @@ function AdminDashboard() {
       <div className={styles.dashboard}>
         <div className={styles.header}>
           <div className={styles.headerRight}>
-            <AccountCircleIcon
+            <FcBusinessman
               className={styles.icon}
               onClick={() => {
                 setStatus(!status);
@@ -77,13 +88,13 @@ function AdminDashboard() {
                     borderRight: isActive ? "3px solid #4c84ff" : "none",
                   })}
                 >
-                  <DashboardIcon className={styles.icon} /> DASHBOARD
+                  <FcWorkflow className={styles.icon} /> DASHBOARD
                 </NavLink>
               </li>
 
               <li>
                 <a onClick={() => setShowDropDown(!showdropdown)}>
-                  <CategoryIcon className={styles.icon} /> PRODUCTS{" "}
+                  <FcPaid className={styles.icon} /> PRODUCTS{" "}
                   <ArrowDropDownIcon />
                 </a>
               </li>
@@ -96,7 +107,7 @@ function AdminDashboard() {
                       borderRight: isActive ? "3px solid #4c84ff" : "none",
                     })}
                   >
-                    <CategoryIcon className={styles.icon} /> View Products
+                    <FcPaid className={styles.icon} /> View Products
                   </NavLink>
                   <NavLink
                     style={({ isActive }) => ({
@@ -105,7 +116,7 @@ function AdminDashboard() {
                     to="addproduct"
                     className={styles.dropdownlink}
                   >
-                    <CategoryIcon className={styles.icon} /> Add Products
+                    <FcAddImage className={styles.icon} /> Add Products
                   </NavLink>
                 </div>
               )}
@@ -116,7 +127,7 @@ function AdminDashboard() {
                     borderRight: isActive ? "3px solid #4c84ff" : "none",
                   })}
                 >
-                  <ShoppingCartIcon className={styles.icon} /> ORDERS
+                  <FcInTransit className={styles.icon} /> ORDERS
                 </NavLink>
               </li>
               <li>
@@ -126,8 +137,7 @@ function AdminDashboard() {
                     borderRight: isActive ? "3px solid #4c84ff" : "none",
                   })}
                 >
-                  <FaceRetouchingNaturalIcon className={styles.icon} />{" "}
-                  CUSTOMERS
+                  <FcManager className={styles.icon} /> CUSTOMERS
                 </NavLink>
               </li>
               <li>
@@ -137,7 +147,17 @@ function AdminDashboard() {
                     borderRight: isActive ? "3px solid #4c84ff" : "none",
                   })}
                 >
-                  <BarChartIcon className={styles.icon} /> STATISTICS
+                  <FcComboChart className={styles.icon} /> STATISTICS
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="userdesign"
+                  style={({ isActive }) => ({
+                    borderRight: isActive ? "3px solid #4c84ff" : "none",
+                  })}
+                >
+                  <FcPicture className={styles.icon} /> USERDESIGN
                 </NavLink>
               </li>
             </div>

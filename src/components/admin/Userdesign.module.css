@@ -1,0 +1,110 @@
+.container {
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.containerTop {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.containerTop .imagecontainer {
+  width: 32%;
+  position: relative;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.3s;
+  background-color: rgba(44, 46, 61, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.containerTop .imagecontainer:hover .overlay {
+  opacity: 1;
+}
+.previewIcon {
+  font-size: 40px !important;
+  color: rgb(247, 247, 247);
+  transition: all 0.3s;
+}
+.previewIcon:hover {
+  color: white;
+}
+.containerTop .imagecontainer:hover {
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1),
+    1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.container img {
+  width: 100%;
+}
+.pagination {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin-top: 10px;
+}
+.pagination .links {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+.pagination .container {
+  margin-left: 10px;
+  background: #5e5e61;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: all 0.2s;
+}
+.pagination .container:hover {
+  cursor: pointer;
+  background: #1b1e35;
+  transform: scale(1.03, 1.03);
+}
+.pagination .activeClass {
+  background: goldenrod;
+  background: #4c84ff;
+}
+.pagination .container:active {
+  background: #404781;
+}
+.previewImage {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 120vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.previewImage img {
+  width: 50%;
+  margin-right: 120px;
+}
+.CloseIcon {
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20%;
+  cursor: pointer;
+  font-size: 40px !important;
+}

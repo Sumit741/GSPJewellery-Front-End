@@ -94,6 +94,7 @@ td:nth-child(3) {
 }
 .pagination .activeClass {
   background: goldenrod;
+  background: #4c84ff;
 }
 .pagination .container:active {
   background: #404781;
