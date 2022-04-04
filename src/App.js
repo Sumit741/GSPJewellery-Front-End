@@ -33,6 +33,7 @@ import Checkout from "./components/pages/Checkout";
 import GoldProductList1 from "./components/pages/GoldProductList1";
 import SearchList from "./components/pages/SearchList";
 import Customers from "./components/admin/Customers";
+import Design from "./components/pages/Design";
 
 function App() {
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ function App() {
           <Route path="/silver" element={<SilverProduct1 />} />
           <Route path="/search" element={<SearchList />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/design" element={<Design />} />
 
           {/* <Route path="silver" element={<SilverItem />}>
             <Route

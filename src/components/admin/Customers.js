@@ -61,6 +61,7 @@ function Customers() {
           ref={searchValue}
           placeholder="Enter name to search"
           onChange={changeHandler}
+          
         />
         <button type="submit">
           <SearchIcon />

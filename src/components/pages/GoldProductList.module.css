@@ -26,6 +26,7 @@
 .individualProduct span {
   font-weight: 300;
   font-size: 15px;
+  margin: 0;
 }
 .individualProduct span:nth-child(2) {
   color: goldenrod;

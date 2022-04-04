@@ -8,6 +8,12 @@ import "aos/dist/aos.css";
 import Aos from "aos";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/Cart";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { FcBusinessman } from "react-icons/fc";
+import { BsFillChatLeftQuoteFill } from "react-icons/bs";
+import { FcFeedback } from "react-icons/fc";
+import CloseIcon from "@mui/icons-material/Close";
 
 function ProductDescription() {
   //getting if for the url parameter
@@ -59,6 +65,7 @@ function ProductDescription() {
       })
     );
   };
+  const [status, setStatus] = useState(false);
   return (
     <div className={styles.productSection}>
       <div className={styles.container}>
@@ -107,6 +114,73 @@ function ProductDescription() {
           </div>
         </div>
       </div>
+      <h2 className={styles.feedbacktitle}>Customer Feedbacks</h2>
+
+      <div className={styles.feedbackSection}>
+        <div>
+          <div className={styles.feedback}>
+            <BsFillChatLeftQuoteFill className={styles.quote} />
+            <FcBusinessman className={styles.icon} />
+            <h3>Hari Pandey</h3>
+            <span>
+              lorem dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+            </span>
+          </div>
+          <div className={styles.feedback}>
+            <BsFillChatLeftQuoteFill className={styles.quote} />
+            <FcBusinessman className={styles.icon} />
+            <h3>Hari Pandey</h3>
+            <span>
+              lorem dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+            </span>
+          </div>
+          <div className={styles.feedback}>
+            <BsFillChatLeftQuoteFill className={styles.quote} />
+            <FcBusinessman className={styles.icon} />
+            <h3>Hari Pandey</h3>
+            <span>
+              lorem dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh lorem
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+              dfnsnjkskjkjfkdhdfh lorem dfnsnjkskjkjfkdhdfh loremasfssaf
+            </span>
+          </div>
+        </div>
+      </div>
+      <button
+        className={styles.btnFeedback}
+        onClick={() => {
+          setStatus(true);
+        }}
+      >
+        GIVE FEEDBACK <FcFeedback className={styles.i} />
+      </button>
+      {status && (
+        <div className={styles.feedbackform}>
+          <form>
+            <CloseIcon
+              className={styles.closeIcon}
+              onClick={() => {
+                setStatus(false);
+              }}
+            />
+            <span>FEEDBACK</span>
+            <input type="text" placeholder="Your Name" />
+            <input type="email" placeholder="Your Email" />
+            <textarea type="text" resize="none" placeholder="Feedback" />
+            <button>Send</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

@@ -20,6 +20,7 @@
   border-left: 5px solid #4e73df;
   box-shadow: 2px 2px 15px 2px #d3d3d6;
   margin-top: 20px;
+  cursor: pointer;
 }
 .card:nth-child(2) {
   color: #39b7cb;
@@ -30,12 +31,12 @@
   color: rgb(247, 182, 18);
   border-left: 5px solid rgb(247, 182, 18);
 }
-span {
+.container span {
   margin-left: 20px;
 }
 .icon {
   color: rgb(184, 180, 180);
-  font-size: 35px;
+  font-size: 35px !important;
   margin-right: 20px;
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate, NavLink } from "react-router-dom";
 import styles from "./AdminDashboard.module.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HomeIcon from "@mui/icons-material/Home";
@@ -70,10 +70,17 @@ function AdminDashboard() {
             </h1>
             <div className={styles.lists}>
               <li>
-                <Link to="dashboard" className={styles.links}>
+                <NavLink
+                  to="dashboard"
+                  className={styles.links}
+                  style={({ isActive }) => ({
+                    borderRight: isActive ? "3px solid #4c84ff" : "none",
+                  })}
+                >
                   <DashboardIcon className={styles.icon} /> DASHBOARD
-                </Link>
+                </NavLink>
               </li>
+
               <li>
                 <a onClick={() => setShowDropDown(!showdropdown)}>
                   <CategoryIcon className={styles.icon} /> PRODUCTS{" "}
@@ -82,29 +89,56 @@ function AdminDashboard() {
               </li>
               {showdropdown && (
                 <div className={styles.dropdown}>
-                  <Link to="products" className={styles.dropdownlink}>
+                  <NavLink
+                    to="products"
+                    className={styles.dropdownlink}
+                    style={({ isActive }) => ({
+                      borderRight: isActive ? "3px solid #4c84ff" : "none",
+                    })}
+                  >
                     <CategoryIcon className={styles.icon} /> View Products
-                  </Link>
-                  <Link to="addproduct" className={styles.dropdownlink}>
+                  </NavLink>
+                  <NavLink
+                    style={({ isActive }) => ({
+                      borderRight: isActive ? "3px solid #4c84ff" : "none",
+                    })}
+                    to="addproduct"
+                    className={styles.dropdownlink}
+                  >
                     <CategoryIcon className={styles.icon} /> Add Products
-                  </Link>
+                  </NavLink>
                 </div>
               )}
               <li>
-                <Link to="orders">
+                <NavLink
+                  to="orders"
+                  style={({ isActive }) => ({
+                    borderRight: isActive ? "3px solid #4c84ff" : "none",
+                  })}
+                >
                   <ShoppingCartIcon className={styles.icon} /> ORDERS
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="customers">
+                <NavLink
+                  to="customers"
+                  style={({ isActive }) => ({
+                    borderRight: isActive ? "3px solid #4c84ff" : "none",
+                  })}
+                >
                   <FaceRetouchingNaturalIcon className={styles.icon} />{" "}
                   CUSTOMERS
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="dashboard">
+                <NavLink
+                  to="statistics"
+                  style={({ isActive }) => ({
+                    borderRight: isActive ? "3px solid #4c84ff" : "none",
+                  })}
+                >
                   <BarChartIcon className={styles.icon} /> STATISTICS
-                </Link>
+                </NavLink>
               </li>
             </div>
           </div>

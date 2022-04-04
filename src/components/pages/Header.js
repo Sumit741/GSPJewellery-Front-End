@@ -117,7 +117,7 @@ function Header() {
                 </span>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link mx-2 links">
+                <Link to="/design" className="nav-link mx-2 links">
                   Create Design
                 </Link>
               </li>

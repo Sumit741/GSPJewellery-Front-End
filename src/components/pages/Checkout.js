@@ -3,15 +3,18 @@ import styles from "./Checkout.module.css";
 import Checkbox from "@mui/material/Checkbox";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import "aos/dist/aos.css";
+import { useDispatch } from "react-redux";
 import Aos from "aos";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+import { cartActions } from "../store/Cart";
 
 function Checkout() {
   const navigate = useNavigate();
   const items = JSON.parse(localStorage.getItem("cart"));
+  const dispatch = useDispatch();
   let amount = 0;
   const totalAmount = items.map((item) => (amount += item.price));
   const fname = useRef();
@@ -123,6 +126,9 @@ function Checkout() {
           .then((response) => {
             console.log(response.data);
             setStatus(true);
+            const emptyArr = [];
+            localStorage.setItem("cart", JSON.stringify(emptyArr));
+            dispatch(cartActions.setTotalQuantityInitially());
           });
       });
     } else {
@@ -240,17 +246,19 @@ function Checkout() {
             <input ref={fname1} readOnly name="from_name" />
             <input ref={mailorderaddress} name="address" />
             <input ref={email1} readOnly name="email" />
-            {items.map((item, index) => (
-              <div key={index}>
-                <input
-                  value={`${item.ProductName}(${item.Element})`}
-                  readOnly
-                  name="product_name"
-                />
-                <input value={item.quantity} readOnly name="quantity" />
-                <input value={item.price} readOnly name="price" />
-              </div>
-            ))}
+            {items !== null
+              ? items.map((item, index) => (
+                  <div key={index}>
+                    <input
+                      value={`${item.ProductName}(${item.Element})`}
+                      readOnly
+                      name="product_name"
+                    />
+                    <input value={item.quantity} readOnly name="quantity" />
+                    <input value={item.price} readOnly name="price" />
+                  </div>
+                ))
+              : null}
           </form>
         </div>
       </div>
