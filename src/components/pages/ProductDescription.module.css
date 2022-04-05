@@ -125,6 +125,8 @@
     height: 100%;
     margin-top: 0;
     box-shadow: none;
+    width: 100%;
+    overflow: hidden;
   }
   .container .image {
     width: 100%;
@@ -139,12 +141,14 @@
     border-radius: 0;
   }
 }
+/*
 .feedbackSection {
   width: 86%;
   height: 300px;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-behavior: smooth;
@@ -162,7 +166,7 @@
   position: relative;
   background-color: white;
   margin-left: 20px;
-  /* border-radius: 5px; */
+  border-radius: 5px;
   color: white;
   padding: 10px;
   border-left: 5px solid rgb(5, 138, 138);
@@ -243,9 +247,9 @@
 }
 
 .feedbackform form {
-  width: 30%;
+  width: 400px;
   background-color: white;
-  height: 65%;
+  height: 460px;
   position: relative;
 }
 
@@ -297,3 +301,10 @@
   color: goldenrod !important;
   margin-bottom: 10px;
 }
+
+.feedbackform .ratings span {
+  color: goldenrod;
+  margin-bottom: 10px;
+} 
+
+*/

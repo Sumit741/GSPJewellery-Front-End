@@ -8,6 +8,8 @@ import BackspaceIcon from "@mui/icons-material/Backspace";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import PreviewIcon from "@mui/icons-material/Preview";
 import CloseIcon from "@mui/icons-material/Close";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 const App = () => {
   const [canvas, setCanvas] = useState("");
@@ -18,6 +20,14 @@ const App = () => {
       setPictures(response.data);
     });
     setCanvas(initCanvas());
+
+    Aos.init(
+      {
+        offset: 100,
+        duration: 1000,
+      },
+      []
+    );
   }, []);
   const initCanvas = () =>
     new fabric.Canvas("canvas", {
@@ -119,7 +129,7 @@ const App = () => {
 
   return (
     <div className={styles.designContainer}>
-      <div className={styles.leftContainer}>
+      <div className={styles.leftContainer} data-aos="fade-right">
         {pictures.map((item, index) => (
           <div key={index}>
             <img
@@ -131,7 +141,7 @@ const App = () => {
           </div>
         ))}
       </div>
-      <div className={styles.canvasSection}>
+      <div className={styles.canvasSection} data-aos="fade-left">
         <div>
           <button onClick={addText}>
             <TextFieldsIcon />
