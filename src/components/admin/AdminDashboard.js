@@ -40,6 +40,7 @@ function AdminDashboard() {
   const [showdropdown, setShowDropDown] = useState(false);
   const [status, setStatus] = useState(false);
   const show = useSelector((state) => state.modal.showEditPage);
+  const showNav = useSelector((state) => state.nav.status);
   const logoutHandler = () => {
     alert("clicked");
     localStorage.removeItem("adminAccessToken");
@@ -50,29 +51,32 @@ function AdminDashboard() {
   return (
     <>
       <div className={styles.dashboard}>
-        <div className={styles.header}>
-          <div className={styles.headerRight}>
-            <FcBusinessman
-              className={styles.icon}
-              onClick={() => {
-                setStatus(!status);
-              }}
-            />
-            <span
-              onClick={() => {
-                setStatus(!status);
-              }}
-            >
-              Admin
-              <ArrowDropDownIcon />
-            </span>
-          </div>
-          {status && (
-            <div className={styles.menu}>
-              <span onClick={logoutHandler}>Logout</span>
+        {showNav && (
+          <div className={styles.header}>
+            <div className={styles.headerRight}>
+              <FcBusinessman
+                className={styles.icon}
+                onClick={() => {
+                  setStatus(!status);
+                }}
+              />
+              <span
+                onClick={() => {
+                  setStatus(!status);
+                }}
+              >
+                Admin
+                <ArrowDropDownIcon />
+              </span>
             </div>
-          )}
-        </div>
+            {status && (
+              <div className={styles.menu}>
+                <span onClick={logoutHandler}>Logout</span>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className={styles.container}>
           <div className={styles.containerLeft}>
             <h1>

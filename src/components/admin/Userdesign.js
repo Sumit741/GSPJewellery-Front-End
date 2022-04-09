@@ -6,11 +6,14 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import CloseIcon from "@mui/icons-material/Close";
 import "aos/dist/aos.css";
 import Aos from "aos";
+import { useDispatch } from "react-redux";
+import { navActions } from "../store/ShowNavbar";
 
 function Userdesign() {
   const [designlist, setDesignList] = useState([]);
   const [link, setLink] = useState("");
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     axios.get("http://localhost:3001/userdesign").then((response) => {
       console.log(response.data);
@@ -32,6 +35,7 @@ function Userdesign() {
   const previewHandler = (link) => {
     setLink(link);
     setShow(true);
+    dispatch(navActions.setStatusFalse());
   };
   return (
     <div className={styles.container}>
@@ -77,12 +81,14 @@ function Userdesign() {
           className={styles.previewImage}
           onClick={() => {
             setShow(false);
+            dispatch(navActions.setStatusTrue());
           }}
         >
           <CloseIcon
             className={styles.CloseIcon}
             onClick={() => {
               setShow(false);
+              dispatch(navActions.setStatusTrue());
             }}
           />
           <img src={link} data-aos="fade-down" />
