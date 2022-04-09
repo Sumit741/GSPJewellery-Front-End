@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { productActions } from "../store/Products";
 import styles from "./ProductPage.module.css";
@@ -10,12 +10,33 @@ import Aos from "aos";
 import ReactPaginate from "react-paginate";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { CardActionArea } from "@mui/material";
 
 function ProductPage() {
   const navigate = useNavigate();
   const { category } = useParams();
   const dispatch = useDispatch();
-  const listOfProducts = useSelector((state) => state.product.listOfProducts);
+  const [listOfProducts, setProducts] = useState([]);
+  const FOR = useRef();
+  const ELEMENT = useRef();
+  const CARAT = useRef();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/product/filtercategoryproducts/${category}`)
+      .then((response) => {
+        setProducts(response.data);
+      });
+
+    Aos.init(
+      {
+        offset: 100,
+        duration: 1000,
+      },
+      []
+    );
+    setSearchParams({});
+  }, []);
 
   const [pageNumber, setPageNumber] = useState(0);
   const productPerPage = 12;
@@ -43,31 +64,6 @@ function ProductPage() {
       }
     };
   }, [width]);
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3001/product/byCategory/${category}`)
-      .then((response) => {
-        if (response.data.error) {
-          dispatch(productActions.setToInitialState());
-        } else {
-          dispatch(
-            productActions.setListOfProducts({ listOfProducts: response.data })
-          );
-        }
-      });
-
-    Aos.init(
-      {
-        offset: 100,
-        duration: 1000,
-      },
-      []
-    );
-  }, []);
-
-  const FOR = useRef();
-  const ELEMENT = useRef();
-  const CARAT = useRef();
 
   const rate = useSelector((state) => state.rate.rateDetails);
   const priceCalculator = (weight, charge, element) => {
@@ -86,18 +82,117 @@ function ProductPage() {
   };
 
   const [status, setStatus] = useState(false);
-  const elementChangeHander = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const forChangeHandler = () => {
     ELEMENT.current.value === "gold" ? setStatus(true) : setStatus(false);
+    if (FOR.current.value === "select" && ELEMENT.current.value === "select") {
+      setSearchParams({});
+      axios
+        .get(`http://localhost:3001/product/filtercategoryproducts/${category}`)
+        .then((response) => {
+          setProducts(response.data);
+        });
+    } else if (
+      FOR.current.value !== "select" &&
+      ELEMENT.current.value === "select"
+    ) {
+      setSearchParams({ for: FOR.current.value });
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?gender=${FOR.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    } else if (
+      FOR.current.value === "select" &&
+      ELEMENT.current.value !== "select"
+    ) {
+      setSearchParams({ element: ELEMENT.current.value });
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?element=${ELEMENT.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    } else {
+      setSearchParams({
+        element: ELEMENT.current.value,
+        for: FOR.current.value,
+      });
+
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?element=${ELEMENT.current.value}&gender=${FOR.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    }
   };
 
-  const forChangeHander = () => {};
-
-  const caratChangeHandler = () => {};
+  const caratChangeHandler = () => {
+    if (FOR.current.value === "select" && CARAT.current.value === "select") {
+      setSearchParams({ element: ELEMENT.current.value });
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?element=${ELEMENT.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    } else if (
+      FOR.current.value !== "select" &&
+      CARAT.current.value === "select"
+    ) {
+      setSearchParams({
+        element: ELEMENT.current.value,
+        for: FOR.current.value,
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?element=${ELEMENT.current.value}&gender=${FOR.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    } else if (
+      FOR.current.value === "select" &&
+      CARAT.current.value !== "select"
+    ) {
+      setSearchParams({
+        element: ELEMENT.current.value,
+        carat: CARAT.current.value,
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?carat=${CARAT.current.value}&element=${ELEMENT.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    } else {
+      setSearchParams({
+        element: ELEMENT.current.value,
+        for: FOR.current.value,
+        carat: CARAT.current.value,
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/filtercategoryproducts/${category}?carat=${CARAT.current.value}&element=${ELEMENT.current.value}&gender=${FOR.current.value}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+        });
+    }
+  };
   return (
     <div className={styles.container}>
       <div className={`${styles.containerLeft} containerLeftCopy`}>
         <h2>For</h2>
-        <select ref={FOR} onChange={forChangeHander}>
+        <select ref={FOR} onChange={forChangeHandler}>
           <option value="select">Select</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -105,7 +200,7 @@ function ProductPage() {
           <option value="child">Child</option>
         </select>
         <h2>Element</h2>
-        <select ref={ELEMENT} onChange={elementChangeHander}>
+        <select ref={ELEMENT} onChange={forChangeHandler}>
           <option value="select">Select</option>
           <option value="gold">Gold</option>
           <option value="silver">silver</option>
