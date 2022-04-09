@@ -11,11 +11,12 @@
 
 .header {
   width: calc(100% - 230px);
-  position: absolute;
+  position: fixed;
   color: rgb(56, 56, 56);
   display: flex;
   right: 0;
   height: 58px;
+  z-index: 3;
   font-weight: 600;
   justify-content: flex-end;
   background-color: #ffffff;
@@ -36,6 +37,7 @@
 .containerLeft {
   width: 230px;
   display: flex;
+  position: fixed;
   /* z-index: 1; */
   height: 100vh;
   color: rgb(245, 245, 230);
@@ -128,13 +130,12 @@
   margin-right: 5px;
 }
 .Outlet {
-  width: 79%;
+  width: 85%;
   margin-top: 80px;
-  /* background-color: red; */
-  margin-left: auto;
-  margin-right: auto;
-  /* background-color: rgb(31, 35, 66); */
-  height: calc(100vh - 90px);
+  margin-left: 230px;
+  z-index: 2;
+  height: 100%;
+  background-color: #f5f6fa;
 }
 .dropdown {
   height: 80px;

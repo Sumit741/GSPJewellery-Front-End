@@ -40,10 +40,22 @@ function Home() {
   useEffect(() => {
     axios.get("http://localhost:3001/feedback").then((response) => {
       setFeedbackList(response.data);
-      console.log(response.data);
     });
   }, []);
 
+  useEffect(() => {
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/624ee07dc72df874911dc4e2/1g021pr71";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  }, []);
   const [value1, setValue1] = useState(0);
   const name = useRef();
   const email = useRef();
@@ -57,16 +69,24 @@ function Home() {
       feedback.current.value !== ""
     ) {
       axios
-        .post("http://localhost:3001/feedback", {
-          Username: "sumit223",
-          Fullname: name.current.value,
-          Email: email.current.value,
-          Feedback: feedback.current.value,
-          Rating: value1,
-        })
+        .post(
+          "http://localhost:3001/feedback",
+          {
+            Username: "sumit223",
+            Fullname: name.current.value,
+            Email: email.current.value,
+            Feedback: feedback.current.value,
+            Rating: value1,
+          },
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          }
+        )
         .then((response) => {
           if (response.data.error) {
-            alert(response.data);
+            alert("Unauthorized access or not logged in");
           } else {
             alert("FEEDBACK SENT");
             setFeedbackList(response.data);

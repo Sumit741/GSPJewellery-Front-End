@@ -140,7 +140,7 @@ function AdminDashboard() {
                   <FcManager className={styles.icon} /> CUSTOMERS
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to="statistics"
                   style={({ isActive }) => ({
@@ -149,7 +149,7 @@ function AdminDashboard() {
                 >
                   <FcComboChart className={styles.icon} /> STATISTICS
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   to="userdesign"

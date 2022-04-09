@@ -50,3 +50,19 @@
   font-size: 25px;
   font-weight: 600;
 }
+.chartSection {
+  position: relative;
+  background: white;
+  width: 46%;
+  box-shadow: 2px 2px 15px 2px #d3d3d6;
+  border-radius: 5px;
+}
+
+.chartSection .span {
+  position: absolute;
+  text-align: center;
+  font-size: 22px;
+  left: 40px;
+  font-weight: 600;
+  top: 20px;
+}

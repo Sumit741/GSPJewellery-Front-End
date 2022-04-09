@@ -250,10 +250,10 @@
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
-  scroll-behavior: smooth;
 }
 .feedbackSection::-webkit-scrollbar {
   display: none;
+  scroll-behavior: smooth;
 }
 
 .feedbackSection div {

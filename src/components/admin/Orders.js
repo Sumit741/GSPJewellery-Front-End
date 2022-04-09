@@ -14,6 +14,7 @@ function Orders() {
   useEffect(() => {
     axios.get("http://localhost:3001/product/orders").then((response) => {
       const data = response.data.filter((item) => item.Order !== null);
+      console.log(data);
       const sorted = data.sort((a, b) => {
         if (a.Order.createdAt < b.Order.createdAt) {
           return 1;

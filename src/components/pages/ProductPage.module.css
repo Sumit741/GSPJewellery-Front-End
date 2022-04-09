@@ -26,6 +26,13 @@
   width: 160px;
   background-color: rgb(39, 38, 38);
 }
+.containerLeft select {
+  background-color: rgb(61, 61, 58);
+  color: white;
+  border: none;
+  padding: 10px 45px;
+  letter-spacing: 1px;
+}
 .individualProduct {
   display: flex;
   flex-direction: column;

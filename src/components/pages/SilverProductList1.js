@@ -26,6 +26,15 @@ function SilverProductList1({ products }) {
   const pageChangeHandler = ({ selected }) => {
     setPageNumber(selected);
   };
+
+  const rate = useSelector((state) => state.rate.rateDetails);
+  const priceCalculator = (weight, charge, element) => {
+    const silverRate = parseInt(rate.rate?.silver);
+
+    const finalPrice = (silverRate / 100) * weight + charge;
+    return finalPrice;
+  };
+
   return (
     <div className={styles.containerRight}>
       <div className={styles.products}>
@@ -43,7 +52,15 @@ function SilverProductList1({ products }) {
               <img src={image} />
               <h4>{product.ProductName}</h4>
               <div className={styles.description}>
-                <span>Rs 22,500</span> <span>| </span>
+                <span>
+                  Rs{" "}
+                  {priceCalculator(
+                    product.WeightWithLoss,
+                    product.Charge,
+                    product.ElementType
+                  )}
+                </span>{" "}
+                <span>| </span>
                 <span>Weight: {product.NetWeight} lal</span>
               </div>
             </div>

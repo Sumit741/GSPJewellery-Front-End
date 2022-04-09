@@ -10,6 +10,7 @@ import EditPage from "./EditPage";
 import { modalAction } from "../store/showModal";
 import image from "../../images/catBangles.jpg";
 import { Divider } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 function Productlist() {
   const dispatch = useDispatch();
@@ -60,12 +61,45 @@ function Productlist() {
       setlistOfProducts(response.data);
     });
   };
+
+  const searchValue = useRef();
+  const changeHandler = () => {
+    if (searchValue.current.value === "") {
+      setlistOfProducts(products);
+    }
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (searchValue.current.value !== "") {
+      axios
+        .post("http://localhost:3001/product/search", {
+          text: searchValue.current.value,
+        })
+        .then((response) => {
+          setlistOfProducts(response.data);
+        });
+      setPageNumber(0);
+    } else {
+      alert("Enter any text");
+    }
+  };
   return (
     <div className={styles.container}>
       <span>SEE PRODUCTS DETAIL</span>
       <div className={styles.divider}></div>
-      <div>
-        <select
+      <form className={styles.searchOption} onSubmit={submitHandler}>
+        <input
+          type="text"
+          ref={searchValue}
+          placeholder="Enter name to search"
+          onChange={changeHandler}
+        />
+        <button type="submit">
+          <SearchIcon />
+        </button>
+      </form>
+      {/* <div> */}
+      {/* <select
           className={styles.filter}
           ref={category}
           onChange={selectChangeHandler}
@@ -73,8 +107,8 @@ function Productlist() {
           <option value="Filter">Filter</option>
           <option value="Gold">Gold</option>
           <option value="Silver">Silver</option>
-        </select>
-      </div>
+        </select> */}
+      {/* </div> */}
       <table className={styles.table}>
         <thead>
           <tr>

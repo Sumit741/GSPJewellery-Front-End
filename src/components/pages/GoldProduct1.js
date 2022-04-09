@@ -20,6 +20,7 @@ function GoldProduct1() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
   const FOR = useRef();
+  const CARAT = useRef();
   const [searchParams, setSearchParams] = useSearchParams();
   let width = window.innerWidth;
 
@@ -47,6 +48,7 @@ function GoldProduct1() {
   const linkClickHandler = (value) => {
     setSearchParams({ category: value });
     FOR.current.value = "select";
+    CARAT.current.value = "select";
     axios
       .get(
         `http://localhost:3001/product/filteritems?category=${value}&element=gold`
@@ -56,14 +58,47 @@ function GoldProduct1() {
         console.log(response.data);
       });
   };
+  // const selectChangeHandler = () => {
+  //   if (FOR.current.value === "select") {
+  //     setSearchParams({
+  //       category: searchParams.get("category"),
+  //     });
+  //     axios
+  //       .get(
+  //         `http://localhost:3001/product/filteritems?category=${searchParams.get(
+  //           "category"
+  //         )}&element=gold`
+  //       )
+  //       .then((response) => {
+  //         setProducts(response.data);
+  //         console.log(response.data);
+  //       });
+  //     console.log(FOR.current.value);
+  //   } else {
+  //     setSearchParams({
+  //       category: searchParams.get("category"),
+  //       filter: FOR.current.value,
+  //     });
+  //     axios
+  //       .get(
+  //         `http://localhost:3001/product/filteritems?category=${searchParams.get(
+  //           "category"
+  //         )}&filter=${FOR.current.value}&element=gold`
+  //       )
+  //       .then((response) => {
+  //         setProducts(response.data);
+  //         console.log(response.data);
+  //       });
+  //   }
+  // };
   const selectChangeHandler = () => {
-    if (FOR.current.value === "select") {
+    if (FOR.current.value === "select" && CARAT.current.value === "select") {
       setSearchParams({
         category: searchParams.get("category"),
       });
       axios
         .get(
-          `http://localhost:3001/product/filteritems?category=${searchParams.get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
             "category"
           )}&element=gold`
         )
@@ -71,17 +106,56 @@ function GoldProduct1() {
           setProducts(response.data);
           console.log(response.data);
         });
+    } else if (
+      FOR.current.value === "select" &&
+      CARAT.current.value !== "select"
+    ) {
+      setSearchParams({
+        category: searchParams.get("category"),
+        carat: searchParams.get("carat"),
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
+            "category"
+          )}&carat=${searchParams.get("carat")}&element=gold`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          console.log(response.data);
+        });
       console.log(FOR.current.value);
-    } else {
+    } else if (
+      FOR.current.value !== "select" &&
+      CARAT.current.value === "select"
+    ) {
       setSearchParams({
         category: searchParams.get("category"),
         filter: FOR.current.value,
       });
       axios
         .get(
-          `http://localhost:3001/product/filteritems?category=${searchParams.get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
             "category"
           )}&filter=${FOR.current.value}&element=gold`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          console.log(response.data);
+        });
+    } else {
+      setSearchParams({
+        category: searchParams.get("category"),
+        carat: searchParams.get("carat"),
+        filter: FOR.current.value,
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
+            "category"
+          )}&carat=${searchParams.get("carat")}&filter=${
+            FOR.current.value
+          }&element=gold`
         )
         .then((response) => {
           setProducts(response.data);
@@ -90,6 +164,79 @@ function GoldProduct1() {
     }
   };
 
+  const caratHandler = () => {
+    if (FOR.current.value === "select" && CARAT.current.value === "select") {
+      setSearchParams({
+        category: searchParams.get("category"),
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
+            "category"
+          )}&element=gold`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          console.log(response.data);
+        });
+    } else if (
+      FOR.current.value !== "select" &&
+      CARAT.current.value === "select"
+    ) {
+      setSearchParams({
+        category: searchParams.get("category"),
+        filter: searchParams.get("filter"),
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
+            "category"
+          )}&filter=${searchParams.get("filter")}&element=gold`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          console.log(response.data);
+        });
+      console.log(FOR.current.value);
+    } else if (
+      FOR.current.value === "select" &&
+      CARAT.current.value !== "select"
+    ) {
+      setSearchParams({
+        category: searchParams.get("category"),
+        carat: CARAT.current.value,
+      });
+      console.log("f!");
+      axios
+        .get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
+            "category"
+          )}&carat=${CARAT.current.value}&element=gold`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          console.log(response.data);
+        });
+    } else {
+      setSearchParams({
+        category: searchParams.get("category"),
+        filter: searchParams.get("filter"),
+        carat: CARAT.current.value,
+      });
+      axios
+        .get(
+          `http://localhost:3001/product/ft?category=${searchParams.get(
+            "category"
+          )}&filter=${searchParams.get("filter")}&carat=${
+            CARAT.current.value
+          }&element=gold`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          console.log(response.data);
+        });
+    }
+  };
   const forwardIconClickHandler = () => {
     var element = document.querySelector(".containerLeftCopy");
     element.classList.add("toggler");
@@ -111,6 +258,12 @@ function GoldProduct1() {
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="child">child</option>
+        </select>
+        <h3 style={{ marginLeft: "20px" }}>Carat</h3>
+        <select name="Carat" ref={CARAT} onChange={caratHandler}>
+          <option value="select">Select</option>
+          <option value="24KT">24KT</option>
+          <option value="22KT">22KT</option>
         </select>
         <div className={styles.category}>
           <h2>Category</h2>

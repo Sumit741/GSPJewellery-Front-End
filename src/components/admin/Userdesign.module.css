@@ -94,11 +94,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7;
 }
 
 .previewImage img {
   width: 50%;
   margin-right: 120px;
+  z-index: 7;
 }
 .CloseIcon {
   color: white;
@@ -107,4 +109,5 @@
   right: 20%;
   cursor: pointer;
   font-size: 40px !important;
+  z-index: 7;
 }

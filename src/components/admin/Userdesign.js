@@ -73,7 +73,12 @@ function Userdesign() {
         onPageChange={pageChangeHandler}
       />
       {show && (
-        <div className={styles.previewImage}>
+        <div
+          className={styles.previewImage}
+          onClick={() => {
+            setShow(false);
+          }}
+        >
           <CloseIcon
             className={styles.CloseIcon}
             onClick={() => {

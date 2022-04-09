@@ -14,15 +14,25 @@ function ProductDescription() {
   const { id } = useParams();
   const Quantity = useRef();
   const [product, setProduct] = useState({});
-  const [rate, setRate] = useState({});
+  // const [rate, setRate] = useState({});
   const dispatch = useDispatch();
   const cartProduct = useSelector((state) => state.cart.cartProducts);
+  const rate = useSelector((state) => state.rate.rateDetails);
 
-  const rateCalculation = (weightWithLoss, charge) => {
-    const rate = (95000 / 100) * weightWithLoss + charge;
-    return rate;
+  const priceCalculator = (weight, charge, element) => {
+    const goldRate = parseInt(rate.rate?.fineGold);
+    const silverRate = parseInt(rate.rate?.silver);
+
+    if (element === "gold") {
+      const finalPrice = (goldRate / 100) * weight + charge;
+      return finalPrice;
+    }
+
+    if (element === "silver") {
+      const finalPrice = (silverRate / 100) * weight + charge;
+      return finalPrice;
+    }
   };
-
   //useeffect for loading the product for the one time when the page loads
   useEffect(() => {
     axios
@@ -54,7 +64,11 @@ function ProductDescription() {
         NetWeight: product.NetWeight,
         Element: product.ElementType,
         Category: product.ProductCategory,
-        price: 20000,
+        price: priceCalculator(
+          product.WeightWithLoss,
+          product.Charge,
+          product.ElementType
+        ),
         quantity: parseInt(Quantity.current.value),
       })
     );
@@ -77,7 +91,12 @@ function ProductDescription() {
             <span>
               Price:{" "}
               <span className={styles.price}>
-                Rs {rateCalculation(product.WeightWithLoss, 2000)}
+                Rs{" "}
+                {priceCalculator(
+                  product.WeightWithLoss,
+                  product.Charge,
+                  product.ElementType
+                )}
               </span>
             </span>
             <div>

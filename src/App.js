@@ -7,6 +7,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom";
+import axios from "axios";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
@@ -29,6 +30,7 @@ import About from "./components/pages/About";
 import GoldProduct1 from "./components/pages/GoldProduct1";
 import SilverProduct1 from "./components/pages/SilverProduct1";
 import { cartActions } from "./components/store/Cart";
+import { rateActions } from "./components/store/Rate";
 import Checkout from "./components/pages/Checkout";
 import GoldProductList1 from "./components/pages/GoldProductList1";
 import SearchList from "./components/pages/SearchList";
@@ -38,6 +40,7 @@ import Userdesign from "./components/admin/Userdesign";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       dispatch(authActions.setAuthenticationTrue());
@@ -47,6 +50,12 @@ function App() {
 
     dispatch(cartActions.setTotalQuantityInitially());
   });
+
+  useEffect(() => {
+    axios.get("../../API/goldrateAPI.json").then((response) => {
+      dispatch(rateActions.setRate({ details: response.data }));
+    });
+  }, []);
 
   return (
     <div className="App">

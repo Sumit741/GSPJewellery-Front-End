@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -64,11 +64,63 @@ function ProductPage() {
       []
     );
   }, []);
+
+  const FOR = useRef();
+  const ELEMENT = useRef();
+  const CARAT = useRef();
+
+  const rate = useSelector((state) => state.rate.rateDetails);
+  const priceCalculator = (weight, charge, element) => {
+    const goldRate = parseInt(rate.rate?.fineGold);
+    const silverRate = parseInt(rate.rate?.silver);
+
+    if (element === "gold") {
+      const finalPrice = (goldRate / 100) * weight + charge;
+      return finalPrice;
+    }
+
+    if (element === "silver") {
+      const finalPrice = (silverRate / 100) * weight + charge;
+      return finalPrice;
+    }
+  };
+
+  const [status, setStatus] = useState(false);
+  const elementChangeHander = () => {
+    ELEMENT.current.value === "gold" ? setStatus(true) : setStatus(false);
+  };
+
+  const forChangeHander = () => {};
+
+  const caratChangeHandler = () => {};
   return (
     <div className={styles.container}>
       <div className={`${styles.containerLeft} containerLeftCopy`}>
-        <h2>Search Options</h2>
-        <input type="number" />
+        <h2>For</h2>
+        <select ref={FOR} onChange={forChangeHander}>
+          <option value="select">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="both">Both</option>
+          <option value="child">Child</option>
+        </select>
+        <h2>Element</h2>
+        <select ref={ELEMENT} onChange={elementChangeHander}>
+          <option value="select">Select</option>
+          <option value="gold">Gold</option>
+          <option value="silver">silver</option>
+        </select>
+        {status && (
+          <>
+            <h2>Carat</h2>
+            <select ref={CARAT} onChange={caratChangeHandler}>
+              <option value="select">Select</option>
+              <option value="24KT">24KT</option>
+              <option value="22KT">22KT</option>
+            </select>
+          </>
+        )}
+
         <ArrowBackIcon
           className={styles.backIcon}
           onClick={backIconClickHandler}
@@ -95,7 +147,15 @@ function ProductPage() {
                 <h4>{product.ProductName}</h4>
                 <div className={styles.generalInfo}>
                   <div className={styles.description}>
-                    <span>Rs 22,500</span> <span>| </span>
+                    <span>
+                      Rs{" "}
+                      {priceCalculator(
+                        product.WeightWithLoss,
+                        product.Charge,
+                        product.ElementType
+                      )}{" "}
+                    </span>{" "}
+                    <span>| </span>
                     <span>Weight: {product.NetWeight} lal</span>
                   </div>
                 </div>

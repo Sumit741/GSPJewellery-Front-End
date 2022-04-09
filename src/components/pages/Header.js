@@ -4,7 +4,7 @@ import logo from "../../images/logo.jpg";
 import Modal from "./Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { modalAction } from "../store/showModal";
-
+import axios from "axios";
 import "./Navbar.css";
 import { authActions } from "../store/LoginAuthentication";
 function Header() {
@@ -16,6 +16,9 @@ function Header() {
   const toogleModal = () => {
     dispatch(modalAction.showModal());
   };
+
+  const rate = useSelector((state) => state.rate.rateDetails);
+
   return (
     <div>
       <div className="top">
@@ -64,7 +67,7 @@ function Header() {
         </h1>
         <div className="mid-right">
           <i className="fas fa-search" onClick={toogleModal}></i>
-          <span>RATE: 98,500 </span>
+          <span>RATE: {rate.rate ? rate.rate.fineGold : 0} </span>
           <Link to="/cart" className="mid-links">
             {" "}
             <i className="fas fa-cart-plus"></i> CART- {`${quantity}`}
