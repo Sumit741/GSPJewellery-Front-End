@@ -37,6 +37,7 @@ import SearchList from "./components/pages/SearchList";
 import Customers from "./components/admin/Customers";
 import Design from "./components/pages/Design";
 import Userdesign from "./components/admin/Userdesign";
+import Feedback from "./components/admin/Feedback";
 
 function App() {
   const dispatch = useDispatch();
@@ -77,6 +78,7 @@ function App() {
             <Route path="customers" element={<Customers />} />
             <Route path="statistics" element={<Customers />} />
             <Route path="userdesign" element={<Userdesign />} />
+            <Route path="feedback" element={<Feedback />} />
           </Route>
           {/* <Route path="gold" element={<GoldItem />}>
             <Route

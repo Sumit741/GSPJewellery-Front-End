@@ -23,6 +23,8 @@ import {
   FcPaid,
   FcAddImage,
   FcWorkflow,
+  FcFeedIn,
+  FcFeedback,
 } from "react-icons/fc";
 
 function AdminDashboard() {
@@ -162,6 +164,16 @@ function AdminDashboard() {
                   })}
                 >
                   <FcPicture className={styles.icon} /> USERDESIGN
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="feedback"
+                  style={({ isActive }) => ({
+                    borderRight: isActive ? "3px solid #4c84ff" : "none",
+                  })}
+                >
+                  <FcFeedback className={styles.icon} /> FEEDBACK
                 </NavLink>
               </li>
             </div>

@@ -4,6 +4,7 @@
   margin-top: 40px;
   margin-bottom: 40px;
   justify-content: center;
+  overflow: hidden;
 }
 
 .preview {
@@ -115,4 +116,15 @@
 .linksa a:hover {
   background: rgb(21, 85, 168);
   background: rgb(170, 129, 24);
+}
+@media screen and (max-width: 800px) {
+  .designContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .leftContainer {
+    width: 70%;
+    margin-bottom: 20px;
+  }
 }

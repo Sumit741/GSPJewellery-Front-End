@@ -70,7 +70,13 @@ export default function OrderChart({ ordersCount }) {
       <XAxis dataKey="ProductCategory" />
       <YAxis />
       <Tooltip />
-      <Area type="monotone" dataKey="orders" stroke="#8884d8" fill="#8884d8" />
+      <Area
+        type="monotone"
+        dataKey="orders"
+        stroke="#8884d8"
+        fill="#8884d8"
+        isAnimationActive={true}
+      />
     </AreaChart>
   );
 }
