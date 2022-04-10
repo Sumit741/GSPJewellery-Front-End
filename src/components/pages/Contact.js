@@ -11,6 +11,9 @@ import emailjs from "@emailjs/browser";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { TextareaAutosize } from "@mui/base";
+import Map, { Marker } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { MdLocationPin } from "react-icons/md";
 
 function Contact() {
   useEffect(() => {
@@ -19,6 +22,13 @@ function Contact() {
       duration: 1000,
     });
   }, []);
+  const [viewPort, setViewPort] = useState({
+    latitude: 27.942496914,
+    longitude: 83.672283,
+    zoom: 18,
+    width: "800px",
+    height: "400px",
+  });
   const name = useRef();
   const email = useRef();
   const message = useRef();
@@ -110,6 +120,37 @@ function Contact() {
               <div className={styles.bar}></div>
             </div>
           )}
+        </div>
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "30px",
+        }}
+      >
+        <div className="rounded" style={{ width: "80%", height: "600px" }}>
+          <Map
+            {...viewPort}
+            mapStyle="mapbox://styles/mapbox/streets-v9"
+            mapboxAccessToken="pk.eyJ1IjoicHJhZGVlcDA3IiwiYSI6ImNsMXN2eTY2NDBqNjUza3Bscnl0ODMwZDYifQ.d1jfwnleGiEg4Hrzm3kdEQ"
+            onMove={(viewPort) => {
+              setViewPort(viewPort);
+            }}
+          >
+            <Marker latitude={27.942496914} longitude={83.672283}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <MdLocationPin style={{ fontSize: "40px", color: "red" }} />
+                <h1
+                  style={{ fontSize: "15px", color: "red", fontWeight: "bold" }}
+                >
+                  GSP GOLD
+                </h1>
+              </div>
+            </Marker>
+          </Map>
         </div>
       </div>
     </div>

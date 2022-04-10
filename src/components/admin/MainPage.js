@@ -14,7 +14,22 @@ import OrderChart from "./OrderChart";
 function MainPage() {
   const [productCount, setProductCount] = useState([]);
   const [ordersCount, setOrdersCount] = useState([]);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [totalOrders, setTotalOrders] = useState(0);
+  const [totalCustomers, setTotalCustomers] = useState(0);
   useEffect(() => {
+    axios.get("http://localhost:3001/product").then((response) => {
+      setTotalProducts(response.data.length);
+    });
+
+    axios.get("http://localhost:3001/user").then((response) => {
+      setTotalCustomers(response.data.length);
+    });
+
+    axios.get("http://localhost:3001/orders").then((response) => {
+      setTotalOrders(response.data.length);
+    });
+
     axios.get("http://localhost:3001/product/count").then((response) => {
       const data = response.data.map((item) => {
         return { name: item.ProductCategory, ...item };
@@ -35,7 +50,7 @@ function MainPage() {
             <span style={{ display: "flex" }}>
               TOTAL ORDERS <ArrowUpwardIcon style={{ fontSize: "13px" }} />
             </span>
-            <p>50</p>
+            <p>{totalOrders}</p>
           </div>
           <BorderColorIcon className={styles.icon} />
         </div>
@@ -44,7 +59,7 @@ function MainPage() {
             <span style={{ display: "flex" }}>
               TOTAL PRODUCTS <ArrowUpwardIcon style={{ fontSize: "13px" }} />
             </span>
-            <p>50</p>
+            <p>{totalProducts}</p>
           </div>
           <ProductionQuantityLimitsIcon className={styles.icon} />
         </div>
@@ -53,7 +68,7 @@ function MainPage() {
             <span style={{ display: "flex" }}>
               TOTAL CUSTOMERS <ArrowUpwardIcon style={{ fontSize: "13px" }} />
             </span>
-            <p>50</p>
+            <p>{totalCustomers}</p>
           </div>
           <PersonAddAlt1Icon className={styles.icon} />
         </div>

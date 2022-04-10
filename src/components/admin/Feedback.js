@@ -24,7 +24,7 @@ function Feedback() {
       {feedbackList.map((feedback, index) => (
         <div key={index} className={styles.feedback}>
           <div>
-            <h2>
+            <h5>
               <FcBusinessman
                 style={{
                   fontSize: "45px",
@@ -34,7 +34,7 @@ function Feedback() {
                 }}
               />
               {feedback.Username}
-            </h2>
+            </h5>
             <span>{feedback.Email}</span>
             <Rating
               name="simple-controlled"

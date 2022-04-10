@@ -27,8 +27,10 @@ function Modal() {
     <div className="search-items">
       <i class="fas fa-window-close" onClick={hideModal}></i>
       <p>What are you looking for?</p>
-      <input type="text" placeholder="I'm looking for...." ref={text} />
-      <button onClick={searchHandler}>Search</button>
+      <form onSubmit={searchHandler}>
+        <input type="text" placeholder="I'm looking for...." ref={text} />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 }

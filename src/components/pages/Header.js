@@ -66,7 +66,11 @@ function Header() {
           GSP<span className="mid-logo">jewellery</span>
         </h1>
         <div className="mid-right">
-          <i className="fas fa-search" onClick={toogleModal}></i>
+          <i
+            className="fas fa-search"
+            onClick={toogleModal}
+            style={{ cursor: "pointer" }}
+          ></i>
           <span>RATE: {rate.rate ? rate.rate.fineGold : 0} </span>
           <Link to="/cart" className="mid-links">
             {" "}
@@ -119,11 +123,14 @@ function Header() {
                   Silver Items
                 </span>
               </li>
-              <li className="nav-item">
-                <Link to="/design" className="nav-link mx-2 links">
-                  Create Design
-                </Link>
-              </li>
+              {isAuth && (
+                <li className="nav-item">
+                  <Link to="/design" className="nav-link mx-2 links">
+                    Create Design
+                  </Link>
+                </li>
+              )}
+
               <li className="nav-item">
                 <Link to="aboutus" className="nav-link mx-2 links">
                   About Us

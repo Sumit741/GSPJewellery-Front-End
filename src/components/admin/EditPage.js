@@ -22,18 +22,18 @@ function EditPage() {
 
   const [image, setImage] = useState("");
 
-  const uploadImage = (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "jewelimages");
+  // const uploadImage = (e) => {
+  //   const files = e.target.files;
+  //   const data = new FormData();
+  //   data.append("file", files[0]);
+  //   data.append("upload_preset", "jewelimages");
 
-    axios
-      .post("https://api.cloudinary.com/v1_1/sumitimgcloud/image/upload", data)
-      .then((response) => {
-        setImage(response.data.url);
-      });
-  };
+  //   axios
+  //     .post("https://api.cloudinary.com/v1_1/sumitimgcloud/image/upload", data)
+  //     .then((response) => {
+  //       setImage(response.data.url);
+  //     });
+  // };
 
   useEffect(() => {
     axios
@@ -80,7 +80,7 @@ function EditPage() {
           ProductCategory: Category.current.value,
           Carat: Type.current.value === "gold" ? Carat.current.value : "none",
           For: For.current.value,
-          Image: image,
+          // Image: image,
           ProductName: Title.current.value,
           NetWeight: parseFloat(NetWeight.current.value),
           WeightWithLoss: parseFloat(GrossWeight.current.value),
@@ -164,7 +164,7 @@ function EditPage() {
           </select>
         )}
 
-        <input type="file" name="file" onChange={uploadImage} />
+        {/* <input type="file" name="file" onChange={uploadImage} /> */}
 
         {/* <input
           name="Image"

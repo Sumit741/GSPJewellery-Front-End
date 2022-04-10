@@ -121,7 +121,13 @@ function Home() {
             <p>
               Starting At <span>NRP. 50,000</span>
             </p>
-            <button>SHOP NOW</button>
+            <button
+              onClick={() => {
+                categoryHandler("necklaces");
+              }}
+            >
+              SHOP NOW
+            </button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -133,7 +139,13 @@ function Home() {
             <p>
               Starting At <span>NRP. 50,000</span>
             </p>
-            <button>SHOP NOW</button>
+            <button
+              onClick={() => {
+                categoryHandler("necklaces");
+              }}
+            >
+              SHOP NOW
+            </button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -145,7 +157,13 @@ function Home() {
             <p>
               Starting At <span>NRP. 50,000</span>
             </p>
-            <button>SHOP NOW</button>
+            <button
+              onClick={() => {
+                categoryHandler("necklaces");
+              }}
+            >
+              SHOP NOW
+            </button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -157,7 +175,13 @@ function Home() {
             <p>
               Starting At <span>NRP. 50,000</span>
             </p>
-            <button>SHOP NOW</button>
+            <button
+              onClick={() => {
+                categoryHandler("necklaces");
+              }}
+            >
+              SHOP NOW
+            </button>
           </div>
         </SwiperSlide>
       </Swiper>

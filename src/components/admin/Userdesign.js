@@ -8,16 +8,26 @@ import "aos/dist/aos.css";
 import Aos from "aos";
 import { useDispatch } from "react-redux";
 import { navActions } from "../store/ShowNavbar";
+import { FcBusinessman, FcFeedback, FcSms } from "react-icons/fc";
 
 function Userdesign() {
   const [designlist, setDesignList] = useState([]);
   const [link, setLink] = useState("");
   const [show, setShow] = useState(false);
+  const [showUserInfo, setShowUserInfo] = useState(false);
+
   const dispatch = useDispatch();
   useEffect(() => {
     axios.get("http://localhost:3001/userdesign").then((response) => {
       console.log(response.data);
-      setDesignList(response.data);
+      const data = response.data.sort((a, b) => {
+        if (a > b) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      setDesignList(data);
     });
     Aos.init({
       offset: 100,
@@ -37,6 +47,13 @@ function Userdesign() {
     setShow(true);
     dispatch(navActions.setStatusFalse());
   };
+
+  const [userDet, setUserDet] = useState({});
+  const displayUserInfo = (userDet) => {
+    setUserDet(userDet);
+    setShowUserInfo(true);
+    dispatch(navActions.setStatusFalse());
+  };
   return (
     <div className={styles.container}>
       <div className={styles.containerTop}>
@@ -52,6 +69,17 @@ function Userdesign() {
                     previewHandler(item.Link);
                   }}
                 />
+                <span
+                  onClick={() => {
+                    displayUserInfo({
+                      Username: item.Username,
+                      Email: item.Email,
+                      Note: item.Note,
+                    });
+                  }}
+                >
+                  Creator Information
+                </span>
               </div>
             </div>
           ))}
@@ -92,6 +120,38 @@ function Userdesign() {
             }}
           />
           <img src={link} data-aos="fade-down" />
+        </div>
+      )}
+
+      {showUserInfo && (
+        <div
+          className={styles.uerInfo}
+          onClick={() => {
+            setShowUserInfo(false);
+            dispatch(navActions.setStatusTrue());
+          }}
+        >
+          <CloseIcon
+            className={styles.CloseIcon}
+            onClick={() => {
+              setShowUserInfo(false);
+              dispatch(navActions.setStatusTrue());
+            }}
+          />
+          <div className={styles.userInfoCard} data-aos="fade-down">
+            <span>
+              <FcBusinessman className={styles.icon} />
+              {userDet.Username}
+            </span>
+            <span>
+              <FcFeedback className={styles.icon} />
+              {userDet.Email}
+            </span>
+            <span>
+              <FcSms className={styles.icon} />
+              User's Note: {userDet.Note}
+            </span>
+          </div>
         </div>
       )}
     </div>

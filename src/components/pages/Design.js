@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { fabric } from "fabric";
 import styles from "./Design.module.css";
 import axios from "axios";
@@ -14,6 +14,8 @@ import Aos from "aos";
 const App = () => {
   const [canvas, setCanvas] = useState("");
   const [pictures, setPictures] = useState([]);
+  const note = useRef();
+
   useEffect(() => {
     axios.get("http://localhost:3001/pic").then((response) => {
       console.log(response.data);
@@ -101,15 +103,30 @@ const App = () => {
     // });
     img.download = "canvas.png";
     axios
-      .post("http://localhost:3001/userdesign", {
-        Link: img.href,
-      })
+      .post(
+        "http://localhost:3001/userdesign",
+        {
+          Link: img.href,
+          Note: note.current.value === "" ? "none" : note.current.value,
+        },
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        }
+      )
       .then((response) => {
-        alert(response.data);
+        if (response.data.error) {
+          alert("User not Logged in");
+        } else {
+          alert(response.data);
+          note.current.value = "";
+        }
       });
   };
   const [link, setLink] = useState("");
   const [status, setStatus] = useState(false);
+
   const clearField = () => {
     canvas.getObjects().map((obj) => {
       canvas.remove(obj);
@@ -159,6 +176,18 @@ const App = () => {
 
         {/* <button onClick={onSave}>Save</button> */}
         <canvas id="canvas" />
+        <textarea
+          ref={note}
+          style={{
+            resize: "none",
+            width: "100%",
+            marginTop: "10px",
+            border: "none",
+            outline: "none",
+            padding: "8px",
+          }}
+          placeholder="Write a note"
+        />
         <div className={styles.linksa}>
           <a id="db" download="canvas.png" onClick={save}>
             <SaveAltIcon />
