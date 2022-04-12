@@ -10,6 +10,8 @@ import emailjs from "@emailjs/browser";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../store/Cart";
+import QR from "../../images/QR.jpg";
+import Fonepay from "../../images/fonepaylogo.png";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -71,7 +73,8 @@ function Checkout() {
       email.current.value !== "" &&
       address.current.value !== "" &&
       state.current.value !== "" &&
-      zipcode.current.value !== ""
+      zipcode.current.value !== "" &&
+      paymentOption !== ""
     ) {
       emailjs
         .sendForm(
@@ -118,8 +121,8 @@ function Checkout() {
             unitPrice: item.price / item.quantity,
             Quantity: item.quantity,
             TotalPrice: item.price,
-            PaymentOption: checked ? "cash on delivery" : "esewa",
-            PaymentStatus: checked ? "unpaid" : "paid",
+            PaymentOption: paymentOption,
+            PaymentStatus: paymentOption === "COD" ? "pending" : "paid",
             OrderStatus: "pending",
             ProductId: item.productId,
           })
@@ -141,6 +144,35 @@ function Checkout() {
     setStatus(false);
     navigate("/");
   };
+
+  var element1 = document.querySelector(".option1");
+  var element2 = document.querySelector(".option2");
+  var element3 = document.querySelector(".option3");
+  const [paymentOption, setPaymentOption] = useState("");
+
+  const element1BackgroundChange = () => {
+    element1.classList.add("payment");
+    element2.classList.remove("payment");
+    element3.classList.remove("payment");
+    setPaymentOption("COD");
+    setChecked(true);
+  };
+  const element2BackgroundChange = () => {
+    element1.classList.remove("payment");
+    element2.classList.add("payment");
+    element3.classList.remove("payment");
+    setPaymentOption("Fonepay");
+    setChecked(true);
+    setShowQR(true);
+  };
+  const element3BackgroundChange = () => {
+    element1.classList.remove("payment");
+    element2.classList.remove("payment");
+    element3.classList.add("payment");
+    setPaymentOption("Esewa");
+    setChecked(true);
+  };
+  const [showQR, setShowQR] = useState(false);
   return (
     <>
       <div className={styles.container}>
@@ -211,13 +243,28 @@ function Checkout() {
               <div>
                 <span>Please Select One Option</span>
               </div>
+              <div className={styles.paymentOptions}>
+                <div className="option1" onClick={element1BackgroundChange}>
+                  Cash On Delivery
+                </div>
+                <div className="option2" onClick={element2BackgroundChange}>
+                  Pay with Fonepay
+                </div>
+                <div className="option3" onClick={element3BackgroundChange}>
+                  Pay with Esewa
+                </div>
+              </div>
+              {/* <div>
+                <Checkbox className={styles.checkbox} />{" "}
+                <label>Pay with esewa</label>
+              </div>
               <Checkbox className={styles.checkbox} />{" "}
               <label>Pay with esewa</label>
               <Checkbox
                 className={styles.checkbox}
                 onClick={checkHandler}
               />{" "}
-              <label>Cash On Delivery</label>
+              <label>Cash On Delivery</label> */}
             </div>
             {checked && (
               <button type="submit" className={styles.checkoutbtn}>
@@ -268,6 +315,26 @@ function Checkout() {
             <CloseIcon className={styles.iconClose} onClick={hideOverlay} />
             <h2>Order Sent Successfully!!</h2>
             <span>Thank You for choosing GSP jewellery</span>
+          </div>
+        </div>
+      )}
+      {showQR && (
+        <div
+          className={styles.QRsection}
+          onClick={() => {
+            setShowQR(false);
+          }}
+        >
+          <CloseIcon
+            className={styles.i}
+            onClick={() => {
+              setShowQR(false);
+            }}
+          />
+          <div data-aos="fadedown">
+            <span>We Accept</span>
+            <img src={Fonepay} />
+            <img src={QR} />
           </div>
         </div>
       )}

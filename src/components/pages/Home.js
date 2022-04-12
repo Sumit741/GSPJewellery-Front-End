@@ -4,19 +4,21 @@ import "swiper/css";
 import "swiper/css/pagination";
 import necklace from "../../images/necklace.png";
 import Necklace from "../../images/Necklace2.jpg";
+import ring from "../../images/catBracelet.jpg";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import axios from "axios";
 import { Autoplay, Pagination } from "swiper";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../store/Products";
 import { FcBusinessman } from "react-icons/fc";
 import { BsFillChatLeftQuoteFill } from "react-icons/bs";
 import { FcFeedback } from "react-icons/fc";
 import CloseIcon from "@mui/icons-material/Close";
 import Rating from "@mui/material/Rating";
+import Footer from "./Footer";
 
 function Home() {
   const navigate = useNavigate();
@@ -37,9 +39,22 @@ function Home() {
 
   const [status, setStatus] = useState(false);
   const [feedbacklist, setFeedbackList] = useState([]);
+  const [productList, setProductList] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3001/feedback").then((response) => {
       setFeedbackList(response.data);
+    });
+
+    axios.get("http://localhost:3001/product").then((response) => {
+      const data = response.data.sort((a, b) => {
+        if (a.createdDate > b.createdDate) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      const values = data.slice(0, 4);
+      setProductList(values);
     });
   }, []);
 
@@ -95,6 +110,22 @@ function Home() {
         });
     } else {
       alert("Something is missing");
+    }
+  };
+
+  const rate = useSelector((state) => state.rate.rateDetails);
+  const priceCalculator = (weight, charge, element) => {
+    const goldRate = parseInt(rate.rate?.fineGold);
+    const silverRate = parseInt(rate.rate?.silver);
+
+    if (element === "gold") {
+      const finalPrice = (goldRate / 100) * weight + charge;
+      return finalPrice;
+    }
+
+    if (element === "silver") {
+      const finalPrice = (silverRate / 100) * weight + charge;
+      return finalPrice;
     }
   };
 
@@ -275,9 +306,35 @@ function Home() {
           </div>
         </div>
       </div>
-
+      {/* Recent Products */}
+      <h2 className="feedbacktitle">Recent Products</h2>
+      <div className="productList" data-aos="fade-right">
+        {productList.map((item, index) => (
+          <div
+            key={index}
+            className="productListCard"
+            onClick={() => {
+              navigate(`/product/${item.id}`);
+            }}
+          >
+            <img src={ring} />
+            <h5>{item.ProductName}</h5>
+            <div>
+              <span>
+                Rs{" "}
+                {priceCalculator(
+                  item.WeightWithLoss,
+                  item.Charge,
+                  item.ElementType
+                )}
+              </span>
+              <span> | </span>
+              <span>Weight: {item.NetWeight}lal</span>
+            </div>
+          </div>
+        ))}
+      </div>
       <h2 className="feedbacktitle">Customer Feedbacks</h2>
-
       <div
         className="feedbackSection"
         style={{
@@ -314,7 +371,6 @@ function Home() {
       >
         GIVE FEEDBACK <FcFeedback className="i" />
       </button>
-
       {status && (
         <div className="feedbackform">
           <form data-aos="fade-down" onSubmit={formSubmitHandler}>
@@ -355,6 +411,7 @@ function Home() {
           </form>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

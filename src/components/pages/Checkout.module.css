@@ -170,6 +170,29 @@ h4 {
   color: rgb(112, 111, 111);
   cursor: pointer;
 }
+
+.paymentOptions {
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.paymentOptions div {
+  background-color: #fbb034;
+  height: 150px;
+  /* margin-left: 15px; */
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+.paymentOptions div:nth-child(2),
+.paymentOptions div:nth-child(3) {
+  margin-left: 15px;
+}
 @media screen and (max-width: 1050px) {
   .container {
     flex-direction: column;
@@ -189,4 +212,39 @@ h4 {
   .formSection {
     width: 90%;
   }
+}
+.QRsection {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.QRsection div {
+  width: 40%;
+  background: rgb(231, 231, 231);
+  height: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.QRsection div span {
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-top: 50px;
+}
+.QRsection .i {
+  background: rgb(231, 231, 231);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.QRsection div img {
+  width: 35%;
+  margin-top: 20px;
 }

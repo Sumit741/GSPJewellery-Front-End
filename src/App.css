@@ -20,3 +20,9 @@ html {
   background-color: goldenrod;
   border-radius: 10px;
 }
+
+.payment {
+  background-color: #f0980a !important;
+  transform: scale(1.01, 1.01);
+  transition: transform 0.2s;
+}

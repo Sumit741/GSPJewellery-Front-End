@@ -3,11 +3,11 @@
   background-color: white;
   border-radius: 5px;
   position: fixed;
-  top: 50px;
+  top: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  /* z-index: 4 !important; */
   box-shadow: 2px 2px 15px 2px rgba(16, 19, 49, 0.6);
 }
 form {
