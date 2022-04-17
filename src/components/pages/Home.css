@@ -351,6 +351,7 @@
   background-color: white;
   height: 460px;
   position: relative;
+  z-index: 5;
 }
 
 .feedbackform form textarea {

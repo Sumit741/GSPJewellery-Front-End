@@ -1,0 +1,31 @@
+.resetContainer {
+  width: 100%;
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+}
+.resetContainer form {
+  width: 35%;
+  background-color: rgb(19, 18, 18);
+  padding: 100px 0;
+  margin-top: 40px;
+  box-shadow: 2px 2px 15px 2px rgb(19, 18, 18);
+  margin-bottom: 30px;
+}
+.resetContainer form .TextField {
+  width: 80%;
+  padding: 8px;
+  background-color: rgb(34, 33, 33);
+  border-radius: 5px;
+  border: none;
+  color: grey;
+}
+.resetContainer form button {
+  width: 80% !important;
+  padding: 8px;
+  letter-spacing: 1.5px;
+}
+.resetContainer span {
+  color: rgb(180, 12, 12);
+  font-size: 14px;
+}

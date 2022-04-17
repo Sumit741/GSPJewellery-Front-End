@@ -13,7 +13,7 @@ function Footer() {
       }}
     >
       <div className={styles.footerContainer}>
-        <div className={styles.logo} data-aos="fade-right">
+        <div className={styles.logo}>
           <h1>
             GSP<span>jewellery</span>
           </h1>
@@ -23,7 +23,7 @@ function Footer() {
             decent services.
           </span>
         </div>
-        <div className={styles.footerRight} data-aos="fade-left">
+        <div className={styles.footerRight}>
           <div>
             <h5>USEFUL LINKS</h5>
             <NavLink to="/">GSPjewellery</NavLink>
@@ -39,7 +39,7 @@ function Footer() {
         </div>
       </div>
       <div className={styles.divider}></div>
-      <div className={styles.bottom} data-aos="fade-up">
+      <div className={styles.bottom}>
         <span>&copy; 2022 GSPjewellery. All Rights Reserved</span>
         <div className={styles.mediaLinks}>
           <FaFacebookF className={styles.icons} />{" "}

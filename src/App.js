@@ -38,6 +38,7 @@ import Customers from "./components/admin/Customers";
 import Design from "./components/pages/Design";
 import Userdesign from "./components/admin/Userdesign";
 import Feedback from "./components/admin/Feedback";
+import ResetPassword from "./components/pages/ResetPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/password-reset" element={<ResetPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminLogin />} />

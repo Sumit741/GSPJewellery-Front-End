@@ -13,7 +13,7 @@ const data01 = [
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const style = {
   top: 120,
-  left: 420,
+  left: 400,
   lineHeight: "24px",
 };
 

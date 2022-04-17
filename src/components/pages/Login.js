@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import image from "../../images/loginpage.jpg";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -67,6 +67,17 @@ function Login() {
               placeholder="Enter Your Password"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <NavLink
+              to="/password-reset"
+              style={{
+                textDecoration: "none",
+                marginTop: "10px",
+                color: "grey",
+                fontSize: "14px",
+              }}
+            >
+              Forgot Password?
+            </NavLink>
             <button className="login" onClick={loginHandler}>
               Login
             </button>

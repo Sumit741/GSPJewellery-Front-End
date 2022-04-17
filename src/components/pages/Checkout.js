@@ -34,6 +34,7 @@ function Checkout() {
   const form = useRef();
   const form2 = useRef();
   const [status, setStatus] = useState(false);
+  const contact = useRef();
 
   useEffect(() => {
     Aos.init({
@@ -74,6 +75,7 @@ function Checkout() {
       address.current.value !== "" &&
       state.current.value !== "" &&
       zipcode.current.value !== "" &&
+      contact.current.value !== "" &&
       paymentOption !== ""
     ) {
       emailjs
@@ -118,6 +120,7 @@ function Checkout() {
               state.current.value +
               "," +
               zipcode.current.value,
+            Contact: contact.current.value,
             unitPrice: item.price / item.quantity,
             Quantity: item.quantity,
             TotalPrice: item.price,
@@ -206,6 +209,15 @@ function Checkout() {
                 placeholder="name@gmail.com"
                 ref={email}
                 name="user_email"
+              />
+            </div>
+            <div className={styles.username}>
+              <label>Contact</label>
+              <input
+                type="text"
+                placeholder="Contact Number"
+                ref={contact}
+                name="contact"
               />
             </div>
             <div className={styles.username}>
