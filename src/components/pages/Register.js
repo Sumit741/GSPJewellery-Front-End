@@ -27,11 +27,21 @@ function Register() {
     });
   }, []);
   const inputValidation = Yup.object().shape({
-    Username: Yup.string().required("Please Enter your username"),
-    Firstname: Yup.string().required("Please Enter your Firstname"),
-    Lastname: Yup.string().required("Please Enter your Lastname"),
-    Email: Yup.string().required("Please Enter your email"),
-    Address: Yup.string().required("Please Enter your address"),
+    Username: Yup.string()
+      .required("Please Enter your username")
+      .matches(/^([A-Za-z])/, "Name must only be text"),
+    Firstname: Yup.string()
+      .required("Please Enter your Firstname")
+      .matches(/^([A-Za-z])/, "Name must only be text"),
+    Lastname: Yup.string()
+      .required("Please Enter your Lastname")
+      .matches(/^([A-Za-z])/, "Name must only be text"),
+    Email: Yup.string()
+      .required("Please Enter your email")
+      .email("Enter valid email address"),
+    Address: Yup.string()
+      .required("Please Enter your address")
+      .matches(/^([A-Za-z])/, "Address must be text"),
     Password: Yup.string().required("Please Enter the password"),
     ConfirmPassword: Yup.string().required("Please Enter the confirm password"),
   });
@@ -112,6 +122,7 @@ function Register() {
             <div className={styles.name}>
               <div className={styles.fname}>
                 <Field
+                  type="password"
                   name="Password"
                   className={styles.inputField}
                   placeholder="Enter Password **"
@@ -120,6 +131,7 @@ function Register() {
               </div>
               <div className={styles.fname}>
                 <Field
+                  type="password"
                   name="ConfirmPassword"
                   className={styles.inputField}
                   placeholder="Cofirm Password **"

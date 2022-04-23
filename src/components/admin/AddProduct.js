@@ -221,7 +221,9 @@ function AddProduct() {
           ref={Charge}
           placeholder="Charge"
           type="number"
-          min="0"
+          // min="0"
+          pattern="/^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$/"
+          title="Negative number is not accepted"
           onChange={() => {
             Charge.current.value ? setChargeError(false) : setChargeError(true);
             Charge.current.value < 0

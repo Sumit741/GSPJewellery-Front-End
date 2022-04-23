@@ -353,7 +353,9 @@
   position: relative;
   z-index: 5;
 }
-
+.mySwiper {
+  z-index: -1;
+}
 .feedbackform form textarea {
   resize: none;
   border: none;

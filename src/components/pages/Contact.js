@@ -41,8 +41,13 @@ function Contact() {
     message: "",
   };
   const inputValidation = Yup.object().shape({
-    from_name: Yup.string().required("Please Enter Your name"),
-    email_id: Yup.string().required("Please Enter Your email"),
+    from_name: Yup.string()
+      .required("Please Enter Your name")
+      .min(3, "Name must be at least 3 character long")
+      .matches(/^([A-Za-z])/, "Name must only be text"),
+    email_id: Yup.string()
+      .required("Please Enter Your email")
+      .email("Invalid email format"),
     message: Yup.string().required("Please Enter Your message to admin"),
   });
 

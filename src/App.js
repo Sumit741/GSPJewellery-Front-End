@@ -39,6 +39,7 @@ import Design from "./components/pages/Design";
 import Userdesign from "./components/admin/Userdesign";
 import Feedback from "./components/admin/Feedback";
 import ResetPassword from "./components/pages/ResetPassword";
+import Category from "./components/admin/Category";
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,8 @@ function App() {
               <Route path="edit/:id" element={<EditPage />} />
             </Route>
             <Route path="addproduct" element={<AddProduct />} />
+            <Route path="category" element={<Category />} />
+            <Route path="addcategory" element={<AddProduct />} />
             <Route path="orders" element={<Orders />} />
             <Route path="customers" element={<Customers />} />
             <Route path="statistics" element={<Customers />} />

@@ -33,7 +33,7 @@ function Feedback() {
                   marginRight: "15px",
                 }}
               />
-              {feedback.Username}
+              {feedback.Fullname}
             </h5>
             <span>{feedback.Email}</span>
             <Rating

@@ -40,6 +40,7 @@ function AdminDashboard() {
   }, []);
   console.log(isAuth);
   const [showdropdown, setShowDropDown] = useState(false);
+  const [showdropdown2, setShowDropDown2] = useState(false);
   const [status, setStatus] = useState(false);
   const show = useSelector((state) => state.modal.showEditPage);
   const showNav = useSelector((state) => state.nav.status);
@@ -126,6 +127,36 @@ function AdminDashboard() {
                   </NavLink>
                 </div>
               )}
+
+              <li>
+                <a onClick={() => setShowDropDown2(!showdropdown2)}>
+                  <FcPaid className={styles.icon} /> CATEGORY{" "}
+                  <ArrowDropDownIcon />
+                </a>
+              </li>
+              {showdropdown2 && (
+                <div className={styles.dropdown}>
+                  <NavLink
+                    to="products"
+                    className={styles.dropdownlink}
+                    style={({ isActive }) => ({
+                      borderRight: isActive ? "3px solid #4c84ff" : "none",
+                    })}
+                  >
+                    <FcPaid className={styles.icon} /> View Products
+                  </NavLink>
+                  <NavLink
+                    style={({ isActive }) => ({
+                      borderRight: isActive ? "3px solid #4c84ff" : "none",
+                    })}
+                    to="addproduct"
+                    className={styles.dropdownlink}
+                  >
+                    <FcAddImage className={styles.icon} /> Add Products
+                  </NavLink>
+                </div>
+              )}
+
               <li>
                 <NavLink
                   to="orders"
