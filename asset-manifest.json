@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/GSPJewellery-Front-End/static/css/main.0f1b3c44.css",
+    "main.js": "/GSPJewellery-Front-End/static/js/main.c6ab6cdf.js",
+    "static/js/483.d5912c67.chunk.js": "/GSPJewellery-Front-End/static/js/483.d5912c67.chunk.js",
+    "static/js/787.070db070.chunk.js": "/GSPJewellery-Front-End/static/js/787.070db070.chunk.js",
+    "static/media/catNecklace.jpg": "/GSPJewellery-Front-End/static/media/catNecklace.318dd53266868762c7a6.jpg",
+    "static/media/necklace.png": "/GSPJewellery-Front-End/static/media/necklace.3131e183549d7910d012.png",
+    "static/media/Necklace2.jpg": "/GSPJewellery-Front-End/static/media/Necklace2.f197f6f1c5d0cb2b4330.jpg",
+    "static/media/about-us.png": "/GSPJewellery-Front-End/static/media/about-us.c5678b714eeac8dfe65d.png",
+    "static/media/catChain.jpg": "/GSPJewellery-Front-End/static/media/catChain.78ef14991b2b1c430354.jpg",
+    "static/media/QR.jpg": "/GSPJewellery-Front-End/static/media/QR.1307d28bbadb6dfb7904.jpg",
+    "static/media/catEarring.jpg": "/GSPJewellery-Front-End/static/media/catEarring.9d90e2acd2ac69e3d6b3.jpg",
+    "static/media/logo.jpg": "/GSPJewellery-Front-End/static/media/logo.f1ced68cb46b1fb22683.jpg",
+    "static/media/catBangles.jpg": "/GSPJewellery-Front-End/static/media/catBangles.3797006763b2a52e1524.jpg",
+    "static/media/catRing.jpg": "/GSPJewellery-Front-End/static/media/catRing.3bda8e2ab6e23b22083e.jpg",
+    "static/media/catBracelet.jpg": "/GSPJewellery-Front-End/static/media/catBracelet.875507b183d170ab76f4.jpg",
+    "static/media/fonepaylogo.png": "/GSPJewellery-Front-End/static/media/fonepaylogo.471584b4b4121c53c6c5.png",
+    "index.html": "/GSPJewellery-Front-End/index.html",
+    "main.0f1b3c44.css.map": "/GSPJewellery-Front-End/static/css/main.0f1b3c44.css.map",
+    "main.c6ab6cdf.js.map": "/GSPJewellery-Front-End/static/js/main.c6ab6cdf.js.map",
+    "483.d5912c67.chunk.js.map": "/GSPJewellery-Front-End/static/js/483.d5912c67.chunk.js.map",
+    "787.070db070.chunk.js.map": "/GSPJewellery-Front-End/static/js/787.070db070.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f1b3c44.css",
+    "static/js/main.c6ab6cdf.js"
+  ]
+}
