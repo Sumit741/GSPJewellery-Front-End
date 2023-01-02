@@ -16,7 +16,7 @@ function About() {
             since its inception. Analyzing the current scenario of the online
             business, it has decided to run its business both physically and
             virtually in order to make its service more accessible to many
-            customers and extend its business to a larger area.
+            customers and extend its business to a larger area.,
           </span>
         </div>
         <div className={styles.image}>
